@@ -54,6 +54,6 @@ Based on the included dataset:
 
 ## 👤 Author
 
-Siva KArthik Penke
+Siva Karthik Penke
 
 
