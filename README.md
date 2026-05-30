@@ -31,11 +31,17 @@ Based on the included dataset:
 ## Dashboard Features
 
 •KPI cards
+
 •Revenue trend
+
 •Category & region
+
 •Top products
+
 •Segment analysis
+
 •Filters
+
 •Business insights
 
 ## 📂  Submission Checklist
