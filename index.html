@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sales Performance Dashboard</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <style>
+
+    :root {
+
+      --bg: #f8fafc;
+
+      --card: #ffffff;
+
+      --text: #0f172a;
+
+      --muted: #64748b;
+
+      --accent: #2563eb;
+
+      --border: #e2e8f0;
+
+      --chart-h: 130px;
+
+      --chart-h-sm: 110px;
+
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+
+      font-family: "Segoe UI", system-ui, sans-serif;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      line-height: 1.35;
+
+      font-size: 12px;
+
+      padding: 0.5rem;
+
+    }
+
+    .dashboard {
+
+      max-width: 1180px;
+
+      margin: 0 auto;
+
+    }
+
+    header {
+
+      margin-bottom: 0.5rem;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      align-items: baseline;
+
+      gap: 0.5rem 1rem;
+
+    }
+
+    header h1 { font-size: 1.1rem; font-weight: 700; }
+
+    header p { color: var(--muted); font-size: 0.7rem; }
+
+    #status { margin-left: auto; }
+
+    .filters {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 0.5rem 0.75rem;
+
+      margin-bottom: 0.5rem;
+
+      align-items: center;
+
+    }
+
+    .filters label { font-size: 0.65rem; color: var(--muted); }
+
+    .filters select {
+
+      padding: 0.2rem 0.35rem;
+
+      font-size: 0.7rem;
+
+      border-radius: 4px;
+
+      border: 1px solid var(--border);
+
+    }
+
+    .kpis {
+
+      display: grid;
+
+      grid-template-columns: repeat(5, 1fr);
+
+      gap: 0.4rem;
+
+      margin-bottom: 0.5rem;
+
+    }
+
+    @media (max-width: 700px) {
+
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+
+    }
+
+    .kpi {
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 6px;
+
+      padding: 0.35rem 0.5rem;
+
+    }
+
+    .kpi label {
+
+      font-size: 0.6rem;
+
+      color: var(--muted);
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.03em;
+
+    }
+
+    .kpi .value {
+
+      font-size: 0.95rem;
+
+      font-weight: 700;
+
+      color: var(--accent);
+
+      line-height: 1.2;
+
+    }
+
+    .grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 0.4rem;
+
+      margin-bottom: 0.4rem;
+
+    }
+
+    @media (max-width: 900px) {
+
+      .grid { grid-template-columns: repeat(2, 1fr); }
+
+    }
+
+    @media (max-width: 560px) {
+
+      .grid { grid-template-columns: 1fr; }
+
+    }
+
+    .card {
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 6px;
+
+      padding: 0.4rem 0.5rem;
+
+      min-width: 0;
+
+    }
+
+    .card h2 {
+
+      font-size: 0.7rem;
+
+      font-weight: 600;
+
+      margin-bottom: 0.25rem;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+    }
+
+    .span-2 { grid-column: span 2; }
+
+    .span-3 { grid-column: span 3; }
+
+    @media (max-width: 900px) {
+
+      .span-3 { grid-column: span 2; }
+
+    }
+
+    @media (max-width: 560px) {
+
+      .span-2, .span-3 { grid-column: span 1; }
+
+    }
+
+    .chart-box {
+
+      position: relative;
+
+      width: 100%;
+
+      height: var(--chart-h);
+
+    }
+
+    .chart-box.sm { height: var(--chart-h-sm); }
+
+    .chart-box.tall { height: 150px; }
+
+    .bottom-row {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 0.4rem;
+
+    }
+
+    @media (max-width: 700px) {
+
+      .bottom-row { grid-template-columns: 1fr; }
+
+    }
+
+    .insights { list-style: none; }
+
+    .insights li {
+
+      padding: 0.3rem 0;
+
+      border-bottom: 1px solid var(--border);
+
+      font-size: 0.68rem;
+
+      line-height: 1.3;
+
+    }
+
+    .insights li:last-child { border-bottom: none; }
+
+    table.data {
+
+      width: 100%;
+
+      border-collapse: collapse;
+
+      font-size: 0.62rem;
+
+    }
+
+    table.data th, table.data td {
+
+      padding: 0.2rem 0.35rem;
+
+      border-bottom: 1px solid var(--border);
+
+      text-align: left;
+
+    }
+
+    table.data th { color: var(--muted); font-weight: 600; }
+
+    .data-wrap { max-height: 120px; overflow: auto; }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <header>
+
+      <h1>Sales Performance Dashboard</h1>
+
+      <p>Revenue, products, regions &amp; insights</p>
+
+      <p id="status">Loading data…</p>
+
+    </header>
+
+
+
+    <div class="filters">
+
+      <div>
+
+        <label>Region</label><br />
+
+        <select id="filterRegion"><option value="">All</option></select>
+
+      </div>
+
+      <div>
+
+        <label>Category</label><br />
+
+        <select id="filterCategory"><option value="">All</option></select>
+
+      </div>
+
+      <div>
+
+        <label>Segment</label><br />
+
+        <select id="filterSegment"><option value="">All</option></select>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="kpis" id="kpis"></div>
+
+
+
+    <div class="grid">
+
+      <div class="card span-3">
+
+        <h2>Revenue &amp; Profit Over Time</h2>
+
+        <div class="chart-box sm"><canvas id="chartTrend"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Revenue by Category</h2>
+
+        <div class="chart-box sm"><canvas id="chartCategory"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Revenue Share by Region</h2>
+
+        <div class="chart-box sm"><canvas id="chartRegion"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Revenue by Segment</h2>
+
+        <div class="chart-box sm"><canvas id="chartSegment"></canvas></div>
+
+      </div>
+
+      <div class="card span-2">
+
+        <h2>Top 10 Products by Revenue</h2>
+
+        <div class="chart-box tall"><canvas id="chartProducts"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Revenue by Region</h2>
+
+        <div class="chart-box sm"><canvas id="chartRegionBar"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Discount vs Profit</h2>
+
+        <div class="chart-box sm"><canvas id="chartDiscount"></canvas></div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="bottom-row">
+
+      <div class="card">
+
+        <h2>Business Insights</h2>
+
+        <ul class="insights" id="insights"></ul>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Sample Data</h2>
+
+        <div class="data-wrap">
+
+          <table class="data" id="dataTable">
+
+            <thead></thead>
+
+            <tbody></tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    let rawData = [];
+
+    const charts = {};
+
+
+
+    const chartDefaults = {
+
+      responsive: true,
+
+      maintainAspectRatio: false,
+
+      animation: false,
+
+      plugins: {
+
+        legend: {
+
+          labels: { font: { size: 9 }, boxWidth: 10, padding: 6 },
+
+        },
+
+      },
+
+      scales: {
+
+        x: {
+
+          ticks: { font: { size: 8 }, maxRotation: 45, minRotation: 0 },
+
+          grid: { display: false },
+
+        },
+
+        y: {
+
+          ticks: { font: { size: 8 } },
+
+          grid: { color: "#f1f5f9" },
+
+        },
+
+      },
+
+    };
+
+
+
+    function chartOpts(extra = {}) {
+
+      return { ...chartDefaults, ...extra, scales: { ...chartDefaults.scales, ...(extra.scales || {}) }, plugins: { ...chartDefaults.plugins, ...(extra.plugins || {}) } };
+
+    }
+
+
+
+    function fmt(n) {
+
+      if (n >= 1e6) return "$" + (n / 1e6).toFixed(2) + "M";
+
+      if (n >= 1e3) return "$" + (n / 1e3).toFixed(1) + "K";
+
+      return "$" + Math.round(n).toLocaleString();
+
+    }
+
+
+
+    function getFiltered() {
+
+      const r = document.getElementById("filterRegion").value;
+
+      const c = document.getElementById("filterCategory").value;
+
+      const s = document.getElementById("filterSegment").value;
+
+      return rawData.filter((row) => {
+
+        if (r && row.Region !== r) return false;
+
+        if (c && row.Category !== c) return false;
+
+        if (s && row.Segment !== s) return false;
+
+        return true;
+
+      });
+
+    }
+
+
+
+    function sumBy(data, key, val = "Sales") {
+
+      const m = {};
+
+      data.forEach((row) => {
+
+        const k = row[key];
+
+        m[k] = (m[k] || 0) + parseFloat(row[val]);
+
+      });
+
+      return m;
+
+    }
+
+
+
+    function monthKey(dateStr) {
+
+      const d = new Date(dateStr);
+
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+
+    }
+
+
+
+    function renderKpis(data) {
+
+      const sales = data.reduce((a, r) => a + parseFloat(r.Sales), 0);
+
+      const profit = data.reduce((a, r) => a + parseFloat(r.Profit), 0);
+
+      const orders = new Set(data.map((r) => r.Order_ID)).size;
+
+      const aov = orders ? sales / orders : 0;
+
+      const margin = sales ? (profit / sales) * 100 : 0;
+
+      document.getElementById("kpis").innerHTML = [
+
+        ["Revenue", fmt(sales)],
+
+        ["Profit", fmt(profit)],
+
+        ["Orders", orders.toLocaleString()],
+
+        ["AOV", fmt(aov)],
+
+        ["Margin", margin.toFixed(1) + "%"],
+
+      ]
+
+        .map(
+
+          ([l, v]) =>
+
+            `<div class="kpi"><label>${l}</label><div class="value">${v}</div></div>`
+
+        )
+
+        .join("");
+
+    }
+
+
+
+    function destroyChart(id) {
+
+      if (charts[id]) {
+
+        charts[id].destroy();
+
+        delete charts[id];
+
+      }
+
+    }
+
+
+
+    function renderCharts(data) {
+
+      const barEl = { bar: { maxBarThickness: 14 } };
+
+      const lineEl = {
+
+        point: { radius: 2, hitRadius: 6 },
+
+        line: { borderWidth: 1.5 },
+
+      };
+
+
+
+      const monthly = {};
+
+      data.forEach((row) => {
+
+        const m = monthKey(row.Order_Date);
+
+        if (!monthly[m]) monthly[m] = { sales: 0, profit: 0 };
+
+        monthly[m].sales += parseFloat(row.Sales);
+
+        monthly[m].profit += parseFloat(row.Profit);
+
+      });
+
+      const months = Object.keys(monthly).sort();
+
+      destroyChart("chartTrend");
+
+      charts.chartTrend = new Chart(document.getElementById("chartTrend"), {
+
+        type: "line",
+
+        data: {
+
+          labels: months,
+
+          datasets: [
+
+            { label: "Revenue", data: months.map((m) => monthly[m].sales), borderColor: "#2563eb", tension: 0.2 },
+
+            { label: "Profit", data: months.map((m) => monthly[m].profit), borderColor: "#16a34a", tension: 0.2 },
+
+          ],
+
+        },
+
+        options: { ...chartOpts(), elements: lineEl },
+
+      });
+
+
+
+      const cat = sumBy(data, "Category");
+
+      const catLabels = Object.keys(cat);
+
+      destroyChart("chartCategory");
+
+      charts.chartCategory = new Chart(document.getElementById("chartCategory"), {
+
+        type: "bar",
+
+        data: { labels: catLabels, datasets: [{ label: "Revenue", data: catLabels.map((k) => cat[k]), backgroundColor: "#2563eb" }] },
+
+        options: { ...chartOpts({ indexAxis: "y" }), indexAxis: "y", elements: barEl },
+
+      });
+
+
+
+      const reg = sumBy(data, "Region");
+
+      const regLabels = Object.keys(reg);
+
+      destroyChart("chartRegion");
+
+      charts.chartRegion = new Chart(document.getElementById("chartRegion"), {
+
+        type: "doughnut",
+
+        data: { labels: regLabels, datasets: [{ data: regLabels.map((k) => reg[k]) }] },
+
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: "right", labels: { font: { size: 8 }, boxWidth: 8, padding: 4 } },
+          },
+        },
+      });
+
+
+
+      const prod = sumBy(data, "Product_Name");
+
+      const top = Object.entries(prod).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+      destroyChart("chartProducts");
+
+      charts.chartProducts = new Chart(document.getElementById("chartProducts"), {
+
+        type: "bar",
+
+        data: {
+
+          labels: top.map((t) => t[0].slice(0, 22)),
+
+          datasets: [{ label: "Revenue", data: top.map((t) => t[1]), backgroundColor: "#0d9488" }],
+
+        },
+
+        options: { ...chartOpts({ indexAxis: "y" }), indexAxis: "y", elements: { bar: { maxBarThickness: 10 } } },
+
+      });
+
+
+
+      const seg = sumBy(data, "Segment");
+
+      const segLabels = Object.keys(seg);
+
+      destroyChart("chartSegment");
+
+      charts.chartSegment = new Chart(document.getElementById("chartSegment"), {
+
+        type: "bar",
+
+        data: { labels: segLabels, datasets: [{ label: "Revenue", data: segLabels.map((k) => seg[k]), backgroundColor: "#7c3aed" }] },
+
+        options: { ...chartOpts(), elements: barEl, plugins: { legend: { display: false } } },
+
+      });
+
+
+
+      destroyChart("chartRegionBar");
+
+      charts.chartRegionBar = new Chart(document.getElementById("chartRegionBar"), {
+
+        type: "bar",
+
+        data: { labels: regLabels, datasets: [{ label: "Revenue", data: regLabels.map((k) => reg[k]), backgroundColor: "#ea580c" }] },
+
+        options: { ...chartOpts(), elements: barEl, plugins: { legend: { display: false } } },
+
+      });
+
+
+
+      const discBuckets = {};
+
+      data.forEach((row) => {
+
+        const d = Math.round(parseFloat(row.Discount) * 20) / 20;
+
+        if (!discBuckets[d]) discBuckets[d] = { profit: 0, orders: 0 };
+
+        discBuckets[d].profit += parseFloat(row.Profit);
+
+        discBuckets[d].orders += 1;
+
+      });
+
+      const discLabels = Object.keys(discBuckets).map(Number).sort((a, b) => a - b);
+
+      destroyChart("chartDiscount");
+
+      charts.chartDiscount = new Chart(document.getElementById("chartDiscount"), {
+
+        type: "bubble",
+
+        data: {
+
+          datasets: [{
+
+            data: discLabels.map((d) => ({
+
+              x: d,
+
+              y: discBuckets[d].profit,
+
+              r: Math.min(10, 3 + discBuckets[d].orders / 12),
+
+            })),
+
+            backgroundColor: "rgba(124, 58, 237, 0.65)",
+
+          }],
+
+        },
+
+        options: {
+
+          ...chartOpts(),
+
+          plugins: { legend: { display: false } },
+
+          scales: {
+
+            x: { ticks: { font: { size: 8 } }, min: 0, max: 0.5, title: { display: true, text: "Discount", font: { size: 8 } } },
+
+            y: { ticks: { font: { size: 8 } }, beginAtZero: true, title: { display: true, text: "Profit", font: { size: 8 } } },
+
+          },
+
+        },
+
+      });
+
+    }
+
+
+
+    function renderDataTable(data) {
+
+      const cols = ["Order_Date", "Region", "Category", "Product_Name", "Sales", "Profit"];
+
+      const thead = document.querySelector("#dataTable thead");
+
+      const tbody = document.querySelector("#dataTable tbody");
+
+      thead.innerHTML = "<tr>" + cols.map((c) => `<th>${c.replace(/_/g, " ")}</th>`).join("") + "</tr>";
+
+      tbody.innerHTML = data.slice(0, 8).map((row) =>
+
+        "<tr>" + cols.map((c) => {
+
+          let v = row[c];
+
+          if (c === "Sales" || c === "Profit") v = fmt(parseFloat(v));
+
+          if (c === "Product_Name") v = String(v).slice(0, 18);
+
+          return `<td>${v}</td>`;
+
+        }).join("") + "</tr>"
+
+      ).join("");
+
+    }
+
+
+
+    function renderInsights(data) {
+
+      const total = data.reduce((a, r) => a + parseFloat(r.Sales), 0);
+
+      const cat = sumBy(data, "Category");
+
+      const reg = sumBy(data, "Region");
+
+      const topCat = Object.entries(cat).sort((a, b) => b[1] - a[1])[0];
+
+      const topReg = Object.entries(reg).sort((a, b) => b[1] - a[1])[0];
+
+      const prod = sumBy(data, "Product_Name");
+
+      const topProd = Object.entries(prod).sort((a, b) => b[1] - a[1])[0][0];
+
+
+
+      const monthly = {};
+
+      data.forEach((row) => {
+
+        const m = monthKey(row.Order_Date);
+
+        monthly[m] = (monthly[m] || 0) + parseFloat(row.Sales);
+
+      });
+
+      const months = Object.keys(monthly).sort();
+
+      const growth =
+
+        months.length > 1 && monthly[months[0]]
+
+          ? ((monthly[months[months.length - 1]] - monthly[months[0]]) / monthly[months[0]]) * 100
+
+          : 0;
+
+
+
+      const insights = [
+
+        `${topCat[0]} leads (${((topCat[1] / total) * 100).toFixed(0)}% revenue).`,
+
+        `${topReg[0]} is top region (${((topReg[1] / total) * 100).toFixed(0)}%).`,
+
+        `${topProd.slice(0, 30)}… top product.`,
+
+        `Revenue ${growth >= 0 ? "+" : ""}${growth.toFixed(1)}% first→last month.`,
+
+        `Cap heavy discounts on low-margin lines.`,
+
+      ];
+
+      document.getElementById("insights").innerHTML = insights.map((t) => `<li>${t}</li>`).join("");
+
+    }
+
+
+
+    let refreshTimer;
+
+    function refresh() {
+
+      clearTimeout(refreshTimer);
+
+      refreshTimer = setTimeout(() => {
+
+        const data = getFiltered();
+
+        renderKpis(data);
+
+        renderCharts(data);
+
+        renderInsights(data);
+
+        renderDataTable(data);
+
+      }, 50);
+
+    }
+
+
+
+    function fillFilters(data) {
+
+      ["Region", "Category", "Segment"].forEach((field) => {
+
+        const sel = document.getElementById("filter" + field);
+
+        const vals = [...new Set(data.map((r) => r[field]))].sort();
+
+        vals.forEach((v) => {
+
+          const o = document.createElement("option");
+
+          o.value = v;
+
+          o.textContent = v;
+
+          sel.appendChild(o);
+
+        });
+
+        sel.addEventListener("change", refresh);
+
+      });
+
+    }
+
+
+
+    Papa.parse("data/sales_data.csv", {
+
+      download: true,
+
+      header: true,
+
+      skipEmptyLines: true,
+
+      complete: (res) => {
+
+        rawData = res.data;
+
+        document.getElementById("status").textContent =
+
+          `${rawData.length} rows · 2023–2024`;
+
+        fillFilters(rawData);
+
+        refresh();
+
+      },
+
+      error: () => {
+
+        document.getElementById("status").textContent =
+
+          "Run generate_data.ps1 or generate_data.py first.";
+
+      },
+
+    });
+
+  </script>
+
+</body>
+
+</html>
+
+

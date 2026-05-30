@@ -1,0 +1,801 @@
+﻿Order_ID,Order_Date,Ship_Date,Ship_Mode,Customer_ID,Customer_Name,Segment,Region,State,City,Category,Sub_Category,Product_Name,Quantity,Discount,Sales,Profit
+ORD-01001,2023-05-07,2023-05-13,Standard Class,CUST-158,Customer 164,Corporate,East,New York,City2,Office Supplies,Paper,Product Paper 1,1,0,12.81,2.83
+ORD-01002,2023-03-07,2023-03-12,Standard Class,CUST-304,Customer 234,Consumer,South,Texas,City3,Technology,Phones,Product Phones 2,5,0.05,3130.65,404.27
+ORD-01003,2024-08-22,2024-08-23,Standard Class,CUST-233,Customer 301,Home Office,North,Ohio,City2,Furniture,Chairs,Product Chairs 3,1,0,207.34,17.14
+ORD-01004,2023-07-31,2023-08-05,Standard Class,CUST-135,Customer 111,Corporate,North,Illinois,City3,Office Supplies,Storage,Product Storage 4,4,0,129.5,31.59
+ORD-01005,2023-02-20,2023-02-26,Standard Class,CUST-117,Customer 216,Consumer,North,Illinois,City4,Furniture,Chairs,Product Chairs 5,2,0,422.2,30.63
+ORD-01006,2024-04-22,2024-04-23,Standard Class,CUST-328,Customer 332,Corporate,South,Florida,City2,Technology,Phones,Product Phones 6,5,0,2893.14,358.25
+ORD-01007,2023-08-06,2023-08-13,Standard Class,CUST-246,Customer 283,Consumer,East,New York,City4,Technology,Phones,Product Phones 7,3,0.1,1853.83,267.03
+ORD-01008,2023-04-19,2023-04-20,Standard Class,CUST-153,Customer 247,Corporate,West,California,City4,Furniture,Bookcases,Product Bookcases 8,1,0,265.99,23.63
+ORD-01009,2023-09-10,2023-09-17,Standard Class,CUST-106,Customer 154,Consumer,West,Washington,City1,Furniture,Bookcases,Product Bookcases 9,3,0.15,746.31,48.34
+ORD-01010,2023-08-25,2023-08-31,Standard Class,CUST-306,Customer 102,Consumer,North,Ohio,City4,Technology,Phones,Product Phones 10,5,0,2998.22,417.59
+ORD-01011,2023-05-21,2023-05-24,Standard Class,CUST-145,Customer 107,Consumer,West,California,City4,Furniture,Tables,Product Tables 11,2,0.05,889.49,74.73
+ORD-01012,2024-06-04,2024-06-05,Standard Class,CUST-249,Customer 197,Home Office,West,Washington,City2,Office Supplies,Storage,Product Storage 12,1,0,35.63,8.01
+ORD-01013,2023-01-03,2023-01-05,Standard Class,CUST-335,Customer 280,Corporate,South,Florida,City3,Technology,Accessories,Product Accessories 13,5,0.1,379.83,48.03
+ORD-01014,2024-03-25,2024-04-01,Standard Class,CUST-305,Customer 286,Consumer,South,Texas,City2,Furniture,Tables,Product Tables 14,5,0,2137.87,173.92
+ORD-01015,2024-08-31,2024-09-05,Standard Class,CUST-120,Customer 205,Home Office,East,Pennsylvania,City4,Office Supplies,Storage,Product Storage 15,4,0,130.64,25.62
+ORD-01016,2023-06-04,2023-06-09,Standard Class,CUST-225,Customer 277,Consumer,West,Washington,City4,Furniture,Chairs,Product Chairs 16,5,0.15,838.56,69.43
+ORD-01017,2024-11-13,2024-11-14,Standard Class,CUST-113,Customer 153,Consumer,South,Florida,City1,Furniture,Bookcases,Product Bookcases 17,3,0.1,774.54,54.49
+ORD-01018,2024-12-30,2025-01-02,Standard Class,CUST-314,Customer 177,Consumer,South,Texas,City4,Furniture,Chairs,Product Chairs 18,2,0,474.77,40.45
+ORD-01019,2024-11-02,2024-11-09,Standard Class,CUST-322,Customer 104,Consumer,East,Pennsylvania,City3,Technology,Machines,Product Machines 19,1,0,601.66,83.48
+ORD-01020,2024-07-03,2024-07-04,Standard Class,CUST-185,Customer 264,Consumer,North,Ohio,City3,Technology,Machines,Product Machines 20,4,0.15,1723.75,304.13
+ORD-01021,2024-04-30,2024-05-01,Standard Class,CUST-133,Customer 310,Consumer,East,New York,City4,Technology,Phones,Product Phones 21,4,0.05,2665.78,371.38
+ORD-01022,2024-11-20,2024-11-22,Standard Class,CUST-263,Customer 149,Corporate,South,Texas,City3,Technology,Accessories,Product Accessories 22,1,0,99.1,12.54
+ORD-01023,2024-01-28,2024-02-02,Standard Class,CUST-202,Customer 263,Home Office,West,California,City3,Technology,Accessories,Product Accessories 23,3,0,309.84,47.49
+ORD-01024,2023-11-26,2023-12-03,Standard Class,CUST-225,Customer 314,Consumer,North,Illinois,City2,Technology,Machines,Product Machines 24,4,0,2217.84,366.15
+ORD-01025,2023-12-20,2023-12-26,Standard Class,CUST-203,Customer 123,Consumer,South,Texas,City4,Technology,Accessories,Product Accessories 25,1,0.15,79.81,11.06
+ORD-01026,2024-04-12,2024-04-18,Standard Class,CUST-226,Customer 181,Consumer,South,Florida,City1,Furniture,Chairs,Product Chairs 26,2,0.15,416.97,35.14
+ORD-01027,2023-03-21,2023-03-22,Standard Class,CUST-263,Customer 105,Consumer,West,Washington,City4,Furniture,Chairs,Product Chairs 27,1,0,195.86,14.88
+ORD-01028,2023-02-06,2023-02-07,Standard Class,CUST-262,Customer 123,Corporate,West,Washington,City4,Technology,Accessories,Product Accessories 28,1,0.1,80.07,12.22
+ORD-01029,2024-08-03,2024-08-09,Standard Class,CUST-335,Customer 302,Corporate,East,Pennsylvania,City1,Furniture,Tables,Product Tables 29,5,0,2185.37,199.92
+ORD-01030,2023-11-21,2023-11-28,Standard Class,CUST-148,Customer 167,Home Office,West,Washington,City2,Furniture,Bookcases,Product Bookcases 30,4,0.15,1039.48,93.6
+ORD-01031,2023-03-17,2023-03-24,Standard Class,CUST-132,Customer 320,Corporate,East,Pennsylvania,City4,Furniture,Bookcases,Product Bookcases 31,5,0,1547.03,118.29
+ORD-01032,2023-04-22,2023-04-26,Standard Class,CUST-195,Customer 241,Home Office,North,Ohio,City3,Technology,Phones,Product Phones 32,1,0,730.31,92.7
+ORD-01033,2024-11-07,2024-11-14,Standard Class,CUST-341,Customer 178,Consumer,South,Florida,City2,Technology,Accessories,Product Accessories 33,3,0,266.48,46
+ORD-01034,2023-07-02,2023-07-09,Standard Class,CUST-135,Customer 255,Corporate,West,Washington,City2,Office Supplies,Storage,Product Storage 34,3,0.15,96.84,24.63
+ORD-01035,2023-12-27,2023-12-31,Standard Class,CUST-187,Customer 217,Home Office,West,California,City1,Furniture,Bookcases,Product Bookcases 35,2,0,495.07,33.42
+ORD-01036,2023-10-26,2023-10-30,Standard Class,CUST-127,Customer 135,Home Office,East,Pennsylvania,City2,Technology,Machines,Product Machines 36,5,0,2525.77,345.67
+ORD-01037,2023-05-29,2023-06-03,Standard Class,CUST-337,Customer 124,Consumer,East,Pennsylvania,City3,Technology,Machines,Product Machines 37,3,0.1,1288.04,191.12
+ORD-01038,2024-01-19,2024-01-22,Standard Class,CUST-265,Customer 168,Consumer,South,Florida,City2,Technology,Machines,Product Machines 38,1,0.05,476.47,70.76
+ORD-01039,2023-01-26,2023-01-30,Standard Class,CUST-109,Customer 315,Consumer,North,Illinois,City1,Office Supplies,Binders,Product Binders 39,2,0.1,31.09,7.91
+ORD-01040,2023-02-25,2023-02-26,Standard Class,CUST-347,Customer 174,Consumer,East,Pennsylvania,City2,Furniture,Tables,Product Tables 40,1,0.05,479.17,43.97
+ORD-01041,2024-01-07,2024-01-13,Standard Class,CUST-321,Customer 241,Corporate,North,Illinois,City2,Office Supplies,Binders,Product Binders 41,4,0.05,66.94,12.25
+ORD-01042,2023-12-03,2023-12-09,Standard Class,CUST-157,Customer 252,Corporate,East,New York,City1,Furniture,Bookcases,Product Bookcases 42,3,0,941.83,85.99
+ORD-01043,2023-05-21,2023-05-28,Standard Class,CUST-153,Customer 203,Home Office,North,Illinois,City2,Office Supplies,Storage,Product Storage 43,4,0,153.12,38.86
+ORD-01044,2023-05-10,2023-05-15,Standard Class,CUST-277,Customer 103,Corporate,North,Illinois,City1,Furniture,Chairs,Product Chairs 44,2,0,421.66,27.54
+ORD-01045,2023-12-23,2023-12-30,Standard Class,CUST-340,Customer 165,Home Office,East,New York,City3,Furniture,Bookcases,Product Bookcases 45,1,0,240.76,18.96
+ORD-01046,2024-08-24,2024-08-30,Standard Class,CUST-201,Customer 141,Home Office,West,California,City1,Office Supplies,Binders,Product Binders 46,2,0,38.06,7.76
+ORD-01047,2024-12-01,2024-12-03,Standard Class,CUST-192,Customer 218,Corporate,West,Washington,City3,Office Supplies,Paper,Product Paper 47,4,0.05,41.41,10
+ORD-01048,2024-03-27,2024-03-31,Standard Class,CUST-258,Customer 337,Corporate,East,New York,City2,Technology,Machines,Product Machines 48,4,0.1,1767.61,224.21
+ORD-01049,2024-07-09,2024-07-12,Standard Class,CUST-232,Customer 121,Corporate,East,New York,City1,Technology,Machines,Product Machines 49,3,0,1664.18,294.7
+ORD-01050,2023-06-26,2023-06-30,Standard Class,CUST-206,Customer 119,Home Office,North,Ohio,City4,Furniture,Tables,Product Tables 50,5,0.15,2006.05,180.75
+ORD-01051,2024-01-31,2024-02-04,Standard Class,CUST-109,Customer 207,Consumer,West,Washington,City3,Furniture,Tables,Product Tables 51,1,0.1,358.71,32.05
+ORD-01052,2024-06-21,2024-06-27,Standard Class,CUST-349,Customer 236,Home Office,North,Illinois,City4,Technology,Accessories,Product Accessories 52,2,0,162.11,26.4
+ORD-01053,2023-11-02,2023-11-08,Standard Class,CUST-108,Customer 251,Home Office,West,California,City2,Technology,Accessories,Product Accessories 53,2,0.15,138.89,17.43
+ORD-01054,2023-01-31,2023-02-06,Standard Class,CUST-291,Customer 277,Home Office,South,Texas,City1,Furniture,Chairs,Product Chairs 54,5,0.15,954.18,64.26
+ORD-01055,2023-01-26,2023-01-31,Standard Class,CUST-153,Customer 168,Home Office,West,California,City1,Furniture,Chairs,Product Chairs 55,1,0,244.15,18.48
+ORD-01056,2024-09-12,2024-09-16,Standard Class,CUST-266,Customer 287,Consumer,East,Pennsylvania,City4,Technology,Machines,Product Machines 56,1,0.1,464.34,67.55
+ORD-01057,2024-12-08,2024-12-12,Standard Class,CUST-224,Customer 267,Corporate,North,Ohio,City4,Technology,Accessories,Product Accessories 57,1,0.1,76.77,10.06
+ORD-01058,2023-04-23,2023-04-24,Standard Class,CUST-248,Customer 111,Home Office,South,Texas,City3,Office Supplies,Paper,Product Paper 58,2,0,23.18,4.85
+ORD-01059,2023-03-03,2023-03-08,Standard Class,CUST-146,Customer 310,Home Office,South,Texas,City3,Furniture,Chairs,Product Chairs 59,1,0,202.22,15.23
+ORD-01060,2023-04-28,2023-04-29,Standard Class,CUST-214,Customer 306,Corporate,East,New York,City4,Office Supplies,Paper,Product Paper 60,2,0,21.46,5.01
+ORD-01061,2024-05-14,2024-05-15,Standard Class,CUST-250,Customer 200,Home Office,East,Pennsylvania,City4,Furniture,Bookcases,Product Bookcases 61,5,0.05,1449.93,123.38
+ORD-01062,2024-09-18,2024-09-20,Standard Class,CUST-298,Customer 224,Corporate,North,Ohio,City3,Technology,Accessories,Product Accessories 62,3,0.15,255.45,31.64
+ORD-01063,2024-08-02,2024-08-04,Standard Class,CUST-315,Customer 186,Home Office,North,Ohio,City1,Furniture,Bookcases,Product Bookcases 63,4,0,1229.23,100.51
+ORD-01064,2024-04-15,2024-04-16,Standard Class,CUST-202,Customer 246,Consumer,South,Texas,City2,Furniture,Tables,Product Tables 64,3,0,1367.24,111.93
+ORD-01065,2023-06-21,2023-06-24,Standard Class,CUST-298,Customer 173,Consumer,East,Pennsylvania,City3,Office Supplies,Paper,Product Paper 65,2,0,24.08,6.15
+ORD-01066,2023-08-08,2023-08-15,Standard Class,CUST-327,Customer 134,Consumer,West,California,City3,Technology,Phones,Product Phones 66,1,0.05,676.56,113.2
+ORD-01067,2024-10-13,2024-10-16,Standard Class,CUST-113,Customer 265,Corporate,North,Ohio,City3,Furniture,Bookcases,Product Bookcases 67,2,0,624.6,40.52
+ORD-01068,2023-11-05,2023-11-08,Standard Class,CUST-216,Customer 207,Home Office,West,California,City4,Office Supplies,Binders,Product Binders 68,1,0.15,16.44,3.43
+ORD-01069,2024-01-21,2024-01-27,Standard Class,CUST-324,Customer 284,Home Office,South,Texas,City4,Technology,Phones,Product Phones 69,5,0.15,3120.91,438.74
+ORD-01070,2024-10-04,2024-10-09,Standard Class,CUST-102,Customer 150,Home Office,South,Texas,City4,Office Supplies,Paper,Product Paper 70,1,0,13.63,3.37
+ORD-01071,2024-08-19,2024-08-26,Standard Class,CUST-295,Customer 251,Home Office,South,Texas,City2,Technology,Machines,Product Machines 71,3,0,1649.53,255.57
+ORD-01072,2023-08-21,2023-08-22,Standard Class,CUST-177,Customer 262,Home Office,West,California,City3,Technology,Accessories,Product Accessories 72,2,0.15,185.22,24.66
+ORD-01073,2023-06-02,2023-06-09,Standard Class,CUST-145,Customer 267,Consumer,South,Florida,City4,Office Supplies,Storage,Product Storage 73,1,0,38.92,6.97
+ORD-01074,2023-06-14,2023-06-19,Standard Class,CUST-321,Customer 318,Home Office,South,Texas,City2,Furniture,Chairs,Product Chairs 74,3,0,730.06,60.46
+ORD-01075,2024-07-05,2024-07-06,Standard Class,CUST-231,Customer 284,Corporate,North,Ohio,City4,Technology,Machines,Product Machines 75,1,0.15,411,70.77
+ORD-01076,2023-09-03,2023-09-09,Standard Class,CUST-158,Customer 216,Home Office,North,Illinois,City4,Office Supplies,Paper,Product Paper 76,4,0,52.8,10.21
+ORD-01077,2023-07-21,2023-07-23,Standard Class,CUST-248,Customer 178,Corporate,East,Pennsylvania,City3,Furniture,Bookcases,Product Bookcases 77,2,0.05,589.33,50.2
+ORD-01078,2023-11-02,2023-11-04,Standard Class,CUST-132,Customer 246,Corporate,South,Florida,City4,Furniture,Tables,Product Tables 78,5,0.15,1915.67,169.39
+ORD-01079,2023-08-11,2023-08-14,Standard Class,CUST-228,Customer 348,Consumer,North,Ohio,City2,Furniture,Chairs,Product Chairs 79,1,0,196.76,14.09
+ORD-01080,2024-08-09,2024-08-13,Standard Class,CUST-256,Customer 317,Corporate,North,Ohio,City4,Office Supplies,Paper,Product Paper 80,3,0,39.6,9.62
+ORD-01081,2024-03-20,2024-03-27,Standard Class,CUST-151,Customer 184,Corporate,North,Ohio,City1,Office Supplies,Paper,Product Paper 81,2,0.15,20.1,4.27
+ORD-01082,2023-05-20,2023-05-25,Standard Class,CUST-110,Customer 125,Consumer,South,Florida,City2,Office Supplies,Storage,Product Storage 82,5,0,179.05,39.26
+ORD-01083,2023-06-28,2023-07-05,Standard Class,CUST-296,Customer 145,Home Office,North,Illinois,City4,Furniture,Bookcases,Product Bookcases 83,5,0,1248.14,109.89
+ORD-01084,2023-10-09,2023-10-15,Standard Class,CUST-102,Customer 163,Corporate,South,Texas,City3,Office Supplies,Binders,Product Binders 84,5,0.1,80.77,15.16
+ORD-01085,2023-01-06,2023-01-13,Standard Class,CUST-191,Customer 144,Home Office,South,Texas,City3,Technology,Phones,Product Phones 85,4,0,2601.24,388.91
+ORD-01086,2023-12-11,2023-12-17,Standard Class,CUST-138,Customer 209,Home Office,South,Texas,City4,Office Supplies,Storage,Product Storage 86,1,0.1,28.41,5.33
+ORD-01087,2023-07-24,2023-07-29,Standard Class,CUST-211,Customer 342,Corporate,East,New York,City4,Office Supplies,Storage,Product Storage 87,5,0.05,160.74,40.53
+ORD-01088,2024-06-06,2024-06-09,Standard Class,CUST-134,Customer 244,Corporate,North,Illinois,City1,Furniture,Tables,Product Tables 88,4,0.15,1624.91,108.91
+ORD-01089,2024-06-23,2024-06-28,Standard Class,CUST-192,Customer 214,Consumer,West,Washington,City3,Furniture,Bookcases,Product Bookcases 89,1,0,301.94,27.07
+ORD-01090,2024-12-30,2025-01-02,Standard Class,CUST-279,Customer 347,Consumer,North,Illinois,City3,Office Supplies,Binders,Product Binders 90,2,0,31.44,6.12
+ORD-01091,2024-06-15,2024-06-17,Standard Class,CUST-332,Customer 347,Consumer,South,Florida,City2,Technology,Phones,Product Phones 91,1,0,773.44,117.09
+ORD-01092,2023-03-12,2023-03-19,Standard Class,CUST-147,Customer 122,Consumer,East,New York,City3,Technology,Phones,Product Phones 92,5,0,2975.62,417.12
+ORD-01093,2023-02-19,2023-02-20,Standard Class,CUST-190,Customer 342,Corporate,West,Washington,City2,Technology,Phones,Product Phones 93,2,0,1282.69,218.55
+ORD-01094,2024-12-21,2024-12-25,Standard Class,CUST-136,Customer 118,Corporate,East,New York,City1,Office Supplies,Paper,Product Paper 94,2,0.1,22.86,5.65
+ORD-01095,2024-02-14,2024-02-21,Standard Class,CUST-295,Customer 335,Home Office,West,Washington,City3,Office Supplies,Binders,Product Binders 95,1,0,19.43,3.69
+ORD-01096,2024-07-23,2024-07-29,Standard Class,CUST-301,Customer 181,Home Office,North,Illinois,City4,Furniture,Tables,Product Tables 96,3,0.05,1353.85,86.95
+ORD-01097,2023-03-14,2023-03-17,Standard Class,CUST-341,Customer 184,Home Office,East,New York,City2,Furniture,Bookcases,Product Bookcases 97,3,0,723.27,57.4
+ORD-01098,2024-02-11,2024-02-13,Standard Class,CUST-232,Customer 338,Corporate,East,New York,City4,Technology,Accessories,Product Accessories 98,5,0,501.81,82.19
+ORD-01099,2024-12-11,2024-12-16,Standard Class,CUST-191,Customer 296,Corporate,West,California,City3,Office Supplies,Storage,Product Storage 99,2,0.1,64.42,13.8
+ORD-01100,2023-05-11,2023-05-15,Standard Class,CUST-210,Customer 345,Consumer,North,Ohio,City4,Furniture,Bookcases,Product Bookcases 100,5,0,1390.84,108.76
+ORD-01101,2023-04-21,2023-04-23,Standard Class,CUST-118,Customer 326,Home Office,East,Pennsylvania,City1,Technology,Accessories,Product Accessories 101,4,0,399.67,68.43
+ORD-01102,2023-09-28,2023-10-01,Standard Class,CUST-120,Customer 169,Consumer,South,Florida,City2,Furniture,Bookcases,Product Bookcases 102,2,0,572.21,36.78
+ORD-01103,2023-01-31,2023-02-06,Standard Class,CUST-124,Customer 200,Home Office,North,Ohio,City2,Office Supplies,Binders,Product Binders 103,3,0.1,53.93,11.13
+ORD-01104,2023-12-28,2023-12-31,Standard Class,CUST-252,Customer 153,Consumer,South,Florida,City3,Office Supplies,Storage,Product Storage 104,2,0,61.21,11.91
+ORD-01105,2023-02-02,2023-02-08,Standard Class,CUST-186,Customer 149,Consumer,South,Texas,City1,Technology,Accessories,Product Accessories 105,5,0,515.84,74.82
+ORD-01106,2023-05-21,2023-05-22,Standard Class,CUST-100,Customer 333,Consumer,West,California,City4,Office Supplies,Storage,Product Storage 106,1,0,36.17,8.75
+ORD-01107,2023-06-06,2023-06-11,Standard Class,CUST-219,Customer 265,Corporate,North,Ohio,City4,Furniture,Chairs,Product Chairs 107,3,0,578.35,51.07
+ORD-01108,2023-09-04,2023-09-09,Standard Class,CUST-134,Customer 102,Home Office,East,New York,City3,Technology,Phones,Product Phones 108,1,0,636.04,86.71
+ORD-01109,2023-03-28,2023-03-29,Standard Class,CUST-289,Customer 330,Home Office,North,Illinois,City1,Technology,Machines,Product Machines 109,1,0.15,414.75,53.38
+ORD-01110,2023-12-25,2024-01-01,Standard Class,CUST-294,Customer 154,Corporate,North,Illinois,City4,Technology,Accessories,Product Accessories 110,4,0.05,325.58,55.7
+ORD-01111,2023-07-22,2023-07-26,Standard Class,CUST-258,Customer 246,Home Office,East,New York,City2,Office Supplies,Paper,Product Paper 111,2,0.05,23.96,5.89
+ORD-01112,2023-04-14,2023-04-20,Standard Class,CUST-164,Customer 179,Corporate,North,Ohio,City1,Office Supplies,Binders,Product Binders 112,1,0,16.72,2.98
+ORD-01113,2024-08-02,2024-08-05,Standard Class,CUST-241,Customer 187,Corporate,West,California,City1,Office Supplies,Storage,Product Storage 113,2,0,71.76,13.15
+ORD-01114,2024-03-13,2024-03-17,Standard Class,CUST-121,Customer 213,Home Office,North,Illinois,City3,Furniture,Bookcases,Product Bookcases 114,5,0.1,1308.78,120.21
+ORD-01115,2023-07-21,2023-07-27,Standard Class,CUST-156,Customer 247,Home Office,West,California,City1,Office Supplies,Binders,Product Binders 115,2,0,39.88,9.79
+ORD-01116,2024-11-17,2024-11-18,Standard Class,CUST-222,Customer 248,Corporate,West,Washington,City1,Technology,Machines,Product Machines 116,4,0,2475.26,317.02
+ORD-01117,2023-04-26,2023-04-30,Standard Class,CUST-126,Customer 116,Corporate,West,Washington,City1,Furniture,Tables,Product Tables 117,3,0,1223.24,90.36
+ORD-01118,2024-10-05,2024-10-08,Standard Class,CUST-308,Customer 264,Corporate,East,Pennsylvania,City4,Furniture,Bookcases,Product Bookcases 118,5,0,1208.64,100.74
+ORD-01119,2023-03-18,2023-03-21,Standard Class,CUST-120,Customer 300,Home Office,East,New York,City3,Technology,Accessories,Product Accessories 119,5,0.1,479.26,75.09
+ORD-01120,2023-04-21,2023-04-23,Standard Class,CUST-274,Customer 130,Consumer,West,California,City2,Furniture,Chairs,Product Chairs 120,4,0.1,769.31,73.54
+ORD-01121,2024-12-18,2024-12-22,Standard Class,CUST-161,Customer 240,Corporate,West,California,City1,Office Supplies,Storage,Product Storage 121,3,0,113.29,20.74
+ORD-01122,2024-03-30,2024-04-01,Standard Class,CUST-342,Customer 302,Corporate,West,Washington,City3,Office Supplies,Binders,Product Binders 122,3,0.05,55.41,13.4
+ORD-01123,2023-07-01,2023-07-03,Standard Class,CUST-176,Customer 231,Home Office,West,California,City4,Furniture,Tables,Product Tables 123,4,0.05,1878.26,161.24
+ORD-01124,2023-03-06,2023-03-11,Standard Class,CUST-246,Customer 222,Corporate,North,Illinois,City1,Office Supplies,Binders,Product Binders 124,2,0,32.09,7.14
+ORD-01125,2024-01-02,2024-01-06,Standard Class,CUST-295,Customer 280,Consumer,West,Washington,City1,Furniture,Tables,Product Tables 125,1,0,403.27,34.62
+ORD-01126,2024-12-12,2024-12-18,Standard Class,CUST-203,Customer 117,Corporate,South,Florida,City2,Furniture,Bookcases,Product Bookcases 126,4,0,1152.82,88.48
+ORD-01127,2023-09-09,2023-09-14,Standard Class,CUST-213,Customer 237,Corporate,North,Illinois,City2,Office Supplies,Binders,Product Binders 127,1,0.1,18.06,3.91
+ORD-01128,2024-08-23,2024-08-28,Standard Class,CUST-279,Customer 226,Corporate,East,Pennsylvania,City2,Technology,Machines,Product Machines 128,5,0.15,2059,266.58
+ORD-01129,2023-11-09,2023-11-13,Standard Class,CUST-254,Customer 224,Consumer,West,California,City4,Office Supplies,Binders,Product Binders 129,4,0.1,64.26,12.2
+ORD-01130,2023-12-28,2024-01-03,Standard Class,CUST-118,Customer 211,Consumer,East,New York,City1,Technology,Phones,Product Phones 130,3,0,2148.29,285.12
+ORD-01131,2023-09-16,2023-09-20,Standard Class,CUST-290,Customer 311,Home Office,East,Pennsylvania,City3,Technology,Accessories,Product Accessories 131,2,0,198.16,27.36
+ORD-01132,2023-01-16,2023-01-20,Standard Class,CUST-125,Customer 176,Home Office,South,Florida,City3,Office Supplies,Paper,Product Paper 132,4,0,49.03,11.48
+ORD-01133,2024-11-04,2024-11-05,Standard Class,CUST-135,Customer 300,Consumer,East,Pennsylvania,City2,Furniture,Chairs,Product Chairs 133,3,0,686.63,63.44
+ORD-01134,2024-05-08,2024-05-13,Standard Class,CUST-289,Customer 349,Corporate,West,California,City4,Technology,Accessories,Product Accessories 134,1,0,105.77,16.77
+ORD-01135,2024-01-23,2024-01-26,Standard Class,CUST-181,Customer 244,Home Office,East,New York,City2,Technology,Phones,Product Phones 135,4,0,2926.33,495.34
+ORD-01136,2023-01-24,2023-01-28,Standard Class,CUST-143,Customer 252,Home Office,West,California,City4,Technology,Machines,Product Machines 136,5,0,2988.21,523.98
+ORD-01137,2024-01-14,2024-01-15,Standard Class,CUST-110,Customer 157,Corporate,West,California,City4,Technology,Accessories,Product Accessories 137,5,0.1,410.4,70.07
+ORD-01138,2023-06-12,2023-06-19,Standard Class,CUST-106,Customer 148,Consumer,East,New York,City3,Office Supplies,Paper,Product Paper 138,1,0,12.76,2.96
+ORD-01139,2024-09-10,2024-09-16,Standard Class,CUST-259,Customer 139,Consumer,North,Ohio,City1,Furniture,Bookcases,Product Bookcases 139,2,0.15,542.33,37.88
+ORD-01140,2023-08-14,2023-08-19,Standard Class,CUST-206,Customer 173,Consumer,East,New York,City1,Furniture,Tables,Product Tables 140,4,0.15,1463.12,140.33
+ORD-01141,2023-06-09,2023-06-16,Standard Class,CUST-329,Customer 271,Consumer,North,Ohio,City2,Technology,Machines,Product Machines 141,4,0.1,2119.68,325.71
+ORD-01142,2023-01-20,2023-01-22,Standard Class,CUST-210,Customer 133,Consumer,North,Illinois,City1,Furniture,Bookcases,Product Bookcases 142,2,0.05,469.68,44.48
+ORD-01143,2023-08-12,2023-08-19,Standard Class,CUST-197,Customer 177,Consumer,East,New York,City4,Furniture,Bookcases,Product Bookcases 143,4,0.1,874.23,59.9
+ORD-01144,2024-05-24,2024-05-27,Standard Class,CUST-335,Customer 241,Consumer,North,Ohio,City1,Furniture,Bookcases,Product Bookcases 144,5,0.15,1300.41,119.88
+ORD-01145,2023-05-09,2023-05-16,Standard Class,CUST-108,Customer 169,Consumer,East,New York,City1,Office Supplies,Paper,Product Paper 145,3,0.1,36.4,9.48
+ORD-01146,2023-12-03,2023-12-06,Standard Class,CUST-170,Customer 168,Consumer,North,Illinois,City4,Technology,Phones,Product Phones 146,2,0,1529.22,190.61
+ORD-01147,2024-03-09,2024-03-15,Standard Class,CUST-296,Customer 232,Consumer,East,New York,City1,Office Supplies,Binders,Product Binders 147,4,0.15,60.5,11.14
+ORD-01148,2024-07-10,2024-07-17,Standard Class,CUST-155,Customer 341,Consumer,West,Washington,City3,Office Supplies,Paper,Product Paper 148,4,0.1,46.57,10.96
+ORD-01149,2024-08-20,2024-08-27,Standard Class,CUST-262,Customer 208,Corporate,West,Washington,City1,Technology,Phones,Product Phones 149,3,0,1977.82,339.17
+ORD-01150,2023-09-02,2023-09-07,Standard Class,CUST-258,Customer 218,Consumer,South,Florida,City4,Office Supplies,Storage,Product Storage 150,1,0.1,29.65,6.61
+ORD-01151,2023-10-23,2023-10-27,Standard Class,CUST-103,Customer 327,Home Office,East,New York,City4,Furniture,Chairs,Product Chairs 151,4,0.15,711.94,60.65
+ORD-01152,2024-04-20,2024-04-23,Standard Class,CUST-318,Customer 205,Consumer,North,Illinois,City1,Furniture,Bookcases,Product Bookcases 152,1,0.1,232.77,21.44
+ORD-01153,2023-02-27,2023-03-06,Standard Class,CUST-298,Customer 281,Home Office,East,Pennsylvania,City4,Technology,Phones,Product Phones 153,1,0.05,607.7,96.47
+ORD-01154,2024-07-30,2024-08-02,Standard Class,CUST-174,Customer 169,Corporate,South,Florida,City3,Furniture,Bookcases,Product Bookcases 154,1,0,273.67,19.66
+ORD-01155,2024-11-02,2024-11-09,Standard Class,CUST-293,Customer 143,Corporate,East,New York,City2,Furniture,Bookcases,Product Bookcases 155,3,0,730.67,64.68
+ORD-01156,2024-03-14,2024-03-19,Standard Class,CUST-169,Customer 327,Home Office,North,Ohio,City2,Technology,Accessories,Product Accessories 156,1,0,92.13,16.22
+ORD-01157,2023-05-27,2023-06-01,Standard Class,CUST-140,Customer 242,Home Office,West,California,City3,Furniture,Tables,Product Tables 157,5,0.05,1896.31,158.83
+ORD-01158,2023-01-13,2023-01-19,Standard Class,CUST-158,Customer 140,Consumer,West,Washington,City3,Technology,Machines,Product Machines 158,4,0.15,1689.32,289.67
+ORD-01159,2023-06-17,2023-06-24,Standard Class,CUST-175,Customer 346,Corporate,West,California,City2,Furniture,Chairs,Product Chairs 159,2,0.1,445.61,38.93
+ORD-01160,2023-07-18,2023-07-21,Standard Class,CUST-132,Customer 308,Consumer,East,Pennsylvania,City4,Office Supplies,Paper,Product Paper 160,4,0.1,38.5,9.38
+ORD-01161,2024-04-09,2024-04-13,Standard Class,CUST-161,Customer 346,Home Office,North,Ohio,City1,Technology,Machines,Product Machines 161,2,0.05,1104.88,139.03
+ORD-01162,2024-02-13,2024-02-19,Standard Class,CUST-196,Customer 247,Corporate,East,New York,City1,Technology,Machines,Product Machines 162,4,0.15,1630.17,213.63
+ORD-01163,2023-07-31,2023-08-05,Standard Class,CUST-260,Customer 300,Corporate,West,Washington,City3,Technology,Accessories,Product Accessories 163,3,0.15,246.53,34.52
+ORD-01164,2024-04-15,2024-04-18,Standard Class,CUST-152,Customer 169,Home Office,North,Ohio,City4,Office Supplies,Storage,Product Storage 164,5,0,157.5,38.43
+ORD-01165,2024-12-22,2024-12-28,Standard Class,CUST-197,Customer 317,Corporate,South,Florida,City2,Office Supplies,Storage,Product Storage 165,1,0.05,30.91,5.46
+ORD-01166,2024-01-26,2024-01-31,Standard Class,CUST-275,Customer 194,Home Office,North,Illinois,City1,Office Supplies,Storage,Product Storage 166,2,0,80.23,19.64
+ORD-01167,2023-07-14,2023-07-21,Standard Class,CUST-278,Customer 343,Corporate,West,California,City1,Office Supplies,Binders,Product Binders 167,1,0.05,19.65,4.2
+ORD-01168,2023-05-22,2023-05-25,Standard Class,CUST-118,Customer 193,Consumer,West,California,City3,Technology,Phones,Product Phones 168,3,0.15,1767.42,272.48
+ORD-01169,2023-12-16,2023-12-17,Standard Class,CUST-301,Customer 334,Consumer,South,Florida,City4,Office Supplies,Storage,Product Storage 169,4,0,119.91,29.64
+ORD-01170,2023-05-20,2023-05-25,Standard Class,CUST-304,Customer 106,Corporate,West,California,City2,Office Supplies,Binders,Product Binders 170,1,0.1,18.59,3.38
+ORD-01171,2024-08-27,2024-08-28,Standard Class,CUST-158,Customer 140,Consumer,West,Washington,City4,Office Supplies,Storage,Product Storage 171,3,0,92.31,20.58
+ORD-01172,2023-07-26,2023-08-01,Standard Class,CUST-162,Customer 150,Corporate,West,California,City2,Office Supplies,Paper,Product Paper 172,4,0.1,46.58,12
+ORD-01173,2024-08-24,2024-08-25,Standard Class,CUST-191,Customer 307,Home Office,East,New York,City2,Furniture,Tables,Product Tables 173,4,0.05,1875.7,155.37
+ORD-01174,2023-12-03,2023-12-05,Standard Class,CUST-200,Customer 278,Corporate,South,Texas,City1,Furniture,Tables,Product Tables 174,4,0,1571.16,143.7
+ORD-01175,2023-03-26,2023-03-30,Standard Class,CUST-211,Customer 240,Consumer,East,New York,City2,Technology,Accessories,Product Accessories 175,5,0.15,463.53,68.14
+ORD-01176,2024-09-12,2024-09-15,Standard Class,CUST-243,Customer 237,Consumer,East,New York,City3,Office Supplies,Storage,Product Storage 176,1,0,34.9,6.71
+ORD-01177,2024-05-07,2024-05-14,Standard Class,CUST-337,Customer 312,Consumer,West,Washington,City4,Office Supplies,Binders,Product Binders 177,5,0.1,92.7,19.78
+ORD-01178,2024-11-09,2024-11-14,Standard Class,CUST-254,Customer 142,Corporate,West,California,City2,Technology,Phones,Product Phones 178,5,0.1,2920.95,413.75
+ORD-01179,2023-06-04,2023-06-08,Standard Class,CUST-253,Customer 198,Corporate,East,New York,City1,Furniture,Bookcases,Product Bookcases 179,4,0,1131.15,87.39
+ORD-01180,2024-07-18,2024-07-22,Standard Class,CUST-273,Customer 227,Corporate,South,Texas,City3,Furniture,Bookcases,Product Bookcases 180,2,0.05,484.13,36.81
+ORD-01181,2023-05-30,2023-06-04,Standard Class,CUST-150,Customer 342,Corporate,West,Washington,City3,Technology,Machines,Product Machines 181,1,0.05,570.7,86.34
+ORD-01182,2024-07-09,2024-07-12,Standard Class,CUST-341,Customer 116,Consumer,South,Texas,City1,Technology,Accessories,Product Accessories 182,2,0,214.83,34.35
+ORD-01183,2023-02-15,2023-02-21,Standard Class,CUST-148,Customer 315,Consumer,South,Texas,City4,Technology,Phones,Product Phones 183,5,0.15,3013.32,453.23
+ORD-01184,2023-02-12,2023-02-14,Standard Class,CUST-164,Customer 117,Corporate,North,Illinois,City1,Office Supplies,Binders,Product Binders 184,1,0.05,15.12,3.6
+ORD-01185,2024-12-19,2024-12-20,Standard Class,CUST-348,Customer 219,Home Office,West,California,City4,Furniture,Bookcases,Product Bookcases 185,2,0.1,449.72,42.07
+ORD-01186,2023-08-29,2023-09-04,Standard Class,CUST-104,Customer 248,Consumer,North,Ohio,City3,Office Supplies,Paper,Product Paper 186,1,0,12.38,2.76
+ORD-01187,2023-01-11,2023-01-12,Standard Class,CUST-231,Customer 227,Home Office,North,Illinois,City1,Furniture,Tables,Product Tables 187,2,0.05,871.21,57.14
+ORD-01188,2024-12-02,2024-12-09,Standard Class,CUST-104,Customer 247,Corporate,North,Ohio,City2,Office Supplies,Paper,Product Paper 188,4,0,50.9,10.91
+ORD-01189,2023-05-18,2023-05-19,Standard Class,CUST-130,Customer 197,Consumer,East,New York,City4,Office Supplies,Storage,Product Storage 189,4,0,148.4,33.65
+ORD-01190,2023-12-22,2023-12-26,Standard Class,CUST-322,Customer 275,Home Office,East,New York,City4,Furniture,Chairs,Product Chairs 190,2,0,413.23,31.16
+ORD-01191,2024-11-23,2024-11-29,Standard Class,CUST-316,Customer 174,Corporate,South,Texas,City3,Furniture,Tables,Product Tables 191,1,0,431.97,40.47
+ORD-01192,2024-12-29,2025-01-02,Standard Class,CUST-179,Customer 107,Consumer,West,California,City2,Technology,Phones,Product Phones 192,1,0.1,672.38,111.17
+ORD-01193,2023-05-23,2023-05-26,Standard Class,CUST-189,Customer 108,Corporate,East,Pennsylvania,City3,Furniture,Tables,Product Tables 193,3,0.15,1020.01,70.95
+ORD-01194,2024-12-25,2024-12-30,Standard Class,CUST-233,Customer 156,Home Office,South,Texas,City3,Furniture,Tables,Product Tables 194,1,0.05,436.68,32.57
+ORD-01195,2024-11-11,2024-11-18,Standard Class,CUST-300,Customer 230,Corporate,North,Illinois,City3,Technology,Phones,Product Phones 195,1,0,645.08,88.15
+ORD-01196,2024-08-02,2024-08-05,Standard Class,CUST-349,Customer 218,Home Office,West,California,City2,Furniture,Bookcases,Product Bookcases 196,1,0,279.91,26.13
+ORD-01197,2024-10-21,2024-10-24,Standard Class,CUST-347,Customer 237,Corporate,East,New York,City4,Technology,Phones,Product Phones 197,5,0,3049.49,508.39
+ORD-01198,2024-03-30,2024-04-02,Standard Class,CUST-116,Customer 302,Consumer,North,Ohio,City1,Office Supplies,Paper,Product Paper 198,1,0.15,9.8,2.5
+ORD-01199,2024-01-12,2024-01-16,Standard Class,CUST-242,Customer 123,Corporate,East,New York,City1,Office Supplies,Paper,Product Paper 199,2,0,24.72,5.78
+ORD-01200,2023-05-09,2023-05-13,Standard Class,CUST-193,Customer 298,Home Office,North,Ohio,City4,Office Supplies,Paper,Product Paper 200,4,0.05,49.26,8.84
+ORD-01201,2023-09-14,2023-09-17,Standard Class,CUST-165,Customer 172,Corporate,East,New York,City2,Office Supplies,Binders,Product Binders 201,2,0,32.29,7.96
+ORD-01202,2023-07-10,2023-07-14,Standard Class,CUST-102,Customer 268,Consumer,North,Ohio,City3,Furniture,Bookcases,Product Bookcases 202,3,0,889.44,57.64
+ORD-01203,2023-09-02,2023-09-05,Standard Class,CUST-312,Customer 199,Consumer,West,Washington,City2,Office Supplies,Paper,Product Paper 203,1,0.1,9.18,2.03
+ORD-01204,2024-02-02,2024-02-05,Standard Class,CUST-172,Customer 278,Consumer,North,Ohio,City3,Technology,Accessories,Product Accessories 204,1,0,103.59,15.79
+ORD-01205,2023-06-09,2023-06-15,Standard Class,CUST-132,Customer 241,Corporate,East,Pennsylvania,City3,Office Supplies,Paper,Product Paper 205,4,0.05,50.73,12.64
+ORD-01206,2023-03-23,2023-03-27,Standard Class,CUST-233,Customer 114,Home Office,South,Florida,City2,Office Supplies,Binders,Product Binders 206,1,0,19.5,4.35
+ORD-01207,2023-07-31,2023-08-02,Standard Class,CUST-268,Customer 213,Corporate,West,Washington,City2,Office Supplies,Paper,Product Paper 207,4,0,51.85,11.83
+ORD-01208,2023-06-06,2023-06-08,Standard Class,CUST-238,Customer 297,Home Office,East,Pennsylvania,City1,Technology,Accessories,Product Accessories 208,4,0,350.3,42.57
+ORD-01209,2024-02-22,2024-02-27,Standard Class,CUST-309,Customer 130,Home Office,East,Pennsylvania,City3,Office Supplies,Paper,Product Paper 209,4,0,53.15,11.19
+ORD-01210,2023-04-02,2023-04-09,Standard Class,CUST-169,Customer 276,Consumer,North,Ohio,City4,Technology,Machines,Product Machines 210,4,0,1852.78,282.4
+ORD-01211,2023-06-22,2023-06-23,Standard Class,CUST-265,Customer 107,Corporate,East,New York,City1,Furniture,Tables,Product Tables 211,3,0.05,1460.42,124.22
+ORD-01212,2024-07-01,2024-07-07,Standard Class,CUST-102,Customer 221,Consumer,West,Washington,City1,Furniture,Chairs,Product Chairs 212,1,0.05,227.6,17.01
+ORD-01213,2024-08-01,2024-08-08,Standard Class,CUST-249,Customer 200,Home Office,East,New York,City3,Technology,Phones,Product Phones 213,2,0.15,1252.66,191.92
+ORD-01214,2023-06-13,2023-06-18,Standard Class,CUST-248,Customer 253,Consumer,East,New York,City2,Office Supplies,Storage,Product Storage 214,5,0.15,150.57,32.2
+ORD-01215,2024-04-01,2024-04-06,Standard Class,CUST-271,Customer 262,Corporate,South,Texas,City2,Furniture,Bookcases,Product Bookcases 215,2,0.15,426.25,29.4
+ORD-01216,2024-08-11,2024-08-13,Standard Class,CUST-269,Customer 168,Corporate,West,Washington,City1,Office Supplies,Storage,Product Storage 216,4,0,148.08,30.36
+ORD-01217,2024-12-12,2024-12-16,Standard Class,CUST-107,Customer 318,Corporate,West,Washington,City2,Technology,Machines,Product Machines 217,4,0.05,1919.57,317.07
+ORD-01218,2024-02-10,2024-02-17,Standard Class,CUST-307,Customer 331,Corporate,West,California,City4,Office Supplies,Binders,Product Binders 218,3,0,54.47,11.46
+ORD-01219,2023-02-28,2023-03-07,Standard Class,CUST-323,Customer 309,Consumer,North,Ohio,City1,Technology,Phones,Product Phones 219,2,0,1277.41,219.09
+ORD-01220,2023-05-27,2023-05-31,Standard Class,CUST-275,Customer 213,Corporate,West,Washington,City2,Furniture,Tables,Product Tables 220,5,0,2273.11,169.84
+ORD-01221,2023-05-29,2023-06-05,Standard Class,CUST-237,Customer 185,Consumer,North,Ohio,City4,Furniture,Tables,Product Tables 221,5,0,2262.57,167.11
+ORD-01222,2023-05-27,2023-06-03,Standard Class,CUST-129,Customer 195,Corporate,South,Texas,City4,Office Supplies,Storage,Product Storage 222,5,0,176.65,31.9
+ORD-01223,2023-02-12,2023-02-13,Standard Class,CUST-330,Customer 303,Corporate,South,Florida,City3,Technology,Machines,Product Machines 223,3,0.1,1522.29,225.37
+ORD-01224,2023-07-07,2023-07-14,Standard Class,CUST-230,Customer 141,Home Office,South,Florida,City1,Technology,Accessories,Product Accessories 224,1,0.05,102.29,12.86
+ORD-01225,2024-01-29,2024-02-03,Standard Class,CUST-303,Customer 189,Consumer,South,Florida,City4,Furniture,Chairs,Product Chairs 225,5,0.05,1152.22,87.31
+ORD-01226,2024-02-13,2024-02-18,Standard Class,CUST-191,Customer 301,Home Office,North,Illinois,City2,Furniture,Bookcases,Product Bookcases 226,4,0.15,1024.04,80.43
+ORD-01227,2023-09-16,2023-09-19,Standard Class,CUST-318,Customer 102,Home Office,East,New York,City4,Technology,Accessories,Product Accessories 227,5,0,411.68,51.4
+ORD-01228,2023-04-22,2023-04-25,Standard Class,CUST-204,Customer 338,Corporate,North,Ohio,City4,Technology,Accessories,Product Accessories 228,2,0,164.37,20.27
+ORD-01229,2023-08-29,2023-09-02,Standard Class,CUST-216,Customer 300,Home Office,South,Texas,City4,Office Supplies,Binders,Product Binders 229,4,0,78.26,14.54
+ORD-01230,2023-01-07,2023-01-12,Standard Class,CUST-224,Customer 333,Consumer,West,California,City3,Office Supplies,Storage,Product Storage 230,2,0.1,58.22,14.75
+ORD-01231,2023-06-06,2023-06-12,Standard Class,CUST-186,Customer 159,Consumer,South,Florida,City1,Furniture,Tables,Product Tables 231,1,0,471.96,34.75
+ORD-01232,2023-04-25,2023-04-30,Standard Class,CUST-271,Customer 246,Home Office,South,Texas,City3,Office Supplies,Paper,Product Paper 232,1,0,10.94,2.62
+ORD-01233,2024-01-07,2024-01-11,Standard Class,CUST-280,Customer 292,Consumer,North,Illinois,City3,Technology,Machines,Product Machines 233,1,0,594.32,84.93
+ORD-01234,2024-01-14,2024-01-21,Standard Class,CUST-294,Customer 158,Consumer,North,Ohio,City3,Technology,Phones,Product Phones 234,4,0,2741.42,463.21
+ORD-01235,2023-03-19,2023-03-24,Standard Class,CUST-121,Customer 318,Consumer,West,California,City4,Office Supplies,Paper,Product Paper 235,2,0,22.25,5.39
+ORD-01236,2023-07-26,2023-07-31,Standard Class,CUST-327,Customer 239,Consumer,East,Pennsylvania,City1,Furniture,Chairs,Product Chairs 236,4,0.05,838.3,71.17
+ORD-01237,2023-07-18,2023-07-20,Standard Class,CUST-195,Customer 144,Consumer,West,Washington,City2,Furniture,Tables,Product Tables 237,5,0,2311.82,165.82
+ORD-01238,2023-06-04,2023-06-07,Standard Class,CUST-212,Customer 264,Consumer,South,Florida,City1,Furniture,Tables,Product Tables 238,5,0.05,1901.74,173.74
+ORD-01239,2024-04-29,2024-05-01,Standard Class,CUST-331,Customer 344,Corporate,West,Washington,City2,Technology,Machines,Product Machines 239,1,0,590.22,87.35
+ORD-01240,2024-05-26,2024-05-27,Standard Class,CUST-267,Customer 214,Consumer,South,Florida,City1,Office Supplies,Paper,Product Paper 240,2,0,22.23,4.9
+ORD-01241,2024-04-14,2024-04-18,Standard Class,CUST-117,Customer 165,Corporate,South,Florida,City4,Technology,Phones,Product Phones 241,2,0,1260.85,201.79
+ORD-01242,2023-10-11,2023-10-17,Standard Class,CUST-172,Customer 348,Home Office,North,Ohio,City2,Furniture,Tables,Product Tables 242,1,0.1,400.6,34.05
+ORD-01243,2024-05-25,2024-05-30,Standard Class,CUST-284,Customer 331,Consumer,West,California,City3,Office Supplies,Paper,Product Paper 243,5,0.1,46.52,8.61
+ORD-01244,2023-06-16,2023-06-22,Standard Class,CUST-169,Customer 201,Corporate,West,California,City4,Technology,Phones,Product Phones 244,2,0,1315.27,230.26
+ORD-01245,2023-10-16,2023-10-19,Standard Class,CUST-181,Customer 332,Home Office,North,Ohio,City1,Office Supplies,Binders,Product Binders 245,3,0.1,52.43,9.99
+ORD-01246,2023-08-17,2023-08-19,Standard Class,CUST-249,Customer 240,Consumer,North,Illinois,City4,Office Supplies,Binders,Product Binders 246,3,0.1,52.15,13.48
+ORD-01247,2024-04-02,2024-04-06,Standard Class,CUST-188,Customer 201,Home Office,South,Texas,City3,Technology,Accessories,Product Accessories 247,1,0,107.37,13.39
+ORD-01248,2024-03-04,2024-03-05,Standard Class,CUST-325,Customer 321,Consumer,North,Illinois,City1,Furniture,Chairs,Product Chairs 248,3,0,726.4,69.31
+ORD-01249,2023-02-05,2023-02-11,Standard Class,CUST-307,Customer 256,Consumer,South,Florida,City1,Technology,Phones,Product Phones 249,4,0.1,2752.01,494.86
+ORD-01250,2023-10-19,2023-10-20,Standard Class,CUST-133,Customer 277,Consumer,East,Pennsylvania,City2,Furniture,Bookcases,Product Bookcases 250,4,0.15,1060.51,74.65
+ORD-01251,2024-09-10,2024-09-13,Standard Class,CUST-279,Customer 146,Home Office,West,California,City1,Technology,Phones,Product Phones 251,2,0.1,1323.81,222.74
+ORD-01252,2023-04-02,2023-04-08,Standard Class,CUST-126,Customer 108,Corporate,North,Ohio,City1,Technology,Machines,Product Machines 252,2,0.1,931.89,162.69
+ORD-01253,2023-05-02,2023-05-07,Standard Class,CUST-197,Customer 193,Consumer,South,Florida,City4,Furniture,Tables,Product Tables 253,4,0.05,1549.1,134
+ORD-01254,2023-12-25,2023-12-28,Standard Class,CUST-201,Customer 179,Home Office,West,Washington,City4,Technology,Accessories,Product Accessories 254,1,0.1,76.12,11.02
+ORD-01255,2023-12-05,2023-12-11,Standard Class,CUST-240,Customer 147,Home Office,North,Ohio,City2,Office Supplies,Binders,Product Binders 255,2,0.05,32.98,6.76
+ORD-01256,2023-11-06,2023-11-10,Standard Class,CUST-317,Customer 233,Home Office,West,California,City1,Technology,Machines,Product Machines 256,4,0.05,1792.77,276.09
+ORD-01257,2024-01-09,2024-01-11,Standard Class,CUST-107,Customer 241,Corporate,North,Ohio,City3,Technology,Phones,Product Phones 257,4,0,2706.58,379.84
+ORD-01258,2024-11-04,2024-11-08,Standard Class,CUST-279,Customer 189,Home Office,North,Ohio,City3,Office Supplies,Storage,Product Storage 258,5,0.1,161.92,35.25
+ORD-01259,2023-05-01,2023-05-03,Standard Class,CUST-212,Customer 247,Home Office,South,Florida,City2,Technology,Machines,Product Machines 259,4,0,2031.29,355.57
+ORD-01260,2023-12-18,2023-12-25,Standard Class,CUST-246,Customer 150,Corporate,East,New York,City3,Furniture,Bookcases,Product Bookcases 260,1,0.05,263.75,23.5
+ORD-01261,2024-09-14,2024-09-16,Standard Class,CUST-319,Customer 115,Consumer,East,New York,City1,Technology,Accessories,Product Accessories 261,3,0.1,290.07,50.77
+ORD-01262,2024-02-28,2024-03-04,Standard Class,CUST-161,Customer 161,Consumer,South,Florida,City3,Technology,Accessories,Product Accessories 262,5,0,541.67,87.7
+ORD-01263,2024-05-05,2024-05-06,Standard Class,CUST-131,Customer 111,Corporate,North,Illinois,City3,Office Supplies,Paper,Product Paper 263,5,0.1,50.65,9.23
+ORD-01264,2023-09-30,2023-10-02,Standard Class,CUST-176,Customer 175,Corporate,South,Florida,City4,Office Supplies,Binders,Product Binders 264,2,0,33.94,8.09
+ORD-01265,2024-12-21,2024-12-24,Standard Class,CUST-126,Customer 213,Home Office,East,Pennsylvania,City2,Office Supplies,Binders,Product Binders 265,4,0,78.57,16.71
+ORD-01266,2024-01-21,2024-01-23,Standard Class,CUST-317,Customer 321,Consumer,North,Illinois,City2,Office Supplies,Storage,Product Storage 266,3,0,99.57,25.38
+ORD-01267,2024-11-13,2024-11-20,Standard Class,CUST-199,Customer 156,Home Office,North,Ohio,City4,Office Supplies,Paper,Product Paper 267,1,0,12.21,2.98
+ORD-01268,2024-12-27,2024-12-31,Standard Class,CUST-284,Customer 151,Corporate,East,Pennsylvania,City3,Furniture,Tables,Product Tables 268,3,0.15,1184.14,110.65
+ORD-01269,2023-05-31,2023-06-04,Standard Class,CUST-172,Customer 229,Home Office,South,Florida,City2,Technology,Machines,Product Machines 269,1,0,516.31,92.58
+ORD-01270,2023-07-02,2023-07-09,Standard Class,CUST-219,Customer 201,Home Office,East,New York,City1,Technology,Accessories,Product Accessories 270,3,0,259.32,42.94
+ORD-01271,2024-02-13,2024-02-18,Standard Class,CUST-154,Customer 196,Corporate,North,Ohio,City3,Furniture,Tables,Product Tables 271,4,0.15,1484.16,142.21
+ORD-01272,2023-01-11,2023-01-14,Standard Class,CUST-252,Customer 156,Corporate,East,New York,City3,Technology,Machines,Product Machines 272,1,0,524.1,83.91
+ORD-01273,2024-01-30,2024-02-02,Standard Class,CUST-286,Customer 326,Home Office,East,New York,City3,Office Supplies,Paper,Product Paper 273,4,0,54.98,12.03
+ORD-01274,2023-08-18,2023-08-23,Standard Class,CUST-186,Customer 230,Home Office,West,Washington,City2,Office Supplies,Binders,Product Binders 274,4,0,65.44,15.9
+ORD-01275,2023-09-13,2023-09-18,Standard Class,CUST-296,Customer 197,Home Office,East,Pennsylvania,City1,Technology,Accessories,Product Accessories 275,3,0.1,241.35,31.28
+ORD-01276,2023-07-19,2023-07-22,Standard Class,CUST-212,Customer 331,Corporate,West,California,City4,Office Supplies,Binders,Product Binders 276,2,0.15,34.28,6.65
+ORD-01277,2024-12-21,2024-12-23,Standard Class,CUST-195,Customer 135,Consumer,North,Ohio,City3,Office Supplies,Binders,Product Binders 277,3,0.05,55.61,9.89
+ORD-01278,2023-11-16,2023-11-18,Standard Class,CUST-143,Customer 315,Corporate,South,Florida,City3,Technology,Accessories,Product Accessories 278,4,0,415.77,50.26
+ORD-01279,2023-09-18,2023-09-23,Standard Class,CUST-329,Customer 118,Consumer,North,Ohio,City4,Office Supplies,Paper,Product Paper 279,2,0,20.94,4.88
+ORD-01280,2024-12-13,2024-12-14,Standard Class,CUST-139,Customer 174,Consumer,South,Florida,City1,Furniture,Bookcases,Product Bookcases 280,4,0,1201.58,106.39
+ORD-01281,2023-03-21,2023-03-27,Standard Class,CUST-292,Customer 311,Corporate,South,Texas,City4,Furniture,Chairs,Product Chairs 281,2,0,476.28,31.12
+ORD-01282,2023-11-07,2023-11-14,Standard Class,CUST-151,Customer 135,Home Office,North,Ohio,City2,Technology,Machines,Product Machines 282,5,0.15,2433.41,364.04
+ORD-01283,2024-08-09,2024-08-12,Standard Class,CUST-315,Customer 104,Consumer,West,California,City2,Technology,Phones,Product Phones 283,2,0,1311.65,180.39
+ORD-01284,2024-03-16,2024-03-20,Standard Class,CUST-219,Customer 157,Corporate,West,Washington,City4,Technology,Machines,Product Machines 284,4,0.15,1900,257.48
+ORD-01285,2023-09-13,2023-09-18,Standard Class,CUST-247,Customer 231,Corporate,East,Pennsylvania,City4,Technology,Phones,Product Phones 285,3,0,1778.97,222.54
+ORD-01286,2024-01-25,2024-01-28,Standard Class,CUST-194,Customer 307,Home Office,West,California,City3,Furniture,Tables,Product Tables 286,4,0,1885.95,147.55
+ORD-01287,2024-10-25,2024-10-31,Standard Class,CUST-224,Customer 314,Consumer,South,Florida,City3,Technology,Phones,Product Phones 287,4,0.05,2703.21,465.39
+ORD-01288,2024-04-08,2024-04-13,Standard Class,CUST-223,Customer 335,Consumer,East,Pennsylvania,City1,Office Supplies,Binders,Product Binders 288,3,0.1,46.33,9.99
+ORD-01289,2023-03-13,2023-03-17,Standard Class,CUST-322,Customer 305,Consumer,South,Texas,City1,Furniture,Tables,Product Tables 289,3,0,1416.42,107.85
+ORD-01290,2023-05-10,2023-05-12,Standard Class,CUST-183,Customer 126,Corporate,North,Illinois,City4,Office Supplies,Storage,Product Storage 290,2,0.15,65.1,16
+ORD-01291,2023-03-10,2023-03-16,Standard Class,CUST-205,Customer 308,Consumer,South,Florida,City2,Technology,Machines,Product Machines 291,3,0,1604.8,279.56
+ORD-01292,2023-10-01,2023-10-06,Standard Class,CUST-277,Customer 150,Corporate,East,Pennsylvania,City3,Technology,Machines,Product Machines 292,3,0,1475.96,229.48
+ORD-01293,2023-01-21,2023-01-23,Standard Class,CUST-181,Customer 286,Corporate,West,Washington,City2,Technology,Phones,Product Phones 293,5,0.1,2642.04,345.12
+ORD-01294,2024-08-09,2024-08-14,Standard Class,CUST-238,Customer 116,Home Office,West,California,City3,Technology,Accessories,Product Accessories 294,5,0.05,404,61.06
+ORD-01295,2023-11-27,2023-11-28,Standard Class,CUST-309,Customer 198,Consumer,East,Pennsylvania,City2,Furniture,Bookcases,Product Bookcases 295,1,0.15,207.68,16.92
+ORD-01296,2023-04-29,2023-05-02,Standard Class,CUST-194,Customer 304,Corporate,East,New York,City2,Technology,Machines,Product Machines 296,4,0.15,1913.44,330.92
+ORD-01297,2023-06-02,2023-06-03,Standard Class,CUST-265,Customer 278,Consumer,East,Pennsylvania,City2,Furniture,Tables,Product Tables 297,5,0,2337.6,157.92
+ORD-01298,2023-08-16,2023-08-22,Standard Class,CUST-186,Customer 326,Consumer,North,Illinois,City3,Technology,Accessories,Product Accessories 298,2,0.1,190.91,30.44
+ORD-01299,2023-08-22,2023-08-29,Standard Class,CUST-217,Customer 326,Home Office,West,Washington,City3,Furniture,Bookcases,Product Bookcases 299,3,0.1,824.7,72.68
+ORD-01300,2024-07-04,2024-07-11,Standard Class,CUST-215,Customer 292,Corporate,West,California,City1,Office Supplies,Binders,Product Binders 300,3,0,59.57,14.7
+ORD-01301,2023-03-30,2023-04-02,Standard Class,CUST-177,Customer 225,Corporate,South,Texas,City2,Technology,Phones,Product Phones 301,1,0.15,553.3,84.22
+ORD-01302,2024-03-13,2024-03-16,Standard Class,CUST-178,Customer 316,Home Office,North,Ohio,City4,Furniture,Chairs,Product Chairs 302,5,0,1172.73,112.57
+ORD-01303,2023-08-21,2023-08-25,Standard Class,CUST-276,Customer 317,Consumer,West,Washington,City2,Furniture,Chairs,Product Chairs 303,2,0.1,380.14,27.83
+ORD-01304,2024-12-19,2024-12-20,Standard Class,CUST-329,Customer 113,Corporate,North,Ohio,City2,Furniture,Bookcases,Product Bookcases 304,4,0.05,1148.86,77.21
+ORD-01305,2024-03-14,2024-03-19,Standard Class,CUST-139,Customer 321,Home Office,South,Texas,City4,Furniture,Bookcases,Product Bookcases 305,1,0,290.03,20
+ORD-01306,2024-04-14,2024-04-16,Standard Class,CUST-158,Customer 165,Consumer,South,Florida,City4,Furniture,Tables,Product Tables 306,2,0,983.45,89.85
+ORD-01307,2024-06-28,2024-07-01,Standard Class,CUST-281,Customer 288,Home Office,West,Washington,City1,Furniture,Bookcases,Product Bookcases 307,2,0.15,526.73,34.89
+ORD-01308,2023-07-18,2023-07-25,Standard Class,CUST-311,Customer 111,Corporate,North,Illinois,City3,Furniture,Tables,Product Tables 308,4,0,1942.55,153.66
+ORD-01309,2024-12-04,2024-12-11,Standard Class,CUST-233,Customer 334,Home Office,East,New York,City2,Office Supplies,Storage,Product Storage 309,2,0.1,56.79,14.06
+ORD-01310,2023-07-25,2023-07-29,Standard Class,CUST-255,Customer 141,Consumer,West,California,City3,Office Supplies,Paper,Product Paper 310,3,0.1,34.46,7.96
+ORD-01311,2023-07-22,2023-07-28,Standard Class,CUST-232,Customer 344,Home Office,East,Pennsylvania,City2,Technology,Phones,Product Phones 311,2,0,1345.48,182.41
+ORD-01312,2024-05-14,2024-05-17,Standard Class,CUST-226,Customer 301,Home Office,North,Illinois,City4,Office Supplies,Storage,Product Storage 312,1,0,37.16,9.5
+ORD-01313,2023-11-03,2023-11-05,Standard Class,CUST-234,Customer 254,Home Office,North,Ohio,City3,Office Supplies,Binders,Product Binders 313,4,0.05,64.28,12.38
+ORD-01314,2023-07-12,2023-07-19,Standard Class,CUST-111,Customer 238,Home Office,North,Illinois,City3,Furniture,Chairs,Product Chairs 314,5,0,1123.49,79.41
+ORD-01315,2024-03-04,2024-03-08,Standard Class,CUST-157,Customer 151,Consumer,North,Illinois,City4,Furniture,Chairs,Product Chairs 315,3,0,571.82,48.66
+ORD-01316,2023-12-10,2023-12-17,Standard Class,CUST-324,Customer 220,Corporate,East,Pennsylvania,City4,Office Supplies,Paper,Product Paper 316,4,0,52.57,10.53
+ORD-01317,2023-11-07,2023-11-14,Standard Class,CUST-151,Customer 179,Corporate,South,Texas,City2,Office Supplies,Binders,Product Binders 317,5,0.1,71.23,14.84
+ORD-01318,2024-07-08,2024-07-12,Standard Class,CUST-315,Customer 251,Home Office,West,California,City4,Office Supplies,Storage,Product Storage 318,2,0.1,64.05,12.81
+ORD-01319,2023-12-04,2023-12-05,Standard Class,CUST-187,Customer 184,Home Office,East,Pennsylvania,City2,Furniture,Tables,Product Tables 319,1,0,423.86,30.49
+ORD-01320,2024-03-24,2024-03-26,Standard Class,CUST-132,Customer 275,Corporate,East,New York,City1,Office Supplies,Paper,Product Paper 320,4,0,47.34,8.41
+ORD-01321,2023-07-01,2023-07-03,Standard Class,CUST-160,Customer 198,Consumer,East,New York,City3,Office Supplies,Binders,Product Binders 321,5,0,97.76,22.09
+ORD-01322,2023-07-01,2023-07-05,Standard Class,CUST-314,Customer 200,Corporate,West,California,City3,Technology,Phones,Product Phones 322,5,0,3609.57,551.08
+ORD-01323,2024-05-29,2024-05-30,Standard Class,CUST-210,Customer 220,Corporate,North,Ohio,City4,Furniture,Chairs,Product Chairs 323,4,0,924.72,88.69
+ORD-01324,2024-09-03,2024-09-04,Standard Class,CUST-291,Customer 142,Corporate,West,California,City1,Office Supplies,Paper,Product Paper 324,2,0.15,17.51,3.58
+ORD-01325,2023-12-17,2023-12-24,Standard Class,CUST-293,Customer 324,Home Office,North,Ohio,City4,Technology,Accessories,Product Accessories 325,5,0,450.18,74.16
+ORD-01326,2023-09-10,2023-09-14,Standard Class,CUST-134,Customer 219,Corporate,East,New York,City4,Technology,Accessories,Product Accessories 326,4,0.1,350.03,46.82
+ORD-01327,2024-05-31,2024-06-07,Standard Class,CUST-239,Customer 168,Home Office,East,Pennsylvania,City1,Technology,Accessories,Product Accessories 327,5,0.05,489.19,83.77
+ORD-01328,2024-02-03,2024-02-06,Standard Class,CUST-199,Customer 267,Corporate,East,New York,City4,Technology,Accessories,Product Accessories 328,5,0,508.04,78.71
+ORD-01329,2023-07-13,2023-07-16,Standard Class,CUST-111,Customer 167,Consumer,East,Pennsylvania,City3,Technology,Accessories,Product Accessories 329,4,0,332.09,55.8
+ORD-01330,2024-11-05,2024-11-11,Standard Class,CUST-226,Customer 225,Consumer,East,Pennsylvania,City1,Furniture,Chairs,Product Chairs 330,1,0,232.55,15.49
+ORD-01331,2024-03-05,2024-03-06,Standard Class,CUST-245,Customer 167,Consumer,North,Illinois,City3,Office Supplies,Binders,Product Binders 331,1,0.1,15.47,3.84
+ORD-01332,2023-11-02,2023-11-09,Standard Class,CUST-258,Customer 124,Consumer,North,Illinois,City2,Office Supplies,Storage,Product Storage 332,5,0.15,127.96,32.87
+ORD-01333,2023-07-23,2023-07-30,Standard Class,CUST-122,Customer 205,Corporate,West,Washington,City3,Furniture,Bookcases,Product Bookcases 333,2,0.15,499.93,47.52
+ORD-01334,2023-11-25,2023-12-01,Standard Class,CUST-269,Customer 148,Consumer,North,Ohio,City1,Furniture,Tables,Product Tables 334,2,0.15,668.87,57.19
+ORD-01335,2023-05-08,2023-05-11,Standard Class,CUST-113,Customer 136,Consumer,West,California,City1,Technology,Phones,Product Phones 335,3,0.15,1918.38,230.48
+ORD-01336,2024-12-18,2024-12-25,Standard Class,CUST-320,Customer 186,Corporate,West,California,City2,Technology,Accessories,Product Accessories 336,4,0,423.36,67.04
+ORD-01337,2023-08-19,2023-08-20,Standard Class,CUST-331,Customer 214,Home Office,North,Illinois,City1,Technology,Phones,Product Phones 337,5,0,2986.38,381.31
+ORD-01338,2023-05-13,2023-05-15,Standard Class,CUST-245,Customer 285,Corporate,East,Pennsylvania,City1,Furniture,Bookcases,Product Bookcases 338,5,0,1483.54,142.12
+ORD-01339,2024-10-06,2024-10-07,Standard Class,CUST-149,Customer 254,Home Office,North,Ohio,City4,Office Supplies,Binders,Product Binders 339,3,0.05,56.95,10.19
+ORD-01340,2023-04-28,2023-05-04,Standard Class,CUST-216,Customer 172,Corporate,North,Ohio,City1,Technology,Phones,Product Phones 340,3,0.15,1492.37,220.37
+ORD-01341,2024-08-13,2024-08-19,Standard Class,CUST-317,Customer 178,Consumer,West,California,City3,Technology,Phones,Product Phones 341,1,0.15,657.88,104.16
+ORD-01342,2024-08-07,2024-08-10,Standard Class,CUST-178,Customer 222,Consumer,East,Pennsylvania,City3,Furniture,Bookcases,Product Bookcases 342,1,0.15,263.2,21.68
+ORD-01343,2024-03-09,2024-03-16,Standard Class,CUST-224,Customer 119,Home Office,East,New York,City3,Furniture,Bookcases,Product Bookcases 343,5,0.1,1098.29,93.1
+ORD-01344,2024-11-14,2024-11-16,Standard Class,CUST-143,Customer 284,Consumer,West,Washington,City2,Office Supplies,Binders,Product Binders 344,4,0,78.95,17.27
+ORD-01345,2023-03-07,2023-03-12,Standard Class,CUST-186,Customer 210,Corporate,South,Texas,City4,Furniture,Chairs,Product Chairs 345,4,0,780.17,60.43
+ORD-01346,2023-04-13,2023-04-15,Standard Class,CUST-303,Customer 284,Home Office,North,Ohio,City1,Furniture,Bookcases,Product Bookcases 346,5,0,1515.76,101.89
+ORD-01347,2023-03-18,2023-03-25,Standard Class,CUST-205,Customer 257,Corporate,South,Texas,City2,Office Supplies,Binders,Product Binders 347,3,0.1,44.46,10.08
+ORD-01348,2023-11-12,2023-11-13,Standard Class,CUST-292,Customer 334,Corporate,East,Pennsylvania,City2,Furniture,Bookcases,Product Bookcases 348,5,0.1,1223.3,80.53
+ORD-01349,2023-11-27,2023-11-28,Standard Class,CUST-101,Customer 303,Home Office,West,Washington,City3,Furniture,Tables,Product Tables 349,2,0,1026.37,85.55
+ORD-01350,2023-11-03,2023-11-08,Standard Class,CUST-292,Customer 113,Corporate,West,Washington,City2,Technology,Accessories,Product Accessories 350,5,0,473.63,69.06
+ORD-01351,2023-02-06,2023-02-10,Standard Class,CUST-165,Customer 172,Corporate,North,Ohio,City1,Technology,Accessories,Product Accessories 351,1,0.15,85.62,12.37
+ORD-01352,2024-01-14,2024-01-18,Standard Class,CUST-341,Customer 153,Home Office,South,Florida,City2,Office Supplies,Binders,Product Binders 352,1,0.15,14.3,3.18
+ORD-01353,2024-04-25,2024-04-29,Standard Class,CUST-284,Customer 322,Home Office,South,Texas,City2,Office Supplies,Binders,Product Binders 353,3,0.05,52.08,11.31
+ORD-01354,2023-09-19,2023-09-24,Standard Class,CUST-348,Customer 282,Consumer,West,California,City3,Office Supplies,Storage,Product Storage 354,5,0,157.85,38.38
+ORD-01355,2023-09-16,2023-09-23,Standard Class,CUST-307,Customer 309,Corporate,South,Texas,City4,Technology,Machines,Product Machines 355,1,0,480.61,81.3
+ORD-01356,2023-09-15,2023-09-17,Standard Class,CUST-156,Customer 189,Consumer,West,Washington,City3,Technology,Phones,Product Phones 356,1,0.15,609.06,87.85
+ORD-01357,2024-12-10,2024-12-17,Standard Class,CUST-311,Customer 237,Consumer,West,Washington,City1,Office Supplies,Storage,Product Storage 357,3,0,89.25,20.68
+ORD-01358,2023-05-30,2023-06-05,Standard Class,CUST-259,Customer 149,Home Office,West,California,City1,Furniture,Bookcases,Product Bookcases 358,1,0,302.13,25.51
+ORD-01359,2024-03-27,2024-03-28,Standard Class,CUST-194,Customer 206,Home Office,East,New York,City2,Technology,Machines,Product Machines 359,5,0.05,2908.33,492.83
+ORD-01360,2023-11-12,2023-11-13,Standard Class,CUST-181,Customer 322,Home Office,East,Pennsylvania,City1,Office Supplies,Paper,Product Paper 360,4,0.05,47.55,9.28
+ORD-01361,2023-06-25,2023-06-27,Standard Class,CUST-241,Customer 253,Consumer,South,Texas,City4,Office Supplies,Binders,Product Binders 361,1,0.15,17.41,4.17
+ORD-01362,2024-01-03,2024-01-04,Standard Class,CUST-228,Customer 149,Corporate,East,Pennsylvania,City2,Furniture,Chairs,Product Chairs 362,3,0,737.43,62.94
+ORD-01363,2023-01-04,2023-01-05,Standard Class,CUST-161,Customer 313,Corporate,West,Washington,City1,Technology,Phones,Product Phones 363,5,0.1,3059.55,389.21
+ORD-01364,2023-08-09,2023-08-15,Standard Class,CUST-173,Customer 187,Corporate,South,Texas,City3,Furniture,Bookcases,Product Bookcases 364,3,0.1,801.18,68.65
+ORD-01365,2024-08-09,2024-08-13,Standard Class,CUST-285,Customer 193,Corporate,West,California,City2,Furniture,Tables,Product Tables 365,3,0.05,1438.83,123.35
+ORD-01366,2023-03-23,2023-03-27,Standard Class,CUST-258,Customer 278,Home Office,East,Pennsylvania,City1,Technology,Machines,Product Machines 366,5,0.15,2205.41,310.06
+ORD-01367,2023-09-27,2023-09-29,Standard Class,CUST-183,Customer 325,Consumer,South,Florida,City3,Furniture,Chairs,Product Chairs 367,2,0.15,331.9,21.28
+ORD-01368,2023-09-23,2023-09-27,Standard Class,CUST-190,Customer 219,Consumer,South,Florida,City3,Office Supplies,Binders,Product Binders 368,2,0,40.62,9.45
+ORD-01369,2024-05-05,2024-05-07,Standard Class,CUST-101,Customer 248,Consumer,West,California,City3,Technology,Machines,Product Machines 369,4,0.1,1897.1,246.65
+ORD-01370,2023-03-26,2023-03-30,Standard Class,CUST-211,Customer 213,Consumer,South,Texas,City3,Technology,Phones,Product Phones 370,4,0.1,2804.83,438.18
+ORD-01371,2024-10-24,2024-10-28,Standard Class,CUST-138,Customer 187,Consumer,South,Texas,City1,Office Supplies,Storage,Product Storage 371,3,0,92.88,16.9
+ORD-01372,2023-04-19,2023-04-21,Standard Class,CUST-282,Customer 234,Corporate,West,California,City2,Office Supplies,Storage,Product Storage 372,1,0,33.5,6.67
+ORD-01373,2023-02-14,2023-02-15,Standard Class,CUST-110,Customer 300,Corporate,North,Ohio,City1,Technology,Phones,Product Phones 373,3,0.1,2053.56,299.18
+ORD-01374,2023-07-13,2023-07-19,Standard Class,CUST-206,Customer 107,Consumer,North,Ohio,City1,Furniture,Chairs,Product Chairs 374,3,0.1,641.71,41.2
+ORD-01375,2023-05-11,2023-05-18,Standard Class,CUST-298,Customer 198,Consumer,North,Ohio,City2,Office Supplies,Binders,Product Binders 375,5,0.1,90.28,15.94
+ORD-01376,2023-09-02,2023-09-05,Standard Class,CUST-345,Customer 317,Corporate,North,Illinois,City1,Technology,Phones,Product Phones 376,3,0,1777.01,242.85
+ORD-01377,2024-11-24,2024-11-25,Standard Class,CUST-348,Customer 299,Corporate,East,Pennsylvania,City1,Furniture,Chairs,Product Chairs 377,3,0.15,532.89,37.03
+ORD-01378,2023-04-17,2023-04-19,Standard Class,CUST-219,Customer 129,Home Office,East,New York,City4,Technology,Phones,Product Phones 378,3,0,2320.61,305.5
+ORD-01379,2024-12-27,2024-12-29,Standard Class,CUST-311,Customer 202,Consumer,East,Pennsylvania,City4,Office Supplies,Storage,Product Storage 379,2,0.1,60.52,13.85
+ORD-01380,2024-06-17,2024-06-23,Standard Class,CUST-192,Customer 139,Consumer,North,Ohio,City2,Office Supplies,Storage,Product Storage 380,4,0.15,122.05,24.29
+ORD-01381,2024-12-22,2024-12-23,Standard Class,CUST-221,Customer 258,Home Office,South,Florida,City1,Office Supplies,Paper,Product Paper 381,5,0.05,59,11
+ORD-01382,2024-12-02,2024-12-08,Standard Class,CUST-179,Customer 113,Consumer,North,Illinois,City2,Office Supplies,Binders,Product Binders 382,2,0,31.39,7.01
+ORD-01383,2023-06-06,2023-06-09,Standard Class,CUST-215,Customer 239,Consumer,North,Illinois,City1,Technology,Phones,Product Phones 383,3,0.15,1560.27,217.58
+ORD-01384,2024-01-07,2024-01-09,Standard Class,CUST-318,Customer 134,Corporate,East,New York,City4,Office Supplies,Binders,Product Binders 384,1,0,16.29,3.43
+ORD-01385,2023-12-27,2023-12-30,Standard Class,CUST-138,Customer 323,Home Office,East,New York,City4,Office Supplies,Storage,Product Storage 385,2,0,59.89,14.64
+ORD-01386,2023-12-01,2023-12-03,Standard Class,CUST-347,Customer 284,Consumer,North,Ohio,City3,Technology,Machines,Product Machines 386,5,0,3041.05,507.89
+ORD-01387,2023-08-13,2023-08-17,Standard Class,CUST-169,Customer 333,Home Office,East,New York,City4,Office Supplies,Paper,Product Paper 387,3,0,37.23,9.46
+ORD-01388,2024-04-20,2024-04-22,Standard Class,CUST-179,Customer 175,Home Office,East,Pennsylvania,City4,Office Supplies,Binders,Product Binders 388,3,0,50.37,11.57
+ORD-01389,2023-02-05,2023-02-11,Standard Class,CUST-184,Customer 263,Consumer,West,Washington,City1,Furniture,Chairs,Product Chairs 389,2,0,384.01,27.16
+ORD-01390,2023-04-17,2023-04-23,Standard Class,CUST-143,Customer 270,Corporate,East,New York,City1,Technology,Machines,Product Machines 390,1,0,475.4,72.01
+ORD-01391,2024-05-01,2024-05-07,Standard Class,CUST-280,Customer 267,Home Office,East,New York,City2,Office Supplies,Binders,Product Binders 391,2,0.1,27.71,5.74
+ORD-01392,2024-05-24,2024-05-28,Standard Class,CUST-153,Customer 323,Home Office,West,California,City2,Furniture,Tables,Product Tables 392,2,0,770.44,63.9
+ORD-01393,2024-07-28,2024-07-29,Standard Class,CUST-189,Customer 213,Consumer,West,California,City1,Technology,Accessories,Product Accessories 393,5,0.15,413.11,72.2
+ORD-01394,2024-12-18,2024-12-20,Standard Class,CUST-197,Customer 196,Consumer,South,Florida,City1,Office Supplies,Paper,Product Paper 394,2,0.05,23.75,6.16
+ORD-01395,2023-09-21,2023-09-23,Standard Class,CUST-295,Customer 294,Home Office,South,Florida,City4,Office Supplies,Paper,Product Paper 395,5,0.1,54.74,12.44
+ORD-01396,2023-07-13,2023-07-19,Standard Class,CUST-244,Customer 149,Home Office,South,Florida,City4,Technology,Machines,Product Machines 396,5,0.1,2210.65,395.39
+ORD-01397,2023-01-31,2023-02-07,Standard Class,CUST-248,Customer 235,Home Office,North,Illinois,City4,Office Supplies,Paper,Product Paper 397,5,0.05,56.58,10.91
+ORD-01398,2024-06-01,2024-06-05,Standard Class,CUST-239,Customer 172,Home Office,South,Florida,City2,Technology,Accessories,Product Accessories 398,4,0.1,345.83,46.33
+ORD-01399,2023-02-03,2023-02-05,Standard Class,CUST-315,Customer 189,Corporate,South,Texas,City1,Furniture,Chairs,Product Chairs 399,5,0.1,983.99,70.84
+ORD-01400,2023-04-28,2023-04-29,Standard Class,CUST-215,Customer 109,Consumer,East,Pennsylvania,City4,Office Supplies,Binders,Product Binders 400,1,0,18.67,3.76
+ORD-01401,2023-04-04,2023-04-11,Standard Class,CUST-244,Customer 101,Consumer,South,Florida,City1,Furniture,Chairs,Product Chairs 401,4,0,975.03,87.27
+ORD-01402,2023-08-19,2023-08-21,Standard Class,CUST-149,Customer 213,Home Office,West,California,City1,Furniture,Chairs,Product Chairs 402,1,0,221.64,14.98
+ORD-01403,2023-09-07,2023-09-09,Standard Class,CUST-266,Customer 219,Corporate,North,Ohio,City4,Office Supplies,Storage,Product Storage 403,2,0.05,73.44,15.9
+ORD-01404,2023-09-23,2023-09-24,Standard Class,CUST-316,Customer 101,Corporate,South,Texas,City2,Furniture,Bookcases,Product Bookcases 404,1,0.05,254.6,22.89
+ORD-01405,2024-06-15,2024-06-20,Standard Class,CUST-260,Customer 280,Consumer,South,Florida,City2,Technology,Phones,Product Phones 405,1,0.1,651.12,91.38
+ORD-01406,2024-02-20,2024-02-21,Standard Class,CUST-199,Customer 178,Home Office,North,Illinois,City2,Furniture,Tables,Product Tables 406,5,0.05,2228.9,142.98
+ORD-01407,2024-08-13,2024-08-16,Standard Class,CUST-172,Customer 235,Consumer,South,Texas,City1,Office Supplies,Paper,Product Paper 407,2,0.05,20.69,4.87
+ORD-01408,2023-10-01,2023-10-03,Standard Class,CUST-112,Customer 282,Corporate,East,New York,City2,Technology,Accessories,Product Accessories 408,2,0.15,176.01,30.91
+ORD-01409,2024-03-03,2024-03-05,Standard Class,CUST-213,Customer 275,Consumer,North,Illinois,City2,Furniture,Tables,Product Tables 409,1,0,505.91,42.3
+ORD-01410,2024-05-07,2024-05-08,Standard Class,CUST-114,Customer 299,Corporate,East,New York,City2,Technology,Accessories,Product Accessories 410,3,0.05,264.39,39.8
+ORD-01411,2024-03-01,2024-03-04,Standard Class,CUST-202,Customer 289,Consumer,East,Pennsylvania,City4,Office Supplies,Paper,Product Paper 411,5,0.15,52.22,11.47
+ORD-01412,2024-07-19,2024-07-24,Standard Class,CUST-178,Customer 133,Home Office,South,Texas,City3,Furniture,Chairs,Product Chairs 412,4,0,826.78,55.26
+ORD-01413,2024-12-11,2024-12-18,Standard Class,CUST-297,Customer 187,Home Office,East,Pennsylvania,City1,Furniture,Bookcases,Product Bookcases 413,5,0,1556.37,134.4
+ORD-01414,2023-05-11,2023-05-15,Standard Class,CUST-147,Customer 102,Consumer,East,Pennsylvania,City3,Office Supplies,Paper,Product Paper 414,2,0,20.65,4.58
+ORD-01415,2024-03-19,2024-03-20,Standard Class,CUST-298,Customer 299,Consumer,North,Ohio,City4,Office Supplies,Storage,Product Storage 415,1,0.15,32.96,8.12
+ORD-01416,2024-04-07,2024-04-12,Standard Class,CUST-309,Customer 197,Corporate,North,Ohio,City1,Furniture,Bookcases,Product Bookcases 416,4,0,1081.18,96.71
+ORD-01417,2024-05-21,2024-05-22,Standard Class,CUST-166,Customer 290,Consumer,East,New York,City4,Office Supplies,Storage,Product Storage 417,2,0,71.81,14.52
+ORD-01418,2024-06-19,2024-06-26,Standard Class,CUST-174,Customer 108,Consumer,South,Florida,City2,Furniture,Chairs,Product Chairs 418,2,0,418.15,29.59
+ORD-01419,2024-11-13,2024-11-19,Standard Class,CUST-245,Customer 319,Consumer,North,Ohio,City4,Furniture,Tables,Product Tables 419,3,0.1,1104.91,81.14
+ORD-01420,2024-08-03,2024-08-06,Standard Class,CUST-109,Customer 173,Home Office,South,Florida,City2,Furniture,Tables,Product Tables 420,5,0,2198.87,190.73
+ORD-01421,2023-02-27,2023-03-04,Standard Class,CUST-180,Customer 232,Home Office,East,New York,City1,Technology,Phones,Product Phones 421,5,0,3152.78,402.71
+ORD-01422,2024-11-20,2024-11-23,Standard Class,CUST-134,Customer 296,Home Office,West,California,City2,Furniture,Chairs,Product Chairs 422,1,0,248.96,23.77
+ORD-01423,2023-05-14,2023-05-17,Standard Class,CUST-331,Customer 330,Corporate,West,Washington,City1,Technology,Phones,Product Phones 423,5,0.1,3258.46,532.91
+ORD-01424,2023-11-09,2023-11-13,Standard Class,CUST-156,Customer 183,Corporate,East,New York,City3,Technology,Accessories,Product Accessories 424,4,0,405.41,67.47
+ORD-01425,2024-11-03,2024-11-05,Standard Class,CUST-243,Customer 324,Corporate,South,Texas,City2,Office Supplies,Binders,Product Binders 425,2,0.15,29.31,6.4
+ORD-01426,2024-06-12,2024-06-18,Standard Class,CUST-102,Customer 236,Corporate,West,Washington,City4,Technology,Phones,Product Phones 426,5,0.1,2886.96,438.32
+ORD-01427,2023-09-17,2023-09-23,Standard Class,CUST-235,Customer 275,Home Office,North,Illinois,City1,Furniture,Chairs,Product Chairs 427,2,0,434.78,40
+ORD-01428,2023-01-08,2023-01-09,Standard Class,CUST-228,Customer 264,Consumer,South,Texas,City3,Furniture,Tables,Product Tables 428,5,0,2543.01,237.23
+ORD-01429,2023-07-09,2023-07-16,Standard Class,CUST-236,Customer 159,Home Office,East,New York,City4,Office Supplies,Storage,Product Storage 429,2,0,66.13,16.46
+ORD-01430,2024-12-21,2024-12-22,Standard Class,CUST-239,Customer 136,Consumer,North,Ohio,City2,Technology,Phones,Product Phones 430,1,0,585.67,80.06
+ORD-01431,2024-03-13,2024-03-18,Standard Class,CUST-195,Customer 204,Home Office,North,Ohio,City3,Office Supplies,Storage,Product Storage 431,5,0.1,147.66,27.11
+ORD-01432,2023-12-12,2023-12-15,Standard Class,CUST-261,Customer 140,Home Office,North,Ohio,City2,Office Supplies,Storage,Product Storage 432,4,0.15,128.22,25.02
+ORD-01433,2024-09-09,2024-09-15,Standard Class,CUST-200,Customer 119,Home Office,South,Texas,City1,Office Supplies,Binders,Product Binders 433,2,0,38.67,8.23
+ORD-01434,2024-08-05,2024-08-11,Standard Class,CUST-221,Customer 122,Corporate,North,Ohio,City4,Furniture,Chairs,Product Chairs 434,2,0,386.18,26.59
+ORD-01435,2023-11-15,2023-11-17,Standard Class,CUST-129,Customer 302,Home Office,South,Florida,City4,Office Supplies,Storage,Product Storage 435,1,0.15,32.46,7.35
+ORD-01436,2024-04-20,2024-04-21,Standard Class,CUST-327,Customer 180,Consumer,West,California,City1,Technology,Accessories,Product Accessories 436,2,0.1,146.54,22.68
+ORD-01437,2024-08-06,2024-08-12,Standard Class,CUST-111,Customer 271,Consumer,North,Illinois,City3,Furniture,Bookcases,Product Bookcases 437,3,0.15,617.35,42.09
+ORD-01438,2023-12-02,2023-12-09,Standard Class,CUST-298,Customer 301,Home Office,South,Florida,City4,Technology,Accessories,Product Accessories 438,3,0,256.07,35.56
+ORD-01439,2024-01-15,2024-01-22,Standard Class,CUST-159,Customer 108,Home Office,North,Ohio,City4,Furniture,Tables,Product Tables 439,4,0.1,1545.3,146.78
+ORD-01440,2024-02-29,2024-03-04,Standard Class,CUST-316,Customer 322,Home Office,East,Pennsylvania,City4,Technology,Accessories,Product Accessories 440,3,0,252.85,32.11
+ORD-01441,2024-12-02,2024-12-05,Standard Class,CUST-327,Customer 248,Consumer,North,Ohio,City2,Technology,Machines,Product Machines 441,1,0,469.83,79.13
+ORD-01442,2023-09-26,2023-09-28,Standard Class,CUST-196,Customer 209,Corporate,North,Ohio,City4,Office Supplies,Paper,Product Paper 442,4,0,49.87,12.46
+ORD-01443,2023-12-23,2023-12-27,Standard Class,CUST-347,Customer 214,Home Office,South,Texas,City4,Furniture,Tables,Product Tables 443,4,0,2048.67,179.46
+ORD-01444,2023-07-18,2023-07-22,Standard Class,CUST-170,Customer 266,Consumer,East,New York,City1,Furniture,Tables,Product Tables 444,1,0.05,376.48,24.23
+ORD-01445,2024-01-04,2024-01-05,Standard Class,CUST-323,Customer 310,Corporate,South,Texas,City2,Technology,Accessories,Product Accessories 445,3,0,276.01,44.2
+ORD-01446,2023-12-20,2023-12-24,Standard Class,CUST-177,Customer 107,Home Office,North,Ohio,City2,Technology,Phones,Product Phones 446,3,0.1,1659.33,216.64
+ORD-01447,2023-03-15,2023-03-18,Standard Class,CUST-316,Customer 268,Corporate,North,Illinois,City4,Technology,Phones,Product Phones 447,1,0.1,579.54,78.47
+ORD-01448,2023-01-06,2023-01-07,Standard Class,CUST-139,Customer 232,Home Office,East,Pennsylvania,City1,Furniture,Bookcases,Product Bookcases 448,1,0.1,284.56,23.2
+ORD-01449,2023-11-05,2023-11-12,Standard Class,CUST-272,Customer 283,Home Office,East,Pennsylvania,City4,Office Supplies,Paper,Product Paper 449,2,0.15,21.31,3.95
+ORD-01450,2024-04-04,2024-04-05,Standard Class,CUST-330,Customer 104,Corporate,East,New York,City2,Office Supplies,Storage,Product Storage 450,2,0,69.76,17.25
+ORD-01451,2023-03-07,2023-03-10,Standard Class,CUST-199,Customer 222,Corporate,South,Texas,City3,Furniture,Chairs,Product Chairs 451,5,0,1103.01,80.66
+ORD-01452,2024-09-18,2024-09-21,Standard Class,CUST-165,Customer 300,Home Office,South,Texas,City4,Technology,Accessories,Product Accessories 452,5,0,535.49,95.08
+ORD-01453,2024-12-16,2024-12-17,Standard Class,CUST-333,Customer 317,Consumer,North,Illinois,City2,Technology,Phones,Product Phones 453,3,0,2173.96,385.79
+ORD-01454,2023-11-05,2023-11-09,Standard Class,CUST-137,Customer 190,Corporate,West,Washington,City2,Technology,Machines,Product Machines 454,5,0.15,2334.48,357.99
+ORD-01455,2024-04-23,2024-04-24,Standard Class,CUST-340,Customer 141,Home Office,East,Pennsylvania,City2,Technology,Phones,Product Phones 455,2,0.05,1137.06,192.04
+ORD-01456,2024-10-03,2024-10-07,Standard Class,CUST-338,Customer 310,Corporate,North,Ohio,City3,Technology,Phones,Product Phones 456,4,0.05,2197.66,379.6
+ORD-01457,2024-06-06,2024-06-13,Standard Class,CUST-233,Customer 285,Consumer,West,California,City1,Office Supplies,Binders,Product Binders 457,4,0,68.79,14.66
+ORD-01458,2023-03-20,2023-03-22,Standard Class,CUST-242,Customer 340,Corporate,South,Texas,City3,Furniture,Tables,Product Tables 458,1,0,444.84,41.26
+ORD-01459,2023-01-25,2023-01-31,Standard Class,CUST-235,Customer 242,Home Office,East,Pennsylvania,City3,Office Supplies,Paper,Product Paper 459,1,0,13.66,3.07
+ORD-01460,2024-04-27,2024-04-29,Standard Class,CUST-298,Customer 129,Consumer,West,Washington,City4,Technology,Phones,Product Phones 460,2,0.15,1174.91,181.77
+ORD-01461,2024-10-09,2024-10-10,Standard Class,CUST-238,Customer 291,Consumer,West,Washington,City4,Technology,Accessories,Product Accessories 461,5,0.05,483.92,82.37
+ORD-01462,2024-05-10,2024-05-14,Standard Class,CUST-253,Customer 242,Consumer,South,Texas,City1,Office Supplies,Paper,Product Paper 462,2,0.1,18.94,4.33
+ORD-01463,2023-06-04,2023-06-11,Standard Class,CUST-277,Customer 179,Home Office,North,Ohio,City4,Furniture,Bookcases,Product Bookcases 463,2,0,571.19,37.89
+ORD-01464,2023-04-11,2023-04-14,Standard Class,CUST-299,Customer 194,Home Office,East,New York,City2,Technology,Accessories,Product Accessories 464,4,0.1,322.75,51.2
+ORD-01465,2023-09-04,2023-09-08,Standard Class,CUST-215,Customer 143,Consumer,South,Texas,City1,Office Supplies,Binders,Product Binders 465,3,0.05,53.13,9.89
+ORD-01466,2023-01-21,2023-01-22,Standard Class,CUST-322,Customer 196,Home Office,West,California,City3,Furniture,Bookcases,Product Bookcases 466,5,0,1601.89,115.31
+ORD-01467,2024-08-25,2024-08-28,Standard Class,CUST-316,Customer 172,Corporate,East,New York,City3,Office Supplies,Storage,Product Storage 467,1,0,38.06,7.18
+ORD-01468,2024-02-07,2024-02-13,Standard Class,CUST-230,Customer 286,Corporate,North,Illinois,City1,Office Supplies,Paper,Product Paper 468,3,0,39.66,10.03
+ORD-01469,2023-05-31,2023-06-04,Standard Class,CUST-106,Customer 105,Corporate,North,Illinois,City3,Technology,Phones,Product Phones 469,5,0,3382.06,599.41
+ORD-01470,2024-10-29,2024-11-01,Standard Class,CUST-299,Customer 267,Home Office,South,Texas,City4,Office Supplies,Paper,Product Paper 470,4,0,43.09,7.63
+ORD-01471,2023-01-14,2023-01-20,Standard Class,CUST-210,Customer 177,Consumer,West,California,City1,Technology,Accessories,Product Accessories 471,4,0.1,301.33,50.75
+ORD-01472,2024-05-01,2024-05-08,Standard Class,CUST-345,Customer 333,Home Office,West,Washington,City1,Technology,Accessories,Product Accessories 472,4,0,372.86,49.3
+ORD-01473,2023-04-07,2023-04-12,Standard Class,CUST-163,Customer 260,Corporate,North,Illinois,City3,Office Supplies,Binders,Product Binders 473,2,0.1,28.71,6.9
+ORD-01474,2024-10-24,2024-10-26,Standard Class,CUST-338,Customer 239,Consumer,South,Texas,City3,Office Supplies,Paper,Product Paper 474,3,0,32.8,6.74
+ORD-01475,2024-01-26,2024-01-28,Standard Class,CUST-349,Customer 174,Consumer,West,California,City1,Technology,Machines,Product Machines 475,5,0,2863.94,344.42
+ORD-01476,2024-08-28,2024-09-01,Standard Class,CUST-219,Customer 312,Home Office,South,Florida,City4,Office Supplies,Binders,Product Binders 476,4,0.1,72.11,14.82
+ORD-01477,2023-06-05,2023-06-08,Standard Class,CUST-289,Customer 220,Home Office,North,Illinois,City2,Office Supplies,Storage,Product Storage 477,3,0,118.23,27.9
+ORD-01478,2024-11-08,2024-11-15,Standard Class,CUST-335,Customer 228,Home Office,West,Washington,City2,Technology,Phones,Product Phones 478,1,0,758.72,93.66
+ORD-01479,2023-01-24,2023-01-26,Standard Class,CUST-324,Customer 231,Consumer,East,Pennsylvania,City4,Technology,Phones,Product Phones 479,2,0.15,1293.6,194.2
+ORD-01480,2023-02-19,2023-02-22,Standard Class,CUST-311,Customer 274,Home Office,East,Pennsylvania,City1,Office Supplies,Binders,Product Binders 480,5,0.05,86.5,22.57
+ORD-01481,2023-02-16,2023-02-22,Standard Class,CUST-157,Customer 349,Corporate,North,Illinois,City2,Furniture,Tables,Product Tables 481,4,0,1562.17,116.04
+ORD-01482,2024-02-17,2024-02-23,Standard Class,CUST-258,Customer 150,Home Office,West,California,City3,Office Supplies,Paper,Product Paper 482,5,0,58.57,10.52
+ORD-01483,2023-11-15,2023-11-16,Standard Class,CUST-297,Customer 278,Home Office,West,California,City2,Office Supplies,Paper,Product Paper 483,1,0.15,9.89,2.34
+ORD-01484,2023-02-14,2023-02-17,Standard Class,CUST-283,Customer 291,Corporate,West,Washington,City1,Furniture,Tables,Product Tables 484,1,0,400.46,36.61
+ORD-01485,2024-01-28,2024-02-02,Standard Class,CUST-337,Customer 245,Home Office,West,California,City1,Office Supplies,Paper,Product Paper 485,3,0,35.97,6.42
+ORD-01486,2024-10-16,2024-10-22,Standard Class,CUST-119,Customer 272,Corporate,West,California,City4,Furniture,Bookcases,Product Bookcases 486,3,0,768.97,73.24
+ORD-01487,2024-07-06,2024-07-08,Standard Class,CUST-151,Customer 176,Home Office,West,Washington,City4,Furniture,Bookcases,Product Bookcases 487,2,0,627.13,48.75
+ORD-01488,2024-05-07,2024-05-11,Standard Class,CUST-187,Customer 231,Home Office,North,Illinois,City4,Furniture,Chairs,Product Chairs 488,2,0.15,327.22,29.42
+ORD-01489,2024-09-16,2024-09-21,Standard Class,CUST-190,Customer 240,Consumer,North,Illinois,City2,Technology,Machines,Product Machines 489,5,0.05,2220.68,361.81
+ORD-01490,2024-08-21,2024-08-25,Standard Class,CUST-185,Customer 234,Home Office,South,Texas,City1,Office Supplies,Binders,Product Binders 490,2,0,40.6,9.52
+ORD-01491,2024-08-03,2024-08-06,Standard Class,CUST-206,Customer 171,Home Office,North,Illinois,City2,Furniture,Tables,Product Tables 491,3,0,1276.35,92.19
+ORD-01492,2023-11-12,2023-11-14,Standard Class,CUST-159,Customer 205,Home Office,South,Texas,City2,Office Supplies,Storage,Product Storage 492,4,0.1,118.98,23.43
+ORD-01493,2024-06-23,2024-06-28,Standard Class,CUST-118,Customer 139,Consumer,East,Pennsylvania,City1,Technology,Accessories,Product Accessories 493,4,0.15,329.53,49.72
+ORD-01494,2023-09-12,2023-09-16,Standard Class,CUST-300,Customer 136,Home Office,East,Pennsylvania,City4,Furniture,Tables,Product Tables 494,4,0.05,1602.01,131.04
+ORD-01495,2024-10-25,2024-10-26,Standard Class,CUST-260,Customer 314,Home Office,West,Washington,City4,Technology,Phones,Product Phones 495,2,0.15,1183.14,203.61
+ORD-01496,2024-02-14,2024-02-16,Standard Class,CUST-285,Customer 172,Consumer,East,Pennsylvania,City1,Furniture,Chairs,Product Chairs 496,4,0,905.75,80.26
+ORD-01497,2023-06-07,2023-06-08,Standard Class,CUST-336,Customer 138,Corporate,East,Pennsylvania,City4,Technology,Accessories,Product Accessories 497,1,0.05,93.13,11.47
+ORD-01498,2024-09-08,2024-09-10,Standard Class,CUST-208,Customer 293,Consumer,West,Washington,City1,Technology,Machines,Product Machines 498,5,0,2320.23,395.02
+ORD-01499,2024-02-08,2024-02-09,Standard Class,CUST-305,Customer 127,Consumer,North,Illinois,City2,Office Supplies,Storage,Product Storage 499,4,0,131.17,34.49
+ORD-01500,2024-10-05,2024-10-12,Standard Class,CUST-216,Customer 281,Consumer,South,Florida,City3,Technology,Accessories,Product Accessories 500,3,0.1,219.14,39.02
+ORD-01501,2024-05-15,2024-05-16,Standard Class,CUST-209,Customer 151,Corporate,North,Illinois,City4,Office Supplies,Binders,Product Binders 501,2,0,40.59,7.15
+ORD-01502,2024-03-04,2024-03-11,Standard Class,CUST-189,Customer 221,Consumer,North,Illinois,City1,Office Supplies,Storage,Product Storage 502,1,0.05,33.67,6.34
+ORD-01503,2023-02-22,2023-02-26,Standard Class,CUST-291,Customer 297,Corporate,South,Texas,City2,Technology,Machines,Product Machines 503,2,0.05,1152.63,154.71
+ORD-01504,2024-10-31,2024-11-06,Standard Class,CUST-238,Customer 233,Consumer,North,Ohio,City4,Office Supplies,Binders,Product Binders 504,2,0,40.61,9.52
+ORD-01505,2024-02-25,2024-02-29,Standard Class,CUST-310,Customer 333,Home Office,East,New York,City4,Furniture,Tables,Product Tables 505,2,0.1,850.76,62.13
+ORD-01506,2024-07-05,2024-07-07,Standard Class,CUST-136,Customer 319,Consumer,North,Illinois,City3,Furniture,Chairs,Product Chairs 506,1,0,195.05,18.61
+ORD-01507,2024-04-24,2024-05-01,Standard Class,CUST-211,Customer 295,Corporate,South,Florida,City3,Technology,Machines,Product Machines 507,2,0.15,920.33,159.04
+ORD-01508,2024-08-09,2024-08-11,Standard Class,CUST-230,Customer 337,Home Office,North,Ohio,City3,Technology,Accessories,Product Accessories 508,2,0,190.97,28.34
+ORD-01509,2023-01-12,2023-01-13,Standard Class,CUST-245,Customer 319,Consumer,South,Florida,City2,Furniture,Chairs,Product Chairs 509,3,0.15,610.73,56.21
+ORD-01510,2024-07-17,2024-07-23,Standard Class,CUST-221,Customer 127,Consumer,West,California,City1,Furniture,Bookcases,Product Bookcases 510,4,0,1271.46,84.8
+ORD-01511,2023-05-22,2023-05-29,Standard Class,CUST-161,Customer 257,Home Office,West,California,City1,Office Supplies,Paper,Product Paper 511,1,0.1,10.62,2.71
+ORD-01512,2023-06-18,2023-06-21,Standard Class,CUST-181,Customer 207,Home Office,East,New York,City2,Furniture,Chairs,Product Chairs 512,5,0,1161.75,102.66
+ORD-01513,2024-05-28,2024-05-30,Standard Class,CUST-279,Customer 233,Home Office,West,Washington,City4,Furniture,Chairs,Product Chairs 513,5,0.1,1132.44,99.69
+ORD-01514,2024-10-26,2024-11-02,Standard Class,CUST-169,Customer 325,Consumer,West,Washington,City1,Furniture,Tables,Product Tables 514,3,0.1,1188.83,91.67
+ORD-01515,2023-01-01,2023-01-07,Standard Class,CUST-296,Customer 139,Consumer,North,Illinois,City4,Office Supplies,Storage,Product Storage 515,5,0,196.75,38.39
+ORD-01516,2023-08-17,2023-08-20,Standard Class,CUST-345,Customer 100,Home Office,East,Pennsylvania,City3,Furniture,Bookcases,Product Bookcases 516,3,0.1,849.84,61.8
+ORD-01517,2023-03-22,2023-03-29,Standard Class,CUST-242,Customer 282,Home Office,North,Illinois,City3,Office Supplies,Storage,Product Storage 517,3,0.15,95.06,22.52
+ORD-01518,2023-05-10,2023-05-17,Standard Class,CUST-218,Customer 231,Consumer,West,California,City4,Office Supplies,Binders,Product Binders 518,4,0.05,73.54,14.68
+ORD-01519,2024-05-06,2024-05-12,Standard Class,CUST-275,Customer 182,Consumer,East,Pennsylvania,City4,Furniture,Tables,Product Tables 519,1,0,402.83,38.59
+ORD-01520,2023-04-02,2023-04-07,Standard Class,CUST-194,Customer 200,Home Office,East,Pennsylvania,City4,Furniture,Tables,Product Tables 520,5,0,2125.37,146.28
+ORD-01521,2023-06-21,2023-06-26,Standard Class,CUST-240,Customer 258,Corporate,West,California,City4,Technology,Machines,Product Machines 521,4,0.15,2107.95,299.76
+ORD-01522,2023-07-10,2023-07-16,Standard Class,CUST-274,Customer 334,Corporate,South,Texas,City3,Technology,Phones,Product Phones 522,2,0.1,1310.52,186.19
+ORD-01523,2023-10-03,2023-10-09,Standard Class,CUST-276,Customer 158,Home Office,East,New York,City1,Technology,Machines,Product Machines 523,3,0,1456.5,219.56
+ORD-01524,2023-03-25,2023-03-26,Standard Class,CUST-116,Customer 110,Consumer,East,New York,City2,Office Supplies,Binders,Product Binders 524,5,0,94.37,22.92
+ORD-01525,2023-01-16,2023-01-22,Standard Class,CUST-130,Customer 131,Home Office,West,Washington,City4,Office Supplies,Storage,Product Storage 525,3,0,113.04,21.72
+ORD-01526,2024-04-13,2024-04-17,Standard Class,CUST-133,Customer 123,Home Office,West,Washington,City4,Technology,Phones,Product Phones 526,5,0.05,3513.71,451.79
+ORD-01527,2024-01-30,2024-01-31,Standard Class,CUST-280,Customer 231,Corporate,West,California,City2,Furniture,Chairs,Product Chairs 527,2,0.1,409.38,35.2
+ORD-01528,2024-01-01,2024-01-08,Standard Class,CUST-157,Customer 222,Home Office,North,Illinois,City4,Office Supplies,Storage,Product Storage 528,3,0.1,102.25,20.73
+ORD-01529,2023-03-12,2023-03-17,Standard Class,CUST-309,Customer 124,Corporate,North,Ohio,City2,Technology,Accessories,Product Accessories 529,3,0.15,223.83,33.88
+ORD-01530,2023-11-11,2023-11-15,Standard Class,CUST-235,Customer 150,Consumer,South,Florida,City3,Technology,Phones,Product Phones 530,1,0,587.31,81.17
+ORD-01531,2023-12-10,2023-12-13,Standard Class,CUST-341,Customer 226,Consumer,West,Washington,City3,Office Supplies,Storage,Product Storage 531,1,0.15,30.98,7.67
+ORD-01532,2024-03-01,2024-03-08,Standard Class,CUST-180,Customer 167,Home Office,North,Illinois,City3,Furniture,Chairs,Product Chairs 532,2,0,378.32,35.55
+ORD-01533,2023-10-24,2023-10-25,Standard Class,CUST-116,Customer 226,Corporate,South,Texas,City2,Furniture,Chairs,Product Chairs 533,5,0.05,1053,79.47
+ORD-01534,2024-03-30,2024-03-31,Standard Class,CUST-319,Customer 251,Corporate,North,Illinois,City1,Office Supplies,Paper,Product Paper 534,2,0,20.84,3.68
+ORD-01535,2023-11-14,2023-11-19,Standard Class,CUST-271,Customer 232,Consumer,North,Illinois,City4,Technology,Machines,Product Machines 535,1,0.15,460.88,65.8
+ORD-01536,2024-04-05,2024-04-10,Standard Class,CUST-103,Customer 160,Home Office,North,Ohio,City2,Technology,Machines,Product Machines 536,5,0.05,2827.31,425.8
+ORD-01537,2024-02-14,2024-02-17,Standard Class,CUST-190,Customer 292,Home Office,South,Florida,City3,Technology,Phones,Product Phones 537,1,0,619.59,78.53
+ORD-01538,2024-05-27,2024-05-28,Standard Class,CUST-299,Customer 106,Consumer,East,Pennsylvania,City3,Furniture,Tables,Product Tables 538,3,0,1546.03,139.69
+ORD-01539,2023-04-01,2023-04-05,Standard Class,CUST-229,Customer 246,Home Office,East,Pennsylvania,City4,Furniture,Tables,Product Tables 539,2,0,1011.19,85.83
+ORD-01540,2024-05-20,2024-05-23,Standard Class,CUST-304,Customer 226,Consumer,North,Illinois,City3,Technology,Phones,Product Phones 540,4,0,3023.44,530
+ORD-01541,2024-02-05,2024-02-09,Standard Class,CUST-240,Customer 281,Home Office,North,Illinois,City4,Technology,Machines,Product Machines 541,2,0.05,1010.58,166.76
+ORD-01542,2024-03-23,2024-03-29,Standard Class,CUST-199,Customer 123,Home Office,East,New York,City3,Office Supplies,Storage,Product Storage 542,3,0,107.7,24.79
+ORD-01543,2023-02-13,2023-02-17,Standard Class,CUST-185,Customer 130,Corporate,North,Illinois,City2,Office Supplies,Storage,Product Storage 543,5,0,178.81,42.59
+ORD-01544,2023-03-01,2023-03-08,Standard Class,CUST-102,Customer 158,Consumer,East,Pennsylvania,City2,Technology,Machines,Product Machines 544,2,0.15,872.93,114.99
+ORD-01545,2023-09-30,2023-10-07,Standard Class,CUST-304,Customer 234,Corporate,West,Washington,City4,Technology,Phones,Product Phones 545,4,0.1,2544.66,318.19
+ORD-01546,2023-07-24,2023-07-28,Standard Class,CUST-293,Customer 321,Corporate,South,Florida,City4,Technology,Accessories,Product Accessories 546,4,0,331.81,52.2
+ORD-01547,2024-11-20,2024-11-22,Standard Class,CUST-183,Customer 287,Home Office,South,Texas,City2,Furniture,Tables,Product Tables 547,2,0,1008.55,77.56
+ORD-01548,2023-12-21,2023-12-26,Standard Class,CUST-253,Customer 340,Corporate,East,Pennsylvania,City1,Office Supplies,Storage,Product Storage 548,3,0,113.13,23.96
+ORD-01549,2023-05-03,2023-05-04,Standard Class,CUST-181,Customer 176,Home Office,South,Texas,City1,Technology,Machines,Product Machines 549,2,0.1,1030.8,140.4
+ORD-01550,2023-10-29,2023-11-05,Standard Class,CUST-203,Customer 336,Consumer,East,New York,City4,Office Supplies,Storage,Product Storage 550,2,0.05,56.61,13.27
+ORD-01551,2024-08-17,2024-08-21,Standard Class,CUST-211,Customer 136,Home Office,East,New York,City2,Office Supplies,Binders,Product Binders 551,4,0.1,55.6,13.97
+ORD-01552,2024-03-04,2024-03-10,Standard Class,CUST-279,Customer 290,Consumer,South,Florida,City3,Technology,Phones,Product Phones 552,3,0.1,1932.71,252.64
+ORD-01553,2023-02-27,2023-02-28,Standard Class,CUST-245,Customer 164,Consumer,East,New York,City4,Technology,Accessories,Product Accessories 553,3,0.1,268.15,33.87
+ORD-01554,2024-01-23,2024-01-25,Standard Class,CUST-216,Customer 210,Consumer,South,Florida,City2,Technology,Phones,Product Phones 554,5,0.05,2954.13,437.67
+ORD-01555,2024-11-21,2024-11-22,Standard Class,CUST-251,Customer 106,Home Office,South,Texas,City2,Technology,Machines,Product Machines 555,3,0,1464.53,213.42
+ORD-01556,2023-08-21,2023-08-26,Standard Class,CUST-323,Customer 230,Corporate,West,California,City1,Technology,Phones,Product Phones 556,4,0.1,2585.53,461.8
+ORD-01557,2024-02-04,2024-02-09,Standard Class,CUST-278,Customer 273,Home Office,West,California,City1,Furniture,Bookcases,Product Bookcases 557,3,0,872.84,77.16
+ORD-01558,2024-04-26,2024-04-28,Standard Class,CUST-281,Customer 225,Home Office,East,New York,City2,Technology,Machines,Product Machines 558,5,0.15,2366.55,305.49
+ORD-01559,2023-05-23,2023-05-27,Standard Class,CUST-250,Customer 221,Home Office,West,Washington,City1,Office Supplies,Binders,Product Binders 559,5,0.15,78.2,18.61
+ORD-01560,2023-04-09,2023-04-10,Standard Class,CUST-240,Customer 256,Corporate,West,Washington,City3,Technology,Phones,Product Phones 560,1,0.05,609.73,109.02
+ORD-01561,2024-02-14,2024-02-19,Standard Class,CUST-319,Customer 280,Corporate,East,Pennsylvania,City4,Technology,Machines,Product Machines 561,3,0,1748.93,277.18
+ORD-01562,2024-06-19,2024-06-24,Standard Class,CUST-199,Customer 132,Consumer,North,Ohio,City1,Office Supplies,Paper,Product Paper 562,1,0.05,10.78,2.56
+ORD-01563,2023-03-31,2023-04-05,Standard Class,CUST-106,Customer 245,Corporate,West,California,City1,Technology,Phones,Product Phones 563,2,0.15,1024.99,156.58
+ORD-01564,2024-08-13,2024-08-14,Standard Class,CUST-216,Customer 125,Corporate,South,Florida,City4,Office Supplies,Paper,Product Paper 564,1,0,13.21,2.49
+ORD-01565,2023-06-20,2023-06-25,Standard Class,CUST-187,Customer 254,Home Office,West,Washington,City3,Technology,Phones,Product Phones 565,5,0.1,3399.38,519.73
+ORD-01566,2024-02-10,2024-02-11,Standard Class,CUST-347,Customer 307,Consumer,West,Washington,City3,Technology,Accessories,Product Accessories 566,1,0,89.34,15.64
+ORD-01567,2023-04-18,2023-04-23,Standard Class,CUST-258,Customer 247,Consumer,North,Illinois,City4,Furniture,Bookcases,Product Bookcases 567,3,0,872.75,68.31
+ORD-01568,2024-04-10,2024-04-17,Standard Class,CUST-334,Customer 164,Corporate,East,New York,City4,Office Supplies,Paper,Product Paper 568,3,0,33.63,6.63
+ORD-01569,2024-12-02,2024-12-03,Standard Class,CUST-132,Customer 249,Home Office,North,Ohio,City2,Technology,Phones,Product Phones 569,3,0,1943.94,333.53
+ORD-01570,2024-12-17,2024-12-21,Standard Class,CUST-178,Customer 335,Corporate,South,Florida,City4,Furniture,Chairs,Product Chairs 570,5,0,1046.34,70.13
+ORD-01571,2023-09-18,2023-09-22,Standard Class,CUST-105,Customer 119,Corporate,East,Pennsylvania,City3,Technology,Phones,Product Phones 571,4,0.05,2447.42,386.46
+ORD-01572,2024-11-20,2024-11-23,Standard Class,CUST-212,Customer 132,Corporate,East,Pennsylvania,City1,Technology,Machines,Product Machines 572,2,0.15,1006.72,174.24
+ORD-01573,2024-06-26,2024-07-03,Standard Class,CUST-334,Customer 183,Consumer,East,Pennsylvania,City4,Furniture,Chairs,Product Chairs 573,5,0,975.31,66.3
+ORD-01574,2023-03-04,2023-03-07,Standard Class,CUST-267,Customer 221,Consumer,South,Texas,City4,Technology,Machines,Product Machines 574,5,0.05,2637.52,320.61
+ORD-01575,2024-06-09,2024-06-12,Standard Class,CUST-144,Customer 131,Corporate,West,Washington,City2,Furniture,Chairs,Product Chairs 575,5,0,967.21,77.12
+ORD-01576,2024-08-14,2024-08-20,Standard Class,CUST-146,Customer 111,Corporate,North,Illinois,City3,Furniture,Tables,Product Tables 576,4,0,1794.44,144.77
+ORD-01577,2023-03-30,2023-04-02,Standard Class,CUST-190,Customer 299,Home Office,West,California,City4,Furniture,Chairs,Product Chairs 577,2,0,404.79,35.9
+ORD-01578,2023-11-01,2023-11-07,Standard Class,CUST-280,Customer 126,Corporate,East,New York,City2,Technology,Machines,Product Machines 578,1,0,590.98,92.12
+ORD-01579,2023-11-19,2023-11-25,Standard Class,CUST-322,Customer 182,Consumer,North,Illinois,City2,Technology,Machines,Product Machines 579,5,0.05,2727.41,379.42
+ORD-01580,2023-05-07,2023-05-10,Standard Class,CUST-106,Customer 153,Home Office,South,Florida,City1,Technology,Machines,Product Machines 580,2,0.05,1123.78,178.97
+ORD-01581,2023-02-19,2023-02-23,Standard Class,CUST-334,Customer 125,Consumer,West,California,City2,Furniture,Bookcases,Product Bookcases 581,5,0.15,1229.15,81.2
+ORD-01582,2023-04-29,2023-05-05,Standard Class,CUST-290,Customer 294,Corporate,East,Pennsylvania,City3,Furniture,Tables,Product Tables 582,1,0,413.92,37.72
+ORD-01583,2023-02-25,2023-03-03,Standard Class,CUST-205,Customer 169,Home Office,West,Washington,City2,Furniture,Chairs,Product Chairs 583,5,0.05,992.88,70.61
+ORD-01584,2023-11-19,2023-11-22,Standard Class,CUST-134,Customer 179,Home Office,East,New York,City1,Office Supplies,Binders,Product Binders 584,2,0,40.76,8.58
+ORD-01585,2024-01-27,2024-01-30,Standard Class,CUST-151,Customer 265,Consumer,North,Ohio,City2,Technology,Phones,Product Phones 585,2,0,1229.8,154.51
+ORD-01586,2024-06-15,2024-06-19,Standard Class,CUST-195,Customer 129,Corporate,East,New York,City2,Office Supplies,Storage,Product Storage 586,3,0.15,85.12,15.19
+ORD-01587,2023-10-11,2023-10-14,Standard Class,CUST-342,Customer 282,Consumer,East,Pennsylvania,City2,Technology,Accessories,Product Accessories 587,3,0,256.4,32.92
+ORD-01588,2023-02-25,2023-02-28,Standard Class,CUST-293,Customer 104,Home Office,East,Pennsylvania,City1,Office Supplies,Storage,Product Storage 588,2,0,73.94,14.77
+ORD-01589,2024-07-24,2024-07-29,Standard Class,CUST-121,Customer 313,Consumer,North,Ohio,City3,Furniture,Bookcases,Product Bookcases 589,3,0.1,769.99,73.35
+ORD-01590,2023-12-18,2023-12-23,Standard Class,CUST-284,Customer 129,Home Office,West,Washington,City2,Furniture,Tables,Product Tables 590,5,0.15,1871.47,179.06
+ORD-01591,2024-02-03,2024-02-09,Standard Class,CUST-148,Customer 207,Home Office,South,Texas,City3,Furniture,Chairs,Product Chairs 591,3,0,745.49,60.6
+ORD-01592,2024-01-11,2024-01-18,Standard Class,CUST-151,Customer 313,Corporate,West,California,City1,Technology,Accessories,Product Accessories 592,1,0,94.67,11.97
+ORD-01593,2024-08-24,2024-08-28,Standard Class,CUST-212,Customer 147,Corporate,South,Texas,City1,Technology,Accessories,Product Accessories 593,5,0,474.05,74.37
+ORD-01594,2023-01-05,2023-01-07,Standard Class,CUST-348,Customer 270,Home Office,South,Texas,City2,Technology,Accessories,Product Accessories 594,1,0.1,73.52,9.14
+ORD-01595,2023-08-25,2023-08-31,Standard Class,CUST-235,Customer 236,Consumer,East,Pennsylvania,City2,Technology,Accessories,Product Accessories 595,3,0.1,231.4,34.01
+ORD-01596,2023-08-31,2023-09-06,Standard Class,CUST-290,Customer 298,Consumer,East,New York,City2,Office Supplies,Storage,Product Storage 596,3,0,110.75,24
+ORD-01597,2023-05-06,2023-05-13,Standard Class,CUST-263,Customer 330,Consumer,North,Illinois,City4,Technology,Phones,Product Phones 597,3,0,2322.87,414.73
+ORD-01598,2023-04-07,2023-04-08,Standard Class,CUST-148,Customer 231,Home Office,East,Pennsylvania,City1,Furniture,Chairs,Product Chairs 598,4,0.1,788.24,72.77
+ORD-01599,2023-09-15,2023-09-18,Standard Class,CUST-104,Customer 103,Corporate,East,Pennsylvania,City3,Furniture,Tables,Product Tables 599,3,0.15,1098.89,73.17
+ORD-01600,2024-12-20,2024-12-22,Standard Class,CUST-129,Customer 223,Home Office,West,California,City1,Office Supplies,Paper,Product Paper 600,1,0.1,11.56,2.53
+ORD-01601,2023-03-18,2023-03-25,Standard Class,CUST-197,Customer 147,Corporate,North,Illinois,City3,Office Supplies,Binders,Product Binders 601,3,0.1,48.02,11.17
+ORD-01602,2024-07-24,2024-07-29,Standard Class,CUST-186,Customer 346,Corporate,South,Florida,City1,Technology,Accessories,Product Accessories 602,2,0.15,182.6,32.32
+ORD-01603,2023-08-25,2023-08-26,Standard Class,CUST-247,Customer 252,Consumer,East,Pennsylvania,City2,Technology,Phones,Product Phones 603,1,0,775.96,139.14
+ORD-01604,2024-05-18,2024-05-22,Standard Class,CUST-146,Customer 334,Consumer,North,Illinois,City1,Office Supplies,Storage,Product Storage 604,1,0,40.12,8.77
+ORD-01605,2023-08-01,2023-08-04,Standard Class,CUST-130,Customer 215,Home Office,East,New York,City3,Technology,Accessories,Product Accessories 605,2,0,167.21,25.38
+ORD-01606,2023-11-24,2023-11-27,Standard Class,CUST-323,Customer 191,Consumer,North,Ohio,City1,Office Supplies,Storage,Product Storage 606,4,0.05,147.85,31.43
+ORD-01607,2023-09-25,2023-09-27,Standard Class,CUST-172,Customer 280,Consumer,West,California,City3,Furniture,Bookcases,Product Bookcases 607,5,0.1,1224.44,115.07
+ORD-01608,2023-10-03,2023-10-07,Standard Class,CUST-154,Customer 260,Consumer,North,Ohio,City1,Furniture,Chairs,Product Chairs 608,3,0,621.59,43.42
+ORD-01609,2024-01-07,2024-01-14,Standard Class,CUST-245,Customer 316,Consumer,West,California,City1,Technology,Machines,Product Machines 609,2,0,1126.62,143.33
+ORD-01610,2023-12-24,2023-12-26,Standard Class,CUST-338,Customer 240,Home Office,North,Ohio,City3,Technology,Machines,Product Machines 610,3,0,1543.05,243.46
+ORD-01611,2024-03-21,2024-03-24,Standard Class,CUST-184,Customer 141,Home Office,West,California,City4,Furniture,Bookcases,Product Bookcases 611,3,0,965.48,64.05
+ORD-01612,2023-02-22,2023-02-24,Standard Class,CUST-154,Customer 341,Home Office,South,Florida,City2,Office Supplies,Paper,Product Paper 612,2,0,20.71,4.48
+ORD-01613,2023-02-26,2023-03-01,Standard Class,CUST-186,Customer 315,Consumer,West,California,City1,Furniture,Tables,Product Tables 613,2,0.15,725.45,49.75
+ORD-01614,2023-06-05,2023-06-08,Standard Class,CUST-146,Customer 271,Corporate,South,Texas,City2,Technology,Phones,Product Phones 614,3,0,1929.46,302.45
+ORD-01615,2023-09-11,2023-09-15,Standard Class,CUST-318,Customer 340,Corporate,South,Florida,City1,Office Supplies,Paper,Product Paper 615,3,0.1,30.16,6.18
+ORD-01616,2024-02-09,2024-02-16,Standard Class,CUST-236,Customer 209,Home Office,West,Washington,City1,Office Supplies,Paper,Product Paper 616,5,0.15,45.6,8.03
+ORD-01617,2023-08-22,2023-08-28,Standard Class,CUST-212,Customer 238,Home Office,North,Ohio,City4,Technology,Accessories,Product Accessories 617,2,0.15,178.42,25.49
+ORD-01618,2023-06-05,2023-06-10,Standard Class,CUST-316,Customer 270,Consumer,East,New York,City2,Technology,Accessories,Product Accessories 618,4,0,415.64,62.42
+ORD-01619,2024-10-02,2024-10-04,Standard Class,CUST-270,Customer 258,Consumer,North,Illinois,City2,Office Supplies,Storage,Product Storage 619,4,0,129.95,31.61
+ORD-01620,2024-02-28,2024-02-29,Standard Class,CUST-268,Customer 309,Corporate,South,Texas,City3,Office Supplies,Binders,Product Binders 620,1,0,16.81,3.56
+ORD-01621,2024-07-20,2024-07-24,Standard Class,CUST-313,Customer 279,Home Office,South,Florida,City4,Furniture,Chairs,Product Chairs 621,5,0.05,962.88,69.67
+ORD-01622,2024-03-16,2024-03-21,Standard Class,CUST-226,Customer 105,Consumer,South,Texas,City3,Furniture,Bookcases,Product Bookcases 622,5,0,1237.31,110.97
+ORD-01623,2024-01-29,2024-01-30,Standard Class,CUST-307,Customer 290,Consumer,South,Florida,City1,Office Supplies,Storage,Product Storage 623,4,0.1,122.01,31.25
+ORD-01624,2023-08-15,2023-08-19,Standard Class,CUST-100,Customer 346,Corporate,East,Pennsylvania,City3,Technology,Accessories,Product Accessories 624,3,0,253.51,37.62
+ORD-01625,2023-05-06,2023-05-13,Standard Class,CUST-105,Customer 106,Corporate,South,Texas,City2,Office Supplies,Storage,Product Storage 625,3,0,113.92,28.58
+ORD-01626,2023-05-18,2023-05-19,Standard Class,CUST-243,Customer 272,Corporate,East,Pennsylvania,City1,Office Supplies,Binders,Product Binders 626,2,0.15,27.57,4.88
+ORD-01627,2024-12-21,2024-12-22,Standard Class,CUST-153,Customer 270,Corporate,East,Pennsylvania,City4,Furniture,Tables,Product Tables 627,2,0.1,821.5,63.19
+ORD-01628,2023-07-01,2023-07-08,Standard Class,CUST-292,Customer 217,Corporate,South,Texas,City2,Technology,Accessories,Product Accessories 628,4,0.1,383.64,60.21
+ORD-01629,2023-04-10,2023-04-13,Standard Class,CUST-296,Customer 284,Home Office,West,California,City1,Office Supplies,Storage,Product Storage 629,5,0.1,145.02,30.86
+ORD-01630,2024-03-18,2024-03-20,Standard Class,CUST-333,Customer 309,Consumer,East,New York,City4,Furniture,Chairs,Product Chairs 630,4,0,903.23,80.08
+ORD-01631,2024-09-03,2024-09-06,Standard Class,CUST-297,Customer 241,Corporate,East,Pennsylvania,City1,Furniture,Tables,Product Tables 631,3,0,1331.94,125.19
+ORD-01632,2023-02-22,2023-02-24,Standard Class,CUST-307,Customer 102,Home Office,South,Texas,City1,Technology,Phones,Product Phones 632,5,0.1,3434.9,617.27
+ORD-01633,2023-09-22,2023-09-23,Standard Class,CUST-176,Customer 255,Home Office,South,Texas,City4,Furniture,Bookcases,Product Bookcases 633,4,0,1258.48,88.98
+ORD-01634,2024-01-13,2024-01-20,Standard Class,CUST-320,Customer 189,Consumer,South,Texas,City3,Furniture,Bookcases,Product Bookcases 634,5,0.05,1326.28,104.93
+ORD-01635,2023-11-17,2023-11-23,Standard Class,CUST-321,Customer 177,Consumer,West,Washington,City1,Furniture,Chairs,Product Chairs 635,3,0,658.68,58.68
+ORD-01636,2023-12-31,2024-01-06,Standard Class,CUST-142,Customer 145,Home Office,West,Washington,City4,Furniture,Chairs,Product Chairs 636,1,0,225.27,18.55
+ORD-01637,2023-02-22,2023-03-01,Standard Class,CUST-147,Customer 207,Consumer,East,New York,City3,Office Supplies,Binders,Product Binders 637,1,0,17.21,4.03
+ORD-01638,2023-05-25,2023-05-29,Standard Class,CUST-180,Customer 338,Home Office,North,Illinois,City2,Office Supplies,Paper,Product Paper 638,3,0,38.18,9.72
+ORD-01639,2024-02-17,2024-02-21,Standard Class,CUST-141,Customer 272,Home Office,North,Illinois,City1,Office Supplies,Binders,Product Binders 639,3,0.05,47.41,10.14
+ORD-01640,2024-02-26,2024-03-02,Standard Class,CUST-272,Customer 166,Consumer,East,Pennsylvania,City3,Office Supplies,Paper,Product Paper 640,5,0.15,51.24,11.24
+ORD-01641,2024-04-11,2024-04-18,Standard Class,CUST-309,Customer 288,Corporate,West,Washington,City3,Office Supplies,Binders,Product Binders 641,3,0,53.31,13.58
+ORD-01642,2023-10-23,2023-10-29,Standard Class,CUST-122,Customer 345,Home Office,South,Florida,City3,Technology,Machines,Product Machines 642,4,0.05,1953.98,278.22
+ORD-01643,2024-02-16,2024-02-23,Standard Class,CUST-154,Customer 261,Corporate,East,Pennsylvania,City3,Technology,Phones,Product Phones 643,2,0.05,1338.2,236.17
+ORD-01644,2023-07-18,2023-07-25,Standard Class,CUST-240,Customer 269,Consumer,North,Illinois,City2,Furniture,Bookcases,Product Bookcases 644,3,0.15,618.18,58.52
+ORD-01645,2023-10-08,2023-10-12,Standard Class,CUST-225,Customer 294,Consumer,North,Illinois,City2,Office Supplies,Paper,Product Paper 645,2,0.1,20.26,3.62
+ORD-01646,2024-11-29,2024-12-06,Standard Class,CUST-204,Customer 319,Corporate,North,Illinois,City3,Technology,Phones,Product Phones 646,5,0.1,2773.06,366.55
+ORD-01647,2024-09-26,2024-10-02,Standard Class,CUST-184,Customer 326,Corporate,South,Florida,City1,Furniture,Chairs,Product Chairs 647,2,0,469.37,34.31
+ORD-01648,2023-08-13,2023-08-17,Standard Class,CUST-285,Customer 255,Consumer,West,California,City1,Technology,Machines,Product Machines 648,5,0.05,2874.86,496.17
+ORD-01649,2024-07-04,2024-07-11,Standard Class,CUST-219,Customer 306,Home Office,South,Texas,City4,Office Supplies,Paper,Product Paper 649,1,0.05,12.06,2.88
+ORD-01650,2023-10-07,2023-10-12,Standard Class,CUST-100,Customer 125,Home Office,East,Pennsylvania,City2,Furniture,Bookcases,Product Bookcases 650,2,0,540.82,46.89
+ORD-01651,2024-04-25,2024-05-02,Standard Class,CUST-303,Customer 278,Corporate,South,Texas,City1,Furniture,Tables,Product Tables 651,5,0.1,2305.95,203.15
+ORD-01652,2024-07-26,2024-07-31,Standard Class,CUST-175,Customer 154,Corporate,South,Florida,City3,Office Supplies,Binders,Product Binders 652,4,0,68.76,14.87
+ORD-01653,2023-03-15,2023-03-21,Standard Class,CUST-324,Customer 117,Home Office,East,New York,City4,Technology,Machines,Product Machines 653,5,0,2580.66,386.59
+ORD-01654,2023-08-26,2023-09-02,Standard Class,CUST-182,Customer 252,Consumer,North,Ohio,City4,Office Supplies,Paper,Product Paper 654,3,0,32.92,7.86
+ORD-01655,2023-12-23,2023-12-29,Standard Class,CUST-300,Customer 158,Home Office,South,Texas,City4,Technology,Machines,Product Machines 655,1,0,462.22,61.52
+ORD-01656,2023-12-27,2024-01-01,Standard Class,CUST-263,Customer 186,Corporate,East,Pennsylvania,City1,Office Supplies,Storage,Product Storage 656,2,0.05,61.83,16.2
+ORD-01657,2023-11-03,2023-11-05,Standard Class,CUST-348,Customer 214,Home Office,North,Illinois,City4,Technology,Phones,Product Phones 657,1,0,582.96,104.26
+ORD-01658,2024-08-06,2024-08-11,Standard Class,CUST-171,Customer 233,Corporate,South,Texas,City2,Furniture,Bookcases,Product Bookcases 658,3,0,749.88,67.56
+ORD-01659,2023-05-04,2023-05-08,Standard Class,CUST-128,Customer 175,Home Office,East,Pennsylvania,City3,Office Supplies,Storage,Product Storage 659,5,0.15,131.01,23.25
+ORD-01660,2024-10-17,2024-10-20,Standard Class,CUST-303,Customer 145,Home Office,North,Ohio,City2,Furniture,Tables,Product Tables 660,5,0,2357.79,158.85
+ORD-01661,2023-04-01,2023-04-03,Standard Class,CUST-226,Customer 288,Home Office,East,New York,City2,Office Supplies,Paper,Product Paper 661,5,0.05,54.5,13.15
+ORD-01662,2024-10-27,2024-10-30,Standard Class,CUST-277,Customer 186,Home Office,North,Illinois,City3,Office Supplies,Binders,Product Binders 662,2,0.05,36.52,9.1
+ORD-01663,2023-12-17,2023-12-21,Standard Class,CUST-222,Customer 210,Consumer,West,Washington,City2,Furniture,Tables,Product Tables 663,1,0.1,386.09,26.36
+ORD-01664,2023-03-15,2023-03-20,Standard Class,CUST-334,Customer 181,Corporate,West,California,City4,Technology,Phones,Product Phones 664,3,0,2276.59,354.38
+ORD-01665,2023-09-12,2023-09-18,Standard Class,CUST-258,Customer 117,Home Office,North,Ohio,City1,Furniture,Chairs,Product Chairs 665,4,0.1,901.31,68.74
+ORD-01666,2023-02-18,2023-02-23,Standard Class,CUST-330,Customer 219,Corporate,West,Washington,City1,Furniture,Tables,Product Tables 666,2,0,1031.3,81.32
+ORD-01667,2024-04-23,2024-04-24,Standard Class,CUST-287,Customer 200,Corporate,East,New York,City2,Furniture,Tables,Product Tables 667,2,0.05,728.94,67.29
+ORD-01668,2024-09-07,2024-09-08,Standard Class,CUST-101,Customer 149,Home Office,North,Ohio,City3,Technology,Accessories,Product Accessories 668,3,0.1,277.38,40.16
+ORD-01669,2024-10-21,2024-10-27,Standard Class,CUST-310,Customer 213,Consumer,East,New York,City4,Technology,Phones,Product Phones 669,1,0.1,656.74,79.38
+ORD-01670,2023-06-01,2023-06-05,Standard Class,CUST-118,Customer 308,Corporate,North,Ohio,City1,Office Supplies,Storage,Product Storage 670,5,0.05,159.51,34.35
+ORD-01671,2023-12-22,2023-12-26,Standard Class,CUST-151,Customer 253,Home Office,South,Florida,City1,Furniture,Bookcases,Product Bookcases 671,4,0,1071.41,83.1
+ORD-01672,2023-03-06,2023-03-07,Standard Class,CUST-151,Customer 182,Consumer,East,Pennsylvania,City1,Technology,Machines,Product Machines 672,4,0.1,1874.27,239.53
+ORD-01673,2023-02-07,2023-02-13,Standard Class,CUST-302,Customer 282,Corporate,North,Ohio,City3,Office Supplies,Paper,Product Paper 673,2,0.05,22.96,4.46
+ORD-01674,2023-02-13,2023-02-14,Standard Class,CUST-127,Customer 245,Home Office,North,Ohio,City2,Furniture,Chairs,Product Chairs 674,5,0,1176.63,98.35
+ORD-01675,2023-10-10,2023-10-16,Standard Class,CUST-164,Customer 150,Corporate,East,Pennsylvania,City3,Furniture,Bookcases,Product Bookcases 675,1,0,271.53,21.87
+ORD-01676,2023-10-04,2023-10-10,Standard Class,CUST-230,Customer 103,Corporate,East,Pennsylvania,City2,Office Supplies,Storage,Product Storage 676,2,0.1,70.64,15.97
+ORD-01677,2024-12-21,2024-12-25,Standard Class,CUST-269,Customer 177,Consumer,West,California,City3,Office Supplies,Storage,Product Storage 677,4,0,144.36,29.91
+ORD-01678,2024-12-21,2024-12-22,Standard Class,CUST-183,Customer 118,Corporate,North,Ohio,City1,Office Supplies,Paper,Product Paper 678,4,0,41.79,8.67
+ORD-01679,2024-03-03,2024-03-07,Standard Class,CUST-232,Customer 199,Home Office,South,Florida,City1,Furniture,Bookcases,Product Bookcases 679,5,0.15,1227.81,93.12
+ORD-01680,2024-06-06,2024-06-13,Standard Class,CUST-174,Customer 130,Corporate,East,Pennsylvania,City3,Office Supplies,Storage,Product Storage 680,3,0,103.05,22.74
+ORD-01681,2024-05-24,2024-05-29,Standard Class,CUST-196,Customer 155,Consumer,North,Illinois,City4,Technology,Accessories,Product Accessories 681,4,0.05,310.85,55.92
+ORD-01682,2024-08-04,2024-08-07,Standard Class,CUST-228,Customer 165,Corporate,South,Florida,City4,Office Supplies,Binders,Product Binders 682,2,0.15,31.92,6.57
+ORD-01683,2023-01-28,2023-02-04,Standard Class,CUST-273,Customer 183,Consumer,South,Florida,City3,Furniture,Tables,Product Tables 683,4,0,1713.81,134.04
+ORD-01684,2024-09-02,2024-09-09,Standard Class,CUST-299,Customer 216,Home Office,West,Washington,City3,Technology,Accessories,Product Accessories 684,1,0.1,78.36,9.78
+ORD-01685,2024-10-20,2024-10-25,Standard Class,CUST-245,Customer 112,Corporate,South,Texas,City4,Office Supplies,Paper,Product Paper 685,5,0,64.05,15.88
+ORD-01686,2024-09-03,2024-09-05,Standard Class,CUST-142,Customer 330,Corporate,East,New York,City1,Technology,Machines,Product Machines 686,4,0.15,1775.18,225.83
+ORD-01687,2024-09-13,2024-09-15,Standard Class,CUST-191,Customer 331,Home Office,North,Ohio,City1,Office Supplies,Binders,Product Binders 687,1,0.05,15.04,3.95
+ORD-01688,2023-09-11,2023-09-17,Standard Class,CUST-284,Customer 345,Consumer,West,Washington,City1,Furniture,Bookcases,Product Bookcases 688,2,0,556.68,47.99
+ORD-01689,2024-02-29,2024-03-03,Standard Class,CUST-326,Customer 292,Home Office,North,Ohio,City3,Office Supplies,Binders,Product Binders 689,4,0.05,74.01,13.92
+ORD-01690,2023-10-29,2023-10-30,Standard Class,CUST-266,Customer 152,Home Office,South,Texas,City2,Technology,Machines,Product Machines 690,5,0,2575.08,443.06
+ORD-01691,2024-12-14,2024-12-17,Standard Class,CUST-171,Customer 214,Corporate,South,Texas,City3,Technology,Phones,Product Phones 691,2,0.15,1250.87,220.73
+ORD-01692,2023-05-12,2023-05-19,Standard Class,CUST-110,Customer 110,Home Office,South,Texas,City2,Office Supplies,Paper,Product Paper 692,4,0.15,39.62,10.35
+ORD-01693,2024-12-04,2024-12-10,Standard Class,CUST-205,Customer 316,Home Office,South,Texas,City2,Technology,Accessories,Product Accessories 693,5,0,506.16,72.41
+ORD-01694,2024-12-27,2024-12-29,Standard Class,CUST-243,Customer 311,Home Office,South,Texas,City2,Technology,Accessories,Product Accessories 694,5,0.1,424.76,52.42
+ORD-01695,2024-11-14,2024-11-20,Standard Class,CUST-260,Customer 334,Home Office,North,Ohio,City1,Office Supplies,Binders,Product Binders 695,5,0,88.47,22.07
+ORD-01696,2023-11-02,2023-11-06,Standard Class,CUST-136,Customer 142,Home Office,South,Texas,City2,Office Supplies,Storage,Product Storage 696,1,0,35.69,9.02
+ORD-01697,2024-03-29,2024-03-30,Standard Class,CUST-317,Customer 202,Home Office,North,Illinois,City3,Furniture,Tables,Product Tables 697,3,0,1296.68,102.03
+ORD-01698,2023-03-28,2023-04-03,Standard Class,CUST-304,Customer 323,Home Office,South,Florida,City1,Furniture,Tables,Product Tables 698,4,0,1888.55,157.34
+ORD-01699,2024-12-29,2025-01-03,Standard Class,CUST-214,Customer 262,Corporate,North,Ohio,City4,Office Supplies,Storage,Product Storage 699,3,0,110.96,26.73
+ORD-01700,2024-06-16,2024-06-18,Standard Class,CUST-195,Customer 198,Home Office,West,Washington,City3,Furniture,Chairs,Product Chairs 700,1,0.15,187.05,16.51
+ORD-01701,2024-11-29,2024-11-30,Standard Class,CUST-312,Customer 325,Home Office,North,Illinois,City3,Office Supplies,Paper,Product Paper 701,2,0,23.09,4.19
+ORD-01702,2024-10-24,2024-10-26,Standard Class,CUST-286,Customer 321,Corporate,East,New York,City2,Technology,Phones,Product Phones 702,5,0.1,3364.77,438.12
+ORD-01703,2024-01-13,2024-01-20,Standard Class,CUST-166,Customer 202,Corporate,West,Washington,City3,Technology,Phones,Product Phones 703,2,0,1423.61,251.53
+ORD-01704,2024-05-15,2024-05-17,Standard Class,CUST-238,Customer 111,Home Office,West,Washington,City4,Furniture,Bookcases,Product Bookcases 704,1,0.15,209.07,17.16
+ORD-01705,2024-03-14,2024-03-19,Standard Class,CUST-269,Customer 282,Home Office,North,Ohio,City3,Furniture,Chairs,Product Chairs 705,3,0,607.55,58.02
+ORD-01706,2023-11-11,2023-11-15,Standard Class,CUST-290,Customer 294,Consumer,East,Pennsylvania,City2,Furniture,Chairs,Product Chairs 706,1,0,198.8,13.08
+ORD-01707,2023-01-27,2023-02-02,Standard Class,CUST-307,Customer 228,Corporate,South,Texas,City1,Technology,Phones,Product Phones 707,3,0.1,2000.66,307.57
+ORD-01708,2023-09-29,2023-09-30,Standard Class,CUST-319,Customer 246,Home Office,North,Illinois,City1,Technology,Accessories,Product Accessories 708,5,0,534.73,66.12
+ORD-01709,2023-02-19,2023-02-23,Standard Class,CUST-173,Customer 158,Home Office,East,New York,City1,Furniture,Tables,Product Tables 709,5,0.15,2025.76,155.56
+ORD-01710,2024-11-13,2024-11-16,Standard Class,CUST-321,Customer 314,Corporate,East,New York,City1,Technology,Accessories,Product Accessories 710,4,0,414.95,58.35
+ORD-01711,2023-01-23,2023-01-24,Standard Class,CUST-275,Customer 225,Consumer,West,California,City4,Office Supplies,Storage,Product Storage 711,1,0.1,27.13,6.44
+ORD-01712,2024-01-24,2024-01-26,Standard Class,CUST-333,Customer 240,Consumer,North,Illinois,City1,Office Supplies,Paper,Product Paper 712,3,0.15,30.34,6.06
+ORD-01713,2023-05-27,2023-05-31,Standard Class,CUST-155,Customer 152,Consumer,South,Texas,City4,Furniture,Tables,Product Tables 713,4,0,1837.89,151.95
+ORD-01714,2023-07-19,2023-07-21,Standard Class,CUST-199,Customer 227,Home Office,North,Ohio,City3,Furniture,Bookcases,Product Bookcases 714,5,0.15,1127.39,103.53
+ORD-01715,2023-03-19,2023-03-25,Standard Class,CUST-318,Customer 309,Consumer,West,California,City2,Furniture,Chairs,Product Chairs 715,3,0.15,525.93,44.85
+ORD-01716,2023-07-20,2023-07-26,Standard Class,CUST-274,Customer 181,Home Office,West,Washington,City3,Technology,Phones,Product Phones 716,4,0.05,2349.23,417.11
+ORD-01717,2024-01-25,2024-01-31,Standard Class,CUST-295,Customer 147,Corporate,North,Ohio,City2,Technology,Phones,Product Phones 717,4,0,2826.97,360.34
+ORD-01718,2024-08-07,2024-08-09,Standard Class,CUST-279,Customer 144,Corporate,South,Texas,City4,Office Supplies,Binders,Product Binders 718,4,0.15,52.11,12.03
+ORD-01719,2023-05-19,2023-05-25,Standard Class,CUST-130,Customer 167,Home Office,West,California,City3,Furniture,Bookcases,Product Bookcases 719,5,0.1,1287.52,99.78
+ORD-01720,2024-01-07,2024-01-12,Standard Class,CUST-262,Customer 341,Corporate,North,Ohio,City2,Technology,Accessories,Product Accessories 720,5,0.1,426.53,53.01
+ORD-01721,2023-01-13,2023-01-18,Standard Class,CUST-147,Customer 311,Home Office,West,California,City1,Technology,Accessories,Product Accessories 721,4,0.05,341.85,49.36
+ORD-01722,2024-05-16,2024-05-17,Standard Class,CUST-150,Customer 243,Corporate,North,Ohio,City3,Furniture,Chairs,Product Chairs 722,1,0,220.41,15.07
+ORD-01723,2023-09-15,2023-09-20,Standard Class,CUST-256,Customer 141,Corporate,East,New York,City3,Technology,Phones,Product Phones 723,2,0,1375.49,229.81
+ORD-01724,2024-07-18,2024-07-20,Standard Class,CUST-320,Customer 166,Home Office,East,Pennsylvania,City3,Technology,Phones,Product Phones 724,5,0,2949.52,528.03
+ORD-01725,2023-06-19,2023-06-21,Standard Class,CUST-254,Customer 282,Corporate,East,New York,City1,Technology,Phones,Product Phones 725,1,0.05,701.84,123.78
+ORD-01726,2024-06-03,2024-06-04,Standard Class,CUST-253,Customer 113,Home Office,North,Illinois,City3,Furniture,Tables,Product Tables 726,5,0.1,2019.53,187.71
+ORD-01727,2023-06-26,2023-06-30,Standard Class,CUST-107,Customer 306,Home Office,South,Texas,City3,Office Supplies,Storage,Product Storage 727,1,0.1,27.4,5
+ORD-01728,2023-12-04,2023-12-11,Standard Class,CUST-204,Customer 141,Consumer,East,New York,City4,Technology,Phones,Product Phones 728,5,0.1,3345.67,492.44
+ORD-01729,2023-01-06,2023-01-11,Standard Class,CUST-247,Customer 278,Consumer,East,New York,City1,Technology,Phones,Product Phones 729,5,0,3537.55,429.9
+ORD-01730,2024-02-10,2024-02-13,Standard Class,CUST-128,Customer 310,Home Office,North,Illinois,City4,Furniture,Bookcases,Product Bookcases 730,5,0.1,1204.96,94.9
+ORD-01731,2023-03-11,2023-03-18,Standard Class,CUST-325,Customer 292,Consumer,East,New York,City3,Technology,Machines,Product Machines 731,3,0,1622.61,289.3
+ORD-01732,2023-02-24,2023-02-27,Standard Class,CUST-173,Customer 217,Corporate,North,Ohio,City1,Technology,Phones,Product Phones 732,4,0.1,2356.4,315.89
+ORD-01733,2023-03-25,2023-03-30,Standard Class,CUST-145,Customer 327,Corporate,East,New York,City1,Furniture,Bookcases,Product Bookcases 733,2,0.1,471,42.51
+ORD-01734,2024-07-01,2024-07-08,Standard Class,CUST-143,Customer 127,Corporate,North,Ohio,City3,Office Supplies,Binders,Product Binders 734,4,0.1,59.31,14.08
+ORD-01735,2024-12-12,2024-12-18,Standard Class,CUST-209,Customer 172,Consumer,North,Illinois,City2,Furniture,Bookcases,Product Bookcases 735,4,0,1037.94,67.33
+ORD-01736,2023-07-23,2023-07-25,Standard Class,CUST-289,Customer 257,Home Office,East,New York,City1,Office Supplies,Storage,Product Storage 736,1,0,30.81,5.78
+ORD-01737,2024-11-15,2024-11-16,Standard Class,CUST-130,Customer 148,Home Office,South,Texas,City1,Furniture,Bookcases,Product Bookcases 737,2,0.1,535.49,50.91
+ORD-01738,2024-09-07,2024-09-10,Standard Class,CUST-348,Customer 151,Corporate,West,California,City4,Technology,Accessories,Product Accessories 738,3,0.1,291.54,47.72
+ORD-01739,2024-10-31,2024-11-02,Standard Class,CUST-345,Customer 217,Home Office,West,California,City4,Office Supplies,Binders,Product Binders 739,3,0,57.39,14.61
+ORD-01740,2024-01-20,2024-01-23,Standard Class,CUST-110,Customer 123,Consumer,North,Ohio,City3,Technology,Machines,Product Machines 740,3,0.15,1237.51,221.4
+ORD-01741,2024-08-15,2024-08-22,Standard Class,CUST-271,Customer 253,Corporate,North,Illinois,City1,Office Supplies,Binders,Product Binders 741,2,0.1,28.56,6.16
+ORD-01742,2024-07-25,2024-07-26,Standard Class,CUST-297,Customer 203,Home Office,South,Texas,City4,Technology,Phones,Product Phones 742,1,0,709.12,124.01
+ORD-01743,2024-12-29,2025-01-05,Standard Class,CUST-126,Customer 346,Corporate,West,Washington,City3,Office Supplies,Paper,Product Paper 743,1,0,12.55,2.68
+ORD-01744,2024-10-14,2024-10-21,Standard Class,CUST-103,Customer 319,Home Office,North,Ohio,City2,Office Supplies,Storage,Product Storage 744,3,0,108.23,19.84
+ORD-01745,2024-09-06,2024-09-08,Standard Class,CUST-209,Customer 169,Corporate,East,New York,City4,Office Supplies,Storage,Product Storage 745,5,0,174.38,43.62
+ORD-01746,2024-09-02,2024-09-09,Standard Class,CUST-303,Customer 283,Consumer,South,Florida,City4,Office Supplies,Binders,Product Binders 746,3,0,58.81,10.9
+ORD-01747,2024-02-20,2024-02-22,Standard Class,CUST-120,Customer 211,Consumer,North,Illinois,City2,Technology,Phones,Product Phones 747,1,0,725.86,124.01
+ORD-01748,2024-11-01,2024-11-08,Standard Class,CUST-190,Customer 335,Corporate,West,Washington,City3,Technology,Phones,Product Phones 748,4,0.05,2690.01,376.32
+ORD-01749,2024-09-23,2024-09-24,Standard Class,CUST-126,Customer 124,Consumer,South,Texas,City3,Office Supplies,Binders,Product Binders 749,5,0.05,92.34,21.55
+ORD-01750,2024-03-25,2024-03-29,Standard Class,CUST-117,Customer 257,Consumer,West,Washington,City3,Office Supplies,Binders,Product Binders 750,5,0.05,79.64,20.09
+ORD-01751,2023-01-16,2023-01-23,Standard Class,CUST-226,Customer 234,Corporate,South,Texas,City1,Furniture,Bookcases,Product Bookcases 751,4,0,1131.11,81.09
+ORD-01752,2024-10-25,2024-10-28,Standard Class,CUST-120,Customer 101,Consumer,North,Illinois,City2,Office Supplies,Paper,Product Paper 752,3,0,34.26,6.22
+ORD-01753,2023-05-31,2023-06-07,Standard Class,CUST-174,Customer 124,Consumer,East,Pennsylvania,City4,Office Supplies,Binders,Product Binders 753,2,0,34.71,7.28
+ORD-01754,2023-07-24,2023-07-28,Standard Class,CUST-150,Customer 150,Corporate,West,California,City1,Technology,Phones,Product Phones 754,1,0,733.66,105.21
+ORD-01755,2024-08-09,2024-08-11,Standard Class,CUST-142,Customer 221,Home Office,East,Pennsylvania,City3,Office Supplies,Storage,Product Storage 755,4,0,141.13,29.58
+ORD-01756,2024-06-09,2024-06-15,Standard Class,CUST-348,Customer 159,Home Office,North,Illinois,City2,Office Supplies,Binders,Product Binders 756,5,0.05,78.63,19.39
+ORD-01757,2024-06-10,2024-06-14,Standard Class,CUST-175,Customer 344,Consumer,South,Florida,City2,Office Supplies,Binders,Product Binders 757,4,0,78.74,17.73
+ORD-01758,2023-06-24,2023-07-01,Standard Class,CUST-157,Customer 304,Home Office,South,Texas,City4,Office Supplies,Paper,Product Paper 758,2,0,23.07,5.96
+ORD-01759,2023-03-04,2023-03-05,Standard Class,CUST-317,Customer 257,Home Office,West,California,City2,Furniture,Chairs,Product Chairs 759,3,0,565.45,39.95
+ORD-01760,2024-03-20,2024-03-24,Standard Class,CUST-337,Customer 260,Home Office,East,Pennsylvania,City2,Office Supplies,Storage,Product Storage 760,2,0.1,62.99,13.02
+ORD-01761,2024-05-27,2024-06-02,Standard Class,CUST-244,Customer 105,Corporate,South,Texas,City1,Furniture,Tables,Product Tables 761,1,0,467.74,34.85
+ORD-01762,2024-09-07,2024-09-09,Standard Class,CUST-214,Customer 148,Consumer,South,Texas,City3,Technology,Accessories,Product Accessories 762,1,0.15,76.26,11.33
+ORD-01763,2023-02-23,2023-02-24,Standard Class,CUST-207,Customer 316,Home Office,West,California,City2,Technology,Machines,Product Machines 763,2,0.05,1134.4,193.83
+ORD-01764,2024-08-12,2024-08-15,Standard Class,CUST-226,Customer 109,Consumer,North,Illinois,City4,Technology,Accessories,Product Accessories 764,2,0,164.99,24.39
+ORD-01765,2023-04-04,2023-04-10,Standard Class,CUST-292,Customer 307,Consumer,South,Florida,City2,Technology,Phones,Product Phones 765,4,0,2756.26,391.24
+ORD-01766,2024-08-24,2024-08-25,Standard Class,CUST-309,Customer 316,Corporate,North,Ohio,City2,Office Supplies,Binders,Product Binders 766,1,0,17.53,3.94
+ORD-01767,2024-06-15,2024-06-18,Standard Class,CUST-122,Customer 294,Home Office,East,New York,City3,Office Supplies,Binders,Product Binders 767,3,0.15,45.25,9.46
+ORD-01768,2023-02-14,2023-02-16,Standard Class,CUST-339,Customer 121,Corporate,North,Ohio,City4,Technology,Accessories,Product Accessories 768,1,0.05,87.31,11.63
+ORD-01769,2024-02-17,2024-02-21,Standard Class,CUST-184,Customer 167,Home Office,West,California,City3,Office Supplies,Storage,Product Storage 769,3,0,115.6,28.55
+ORD-01770,2024-02-04,2024-02-07,Standard Class,CUST-276,Customer 324,Home Office,West,Washington,City2,Office Supplies,Binders,Product Binders 770,2,0.1,31.34,6.15
+ORD-01771,2023-07-11,2023-07-13,Standard Class,CUST-160,Customer 231,Home Office,South,Texas,City2,Office Supplies,Paper,Product Paper 771,3,0.05,34.25,7.55
+ORD-01772,2023-02-09,2023-02-14,Standard Class,CUST-304,Customer 287,Corporate,North,Illinois,City3,Office Supplies,Storage,Product Storage 772,4,0.1,120.7,23.99
+ORD-01773,2023-08-09,2023-08-16,Standard Class,CUST-291,Customer 193,Consumer,East,Pennsylvania,City2,Office Supplies,Paper,Product Paper 773,2,0.05,23.12,5.18
+ORD-01774,2023-04-02,2023-04-08,Standard Class,CUST-165,Customer 158,Home Office,East,Pennsylvania,City1,Office Supplies,Storage,Product Storage 774,5,0,159.34,35.53
+ORD-01775,2024-12-15,2024-12-20,Standard Class,CUST-157,Customer 183,Home Office,West,Washington,City2,Technology,Machines,Product Machines 775,1,0.15,503.96,72.95
+ORD-01776,2024-03-03,2024-03-04,Standard Class,CUST-322,Customer 203,Corporate,East,New York,City1,Office Supplies,Binders,Product Binders 776,3,0,57.54,10.41
+ORD-01777,2023-09-10,2023-09-11,Standard Class,CUST-153,Customer 181,Corporate,East,New York,City1,Technology,Phones,Product Phones 777,3,0.05,1984.54,320.92
+ORD-01778,2024-05-18,2024-05-25,Standard Class,CUST-281,Customer 336,Consumer,North,Illinois,City4,Technology,Accessories,Product Accessories 778,2,0.1,187.55,32.28
+ORD-01779,2023-06-16,2023-06-18,Standard Class,CUST-289,Customer 166,Home Office,North,Ohio,City1,Furniture,Tables,Product Tables 779,3,0.1,1283.3,106.27
+ORD-01780,2024-02-10,2024-02-13,Standard Class,CUST-146,Customer 280,Consumer,West,California,City4,Office Supplies,Binders,Product Binders 780,3,0.05,44.17,8.27
+ORD-01781,2023-04-16,2023-04-20,Standard Class,CUST-326,Customer 311,Corporate,East,New York,City2,Technology,Accessories,Product Accessories 781,2,0.1,179.93,30.54
+ORD-01782,2024-11-26,2024-11-30,Standard Class,CUST-217,Customer 272,Home Office,North,Illinois,City4,Furniture,Tables,Product Tables 782,5,0.1,2302.9,189.71
+ORD-01783,2024-08-30,2024-08-31,Standard Class,CUST-101,Customer 158,Corporate,West,California,City1,Technology,Machines,Product Machines 783,2,0.1,1084.8,185.57
+ORD-01784,2024-03-13,2024-03-15,Standard Class,CUST-326,Customer 228,Home Office,West,Washington,City1,Office Supplies,Paper,Product Paper 784,1,0.05,12.76,2.48
+ORD-01785,2024-10-26,2024-10-28,Standard Class,CUST-220,Customer 252,Corporate,South,Florida,City2,Office Supplies,Paper,Product Paper 785,4,0.1,47.95,11.17
+ORD-01786,2023-07-19,2023-07-25,Standard Class,CUST-234,Customer 167,Home Office,East,Pennsylvania,City4,Furniture,Chairs,Product Chairs 786,3,0.15,578.48,43.97
+ORD-01787,2024-12-05,2024-12-09,Standard Class,CUST-208,Customer 240,Consumer,West,California,City2,Furniture,Tables,Product Tables 787,5,0.1,1980.48,129.56
+ORD-01788,2023-07-14,2023-07-17,Standard Class,CUST-112,Customer 106,Corporate,East,New York,City1,Office Supplies,Paper,Product Paper 788,1,0.05,12.05,3.14
+ORD-01789,2023-10-23,2023-10-28,Standard Class,CUST-269,Customer 296,Home Office,East,New York,City2,Office Supplies,Paper,Product Paper 789,4,0,51.59,11.69
+ORD-01790,2024-05-22,2024-05-29,Standard Class,CUST-152,Customer 220,Consumer,East,Pennsylvania,City4,Office Supplies,Storage,Product Storage 790,4,0,148.69,28.81
+ORD-01791,2023-10-23,2023-10-30,Standard Class,CUST-295,Customer 126,Corporate,North,Illinois,City1,Furniture,Tables,Product Tables 791,2,0,908.19,76.88
+ORD-01792,2023-05-04,2023-05-06,Standard Class,CUST-191,Customer 160,Corporate,East,Pennsylvania,City2,Furniture,Bookcases,Product Bookcases 792,3,0,784.48,68.88
+ORD-01793,2024-09-05,2024-09-11,Standard Class,CUST-236,Customer 243,Home Office,East,New York,City1,Office Supplies,Binders,Product Binders 793,1,0.1,16.24,4.18
+ORD-01794,2023-04-06,2023-04-13,Standard Class,CUST-328,Customer 311,Corporate,North,Illinois,City2,Office Supplies,Paper,Product Paper 794,4,0.05,46.07,8.86
+ORD-01795,2024-03-05,2024-03-09,Standard Class,CUST-114,Customer 291,Corporate,South,Florida,City3,Technology,Machines,Product Machines 795,1,0,462.35,65.74
+ORD-01796,2023-01-21,2023-01-27,Standard Class,CUST-233,Customer 281,Home Office,East,New York,City2,Furniture,Tables,Product Tables 796,2,0,933.74,87.46
+ORD-01797,2023-06-18,2023-06-22,Standard Class,CUST-234,Customer 280,Consumer,West,California,City3,Technology,Phones,Product Phones 797,1,0,704.06,92.61
+ORD-01798,2023-06-02,2023-06-09,Standard Class,CUST-241,Customer 203,Home Office,East,Pennsylvania,City2,Technology,Machines,Product Machines 798,1,0.1,488.54,59.7
+ORD-01799,2023-03-10,2023-03-16,Standard Class,CUST-254,Customer 199,Consumer,East,Pennsylvania,City2,Technology,Phones,Product Phones 799,3,0.05,1917.84,253.78
+ORD-01800,2023-08-19,2023-08-24,Standard Class,CUST-274,Customer 345,Home Office,West,California,City4,Technology,Accessories,Product Accessories 800,2,0.15,150.49,21.56

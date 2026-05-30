@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sales Performance Dashboard</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+
+    :root {
+
+      --bg: #f8fafc;
+
+      --card: #ffffff;
+
+      --text: #0f172a;
+
+      --muted: #64748b;
+
+      --accent: #2563eb;
+
+      --border: #e2e8f0;
+
+      --chart-h: 130px;
+
+      --chart-h-sm: 110px;
+
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+
+      font-family: "Segoe UI", system-ui, sans-serif;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      line-height: 1.35;
+
+      font-size: 12px;
+
+      padding: 0.5rem;
+
+    }
+
+    .dashboard {
+
+      max-width: 1180px;
+
+      margin: 0 auto;
+
+    }
+
+    header {
+
+      margin-bottom: 0.5rem;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      align-items: baseline;
+
+      gap: 0.5rem 1rem;
+
+    }
+
+    header h1 { font-size: 1.1rem; font-weight: 700; }
+
+    header p { color: var(--muted); font-size: 0.7rem; }
+
+    #status { margin-left: auto; }
+
+    .filters {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 0.5rem 0.75rem;
+
+      margin-bottom: 0.5rem;
+
+      align-items: center;
+
+    }
+
+    .filters label { font-size: 0.65rem; color: var(--muted); }
+
+    .filters select {
+
+      padding: 0.2rem 0.35rem;
+
+      font-size: 0.7rem;
+
+      border-radius: 4px;
+
+      border: 1px solid var(--border);
+
+    }
+
+    .kpis {
+
+      display: grid;
+
+      grid-template-columns: repeat(5, 1fr);
+
+      gap: 0.4rem;
+
+      margin-bottom: 0.5rem;
+
+    }
+
+    @media (max-width: 700px) {
+
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+
+    }
+
+    .kpi {
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 6px;
+
+      padding: 0.35rem 0.5rem;
+
+    }
+
+    .kpi label {
+
+      font-size: 0.6rem;
+
+      color: var(--muted);
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.03em;
+
+    }
+
+    .kpi .value {
+
+      font-size: 0.95rem;
+
+      font-weight: 700;
+
+      color: var(--accent);
+
+      line-height: 1.2;
+
+    }
+
+    .grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 0.4rem;
+
+      margin-bottom: 0.4rem;
+
+    }
+
+    @media (max-width: 900px) {
+
+      .grid { grid-template-columns: repeat(2, 1fr); }
+
+    }
+
+    @media (max-width: 560px) {
+
+      .grid { grid-template-columns: 1fr; }
+
+    }
+
+    .card {
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 6px;
+
+      padding: 0.4rem 0.5rem;
+
+      min-width: 0;
+
+    }
+
+    .card h2 {
+
+      font-size: 0.7rem;
+
+      font-weight: 600;
+
+      margin-bottom: 0.25rem;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+    }
+
+    .span-2 { grid-column: span 2; }
+
+    .span-3 { grid-column: span 3; }
+
+    @media (max-width: 900px) {
+
+      .span-3 { grid-column: span 2; }
+
+    }
+
+    @media (max-width: 560px) {
+
+      .span-2, .span-3 { grid-column: span 1; }
+
+    }
+
+    .chart-box {
+
+      position: relative;
+
+      width: 100%;
+
+      height: var(--chart-h);
+
+    }
+
+    .chart-box.sm { height: var(--chart-h-sm); }
+
+    .chart-box.tall { height: 150px; }
+
+    .bottom-row {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 0.4rem;
+
+    }
+
+    @media (max-width: 700px) {
+
+      .bottom-row { grid-template-columns: 1fr; }
+
+    }
+
+    .insights { list-style: none; }
+
+    .insights li {
+
+      padding: 0.3rem 0;
+
+      border-bottom: 1px solid var(--border);
+
+      font-size: 0.68rem;
+
+      line-height: 1.3;
+
+    }
+
+    .insights li:last-child { border-bottom: none; }
+
+    table.data {
+
+      width: 100%;
+
+      border-collapse: collapse;
+
+      font-size: 0.62rem;
+
+    }
+
+    table.data th, table.data td {
+
+      padding: 0.2rem 0.35rem;
+
+      border-bottom: 1px solid var(--border);
+
+      text-align: left;
+
+    }
+
+    table.data th { color: var(--muted); font-weight: 600; }
+
+    .data-wrap { max-height: 120px; overflow: auto; }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <header>
+
+      <h1>Sales Performance Dashboard</h1>
+
+      <p>Revenue, products, regions &amp; insights</p>
+
+      <p id="status">Loading data…</p>
+
+    </header>
+
+
+
+    <div class="filters">
+
+      <div>
+
+        <label>Region</label><br />
+
+        <select id="filterRegion"><option value="">All</option></select>
+
+      </div>
+
+      <div>
+
+        <label>Category</label><br />
+
+        <select id="filterCategory"><option value="">All</option></select>
+
+      </div>
+
+      <div>
+
+        <label>Segment</label><br />
+
+        <select id="filterSegment"><option value="">All</option></select>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="kpis" id="kpis"></div>
+
+
+
+    <div class="grid">
+
+      <div class="card span-3">
+
+        <h2>Revenue &amp; Profit Over Time</h2>
+
+        <div class="chart-box sm"><canvas id="chartTrend"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Revenue by Category</h2>
+
+        <div class="chart-box sm"><canvas id="chartCategory"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Revenue Share by Region</h2>
+
+        <div class="chart-box sm"><canvas id="chartRegion"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Revenue by Segment</h2>
+
+        <div class="chart-box sm"><canvas id="chartSegment"></canvas></div>
+
+      </div>
+
+      <div class="card span-2">
+
+        <h2>Top 10 Products by Revenue</h2>
+
+        <div class="chart-box tall"><canvas id="chartProducts"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Revenue by Region</h2>
+
+        <div class="chart-box sm"><canvas id="chartRegionBar"></canvas></div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Discount vs Profit</h2>
+
+        <div class="chart-box sm"><canvas id="chartDiscount"></canvas></div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="bottom-row">
+
+      <div class="card">
+
+        <h2>Business Insights</h2>
+
+        <ul class="insights" id="insights"></ul>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Sample Data</h2>
+
+        <div class="data-wrap">
+
+          <table class="data" id="dataTable">
+
+            <thead></thead>
+
+            <tbody></tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    let rawData = [];
+
+    const charts = {};
+
+
+
+    const chartDefaults = {
+
+      responsive: true,
+
+      maintainAspectRatio: false,
+
+      animation: false,
+
+      plugins: {
+
+        legend: {
+
+          labels: { font: { size: 9 }, boxWidth: 10, padding: 6 },
+
+        },
+
+      },
+
+      scales: {
+
+        x: {
+
+          ticks: { font: { size: 8 }, maxRotation: 45, minRotation: 0 },
+
+          grid: { display: false },
+
+        },
+
+        y: {
+
+          ticks: { font: { size: 8 } },
+
+          grid: { color: "#f1f5f9" },
+
+        },
+
+      },
+
+    };
+
+
+
+    function chartOpts(extra = {}) {
+
+      return { ...chartDefaults, ...extra, scales: { ...chartDefaults.scales, ...(extra.scales || {}) }, plugins: { ...chartDefaults.plugins, ...(extra.plugins || {}) } };
+
+    }
+
+
+
+    function fmt(n) {
+
+      if (n >= 1e6) return "$" + (n / 1e6).toFixed(2) + "M";
+
+      if (n >= 1e3) return "$" + (n / 1e3).toFixed(1) + "K";
+
+      return "$" + Math.round(n).toLocaleString();
+
+    }
+
+
+
+    function getFiltered() {
+
+      const r = document.getElementById("filterRegion").value;
+
+      const c = document.getElementById("filterCategory").value;
+
+      const s = document.getElementById("filterSegment").value;
+
+      return rawData.filter((row) => {
+
+        if (r && row.Region !== r) return false;
+
+        if (c && row.Category !== c) return false;
+
+        if (s && row.Segment !== s) return false;
+
+        return true;
+
+      });
+
+    }
+
+
+
+    function sumBy(data, key, val = "Sales") {
+
+      const m = {};
+
+      data.forEach((row) => {
+
+        const k = row[key];
+
+        m[k] = (m[k] || 0) + parseFloat(row[val]);
+
+      });
+
+      return m;
+
+    }
+
+
+
+    function monthKey(dateStr) {
+
+      const d = new Date(dateStr);
+
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+
+    }
+
+
+
+    function renderKpis(data) {
+
+      const sales = data.reduce((a, r) => a + parseFloat(r.Sales), 0);
+
+      const profit = data.reduce((a, r) => a + parseFloat(r.Profit), 0);
+
+      const orders = new Set(data.map((r) => r.Order_ID)).size;
+
+      const aov = orders ? sales / orders : 0;
+
+      const margin = sales ? (profit / sales) * 100 : 0;
+
+      document.getElementById("kpis").innerHTML = [
+
+        ["Revenue", fmt(sales)],
+
+        ["Profit", fmt(profit)],
+
+        ["Orders", orders.toLocaleString()],
+
+        ["AOV", fmt(aov)],
+
+        ["Margin", margin.toFixed(1) + "%"],
+
+      ]
+
+        .map(
+
+          ([l, v]) =>
+
+            `<div class="kpi"><label>${l}</label><div class="value">${v}</div></div>`
+
+        )
+
+        .join("");
+
+    }
+
+
+
+    function destroyChart(id) {
+
+      if (charts[id]) {
+
+        charts[id].destroy();
+
+        delete charts[id];
+
+      }
+
+    }
+
+
+
+    function renderCharts(data) {
+
+      const barEl = { bar: { maxBarThickness: 14 } };
+
+      const lineEl = {
+
+        point: { radius: 2, hitRadius: 6 },
+
+        line: { borderWidth: 1.5 },
+
+      };
+
+
+
+      const monthly = {};
+
+      data.forEach((row) => {
+
+        const m = monthKey(row.Order_Date);
+
+        if (!monthly[m]) monthly[m] = { sales: 0, profit: 0 };
+
+        monthly[m].sales += parseFloat(row.Sales);
+
+        monthly[m].profit += parseFloat(row.Profit);
+
+      });
+
+      const months = Object.keys(monthly).sort();
+
+      destroyChart("chartTrend");
+
+      charts.chartTrend = new Chart(document.getElementById("chartTrend"), {
+
+        type: "line",
+
+        data: {
+
+          labels: months,
+
+          datasets: [
+
+            { label: "Revenue", data: months.map((m) => monthly[m].sales), borderColor: "#2563eb", tension: 0.2 },
+
+            { label: "Profit", data: months.map((m) => monthly[m].profit), borderColor: "#16a34a", tension: 0.2 },
+
+          ],
+
+        },
+
+        options: { ...chartOpts(), elements: lineEl },
+
+      });
+
+
+
+      const cat = sumBy(data, "Category");
+
+      const catLabels = Object.keys(cat);
+
+      destroyChart("chartCategory");
+
+      charts.chartCategory = new Chart(document.getElementById("chartCategory"), {
+
+        type: "bar",
+
+        data: { labels: catLabels, datasets: [{ label: "Revenue", data: catLabels.map((k) => cat[k]), backgroundColor: "#2563eb" }] },
+
+        options: { ...chartOpts({ indexAxis: "y" }), indexAxis: "y", elements: barEl },
+
+      });
+
+
+
+      const reg = sumBy(data, "Region");
+
+      const regLabels = Object.keys(reg);
+
+      destroyChart("chartRegion");
+
+      charts.chartRegion = new Chart(document.getElementById("chartRegion"), {
+
+        type: "doughnut",
+
+        data: { labels: regLabels, datasets: [{ data: regLabels.map((k) => reg[k]) }] },
+
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: "right", labels: { font: { size: 8 }, boxWidth: 8, padding: 4 } },
+          },
+        },
+      });
+
+
+
+      const prod = sumBy(data, "Product_Name");
+
+      const top = Object.entries(prod).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+      destroyChart("chartProducts");
+
+      charts.chartProducts = new Chart(document.getElementById("chartProducts"), {
+
+        type: "bar",
+
+        data: {
+
+          labels: top.map((t) => t[0].slice(0, 22)),
+
+          datasets: [{ label: "Revenue", data: top.map((t) => t[1]), backgroundColor: "#0d9488" }],
+
+        },
+
+        options: { ...chartOpts({ indexAxis: "y" }), indexAxis: "y", elements: { bar: { maxBarThickness: 10 } } },
+
+      });
+
+
+
+      const seg = sumBy(data, "Segment");
+
+      const segLabels = Object.keys(seg);
+
+      destroyChart("chartSegment");
+
+      charts.chartSegment = new Chart(document.getElementById("chartSegment"), {
+
+        type: "bar",
+
+        data: { labels: segLabels, datasets: [{ label: "Revenue", data: segLabels.map((k) => seg[k]), backgroundColor: "#7c3aed" }] },
+
+        options: { ...chartOpts(), elements: barEl, plugins: { legend: { display: false } } },
+
+      });
+
+
+
+      destroyChart("chartRegionBar");
+
+      charts.chartRegionBar = new Chart(document.getElementById("chartRegionBar"), {
+
+        type: "bar",
+
+        data: { labels: regLabels, datasets: [{ label: "Revenue", data: regLabels.map((k) => reg[k]), backgroundColor: "#ea580c" }] },
+
+        options: { ...chartOpts(), elements: barEl, plugins: { legend: { display: false } } },
+
+      });
+
+
+
+      const discBuckets = {};
+
+      data.forEach((row) => {
+
+        const d = Math.round(parseFloat(row.Discount) * 20) / 20;
+
+        if (!discBuckets[d]) discBuckets[d] = { profit: 0, orders: 0 };
+
+        discBuckets[d].profit += parseFloat(row.Profit);
+
+        discBuckets[d].orders += 1;
+
+      });
+
+      const discLabels = Object.keys(discBuckets).map(Number).sort((a, b) => a - b);
+
+      destroyChart("chartDiscount");
+
+      charts.chartDiscount = new Chart(document.getElementById("chartDiscount"), {
+
+        type: "bubble",
+
+        data: {
+
+          datasets: [{
+
+            data: discLabels.map((d) => ({
+
+              x: d,
+
+              y: discBuckets[d].profit,
+
+              r: Math.min(10, 3 + discBuckets[d].orders / 12),
+
+            })),
+
+            backgroundColor: "rgba(124, 58, 237, 0.65)",
+
+          }],
+
+        },
+
+        options: {
+
+          ...chartOpts(),
+
+          plugins: { legend: { display: false } },
+
+          scales: {
+
+            x: { ticks: { font: { size: 8 } }, min: 0, max: 0.5, title: { display: true, text: "Discount", font: { size: 8 } } },
+
+            y: { ticks: { font: { size: 8 } }, beginAtZero: true, title: { display: true, text: "Profit", font: { size: 8 } } },
+
+          },
+
+        },
+
+      });
+
+    }
+
+
+
+    function renderDataTable(data) {
+
+      const cols = ["Order_Date", "Region", "Category", "Product_Name", "Sales", "Profit"];
+
+      const thead = document.querySelector("#dataTable thead");
+
+      const tbody = document.querySelector("#dataTable tbody");
+
+      thead.innerHTML = "<tr>" + cols.map((c) => `<th>${c.replace(/_/g, " ")}</th>`).join("") + "</tr>";
+
+      tbody.innerHTML = data.slice(0, 8).map((row) =>
+
+        "<tr>" + cols.map((c) => {
+
+          let v = row[c];
+
+          if (c === "Sales" || c === "Profit") v = fmt(parseFloat(v));
+
+          if (c === "Product_Name") v = String(v).slice(0, 18);
+
+          return `<td>${v}</td>`;
+
+        }).join("") + "</tr>"
+
+      ).join("");
+
+    }
+
+
+
+    function renderInsights(data) {
+
+      const total = data.reduce((a, r) => a + parseFloat(r.Sales), 0);
+
+      const cat = sumBy(data, "Category");
+
+      const reg = sumBy(data, "Region");
+
+      const topCat = Object.entries(cat).sort((a, b) => b[1] - a[1])[0];
+
+      const topReg = Object.entries(reg).sort((a, b) => b[1] - a[1])[0];
+
+      const prod = sumBy(data, "Product_Name");
+
+      const topProd = Object.entries(prod).sort((a, b) => b[1] - a[1])[0][0];
+
+
+
+      const monthly = {};
+
+      data.forEach((row) => {
+
+        const m = monthKey(row.Order_Date);
+
+        monthly[m] = (monthly[m] || 0) + parseFloat(row.Sales);
+
+      });
+
+      const months = Object.keys(monthly).sort();
+
+      const growth =
+
+        months.length > 1 && monthly[months[0]]
+
+          ? ((monthly[months[months.length - 1]] - monthly[months[0]]) / monthly[months[0]]) * 100
+
+          : 0;
+
+
+
+      const insights = [
+
+        `${topCat[0]} leads (${((topCat[1] / total) * 100).toFixed(0)}% revenue).`,
+
+        `${topReg[0]} is top region (${((topReg[1] / total) * 100).toFixed(0)}%).`,
+
+        `${topProd.slice(0, 30)}… top product.`,
+
+        `Revenue ${growth >= 0 ? "+" : ""}${growth.toFixed(1)}% first→last month.`,
+
+        `Cap heavy discounts on low-margin lines.`,
+
+      ];
+
+      document.getElementById("insights").innerHTML = insights.map((t) => `<li>${t}</li>`).join("");
+
+    }
+
+
+
+    let refreshTimer;
+
+    function refresh() {
+
+      clearTimeout(refreshTimer);
+
+      refreshTimer = setTimeout(() => {
+
+        const data = getFiltered();
+
+        renderKpis(data);
+
+        renderCharts(data);
+
+        renderInsights(data);
+
+        renderDataTable(data);
+
+      }, 50);
+
+    }
+
+
+
+    function fillFilters(data) {
+
+      ["Region", "Category", "Segment"].forEach((field) => {
+
+        const sel = document.getElementById("filter" + field);
+
+        const vals = [...new Set(data.map((r) => r[field]))].sort();
+
+        vals.forEach((v) => {
+
+          const o = document.createElement("option");
+
+          o.value = v;
+
+          o.textContent = v;
+
+          sel.appendChild(o);
+
+        });
+
+        sel.addEventListener("change", refresh);
+
+      });
+
+    }
+
+
+
+    rawData = [{"Order_ID":"ORD-01001","Order_Date":"2023-05-07","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 1","Sales":12.81,"Profit":2.83,"Discount":0.0},{"Order_ID":"ORD-01002","Order_Date":"2023-03-07","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 2","Sales":3130.65,"Profit":404.27,"Discount":0.05},{"Order_ID":"ORD-01003","Order_Date":"2024-08-22","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 3","Sales":207.34,"Profit":17.14,"Discount":0.0},{"Order_ID":"ORD-01004","Order_Date":"2023-07-31","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 4","Sales":129.5,"Profit":31.59,"Discount":0.0},{"Order_ID":"ORD-01005","Order_Date":"2023-02-20","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 5","Sales":422.2,"Profit":30.63,"Discount":0.0},{"Order_ID":"ORD-01006","Order_Date":"2024-04-22","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 6","Sales":2893.14,"Profit":358.25,"Discount":0.0},{"Order_ID":"ORD-01007","Order_Date":"2023-08-06","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 7","Sales":1853.83,"Profit":267.03,"Discount":0.1},{"Order_ID":"ORD-01008","Order_Date":"2023-04-19","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 8","Sales":265.99,"Profit":23.63,"Discount":0.0},{"Order_ID":"ORD-01009","Order_Date":"2023-09-10","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 9","Sales":746.31,"Profit":48.34,"Discount":0.15},{"Order_ID":"ORD-01010","Order_Date":"2023-08-25","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 10","Sales":2998.22,"Profit":417.59,"Discount":0.0},{"Order_ID":"ORD-01011","Order_Date":"2023-05-21","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 11","Sales":889.49,"Profit":74.73,"Discount":0.05},{"Order_ID":"ORD-01012","Order_Date":"2024-06-04","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 12","Sales":35.63,"Profit":8.01,"Discount":0.0},{"Order_ID":"ORD-01013","Order_Date":"2023-01-03","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 13","Sales":379.83,"Profit":48.03,"Discount":0.1},{"Order_ID":"ORD-01014","Order_Date":"2024-03-25","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 14","Sales":2137.87,"Profit":173.92,"Discount":0.0},{"Order_ID":"ORD-01015","Order_Date":"2024-08-31","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 15","Sales":130.64,"Profit":25.62,"Discount":0.0},{"Order_ID":"ORD-01016","Order_Date":"2023-06-04","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 16","Sales":838.56,"Profit":69.43,"Discount":0.15},{"Order_ID":"ORD-01017","Order_Date":"2024-11-13","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 17","Sales":774.54,"Profit":54.49,"Discount":0.1},{"Order_ID":"ORD-01018","Order_Date":"2024-12-30","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 18","Sales":474.77,"Profit":40.45,"Discount":0.0},{"Order_ID":"ORD-01019","Order_Date":"2024-11-02","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 19","Sales":601.66,"Profit":83.48,"Discount":0.0},{"Order_ID":"ORD-01020","Order_Date":"2024-07-03","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 20","Sales":1723.75,"Profit":304.13,"Discount":0.15},{"Order_ID":"ORD-01021","Order_Date":"2024-04-30","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 21","Sales":2665.78,"Profit":371.38,"Discount":0.05},{"Order_ID":"ORD-01022","Order_Date":"2024-11-20","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 22","Sales":99.1,"Profit":12.54,"Discount":0.0},{"Order_ID":"ORD-01023","Order_Date":"2024-01-28","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 23","Sales":309.84,"Profit":47.49,"Discount":0.0},{"Order_ID":"ORD-01024","Order_Date":"2023-11-26","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 24","Sales":2217.84,"Profit":366.15,"Discount":0.0},{"Order_ID":"ORD-01025","Order_Date":"2023-12-20","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 25","Sales":79.81,"Profit":11.06,"Discount":0.15},{"Order_ID":"ORD-01026","Order_Date":"2024-04-12","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 26","Sales":416.97,"Profit":35.14,"Discount":0.15},{"Order_ID":"ORD-01027","Order_Date":"2023-03-21","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 27","Sales":195.86,"Profit":14.88,"Discount":0.0},{"Order_ID":"ORD-01028","Order_Date":"2023-02-06","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 28","Sales":80.07,"Profit":12.22,"Discount":0.1},{"Order_ID":"ORD-01029","Order_Date":"2024-08-03","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 29","Sales":2185.37,"Profit":199.92,"Discount":0.0},{"Order_ID":"ORD-01030","Order_Date":"2023-11-21","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 30","Sales":1039.48,"Profit":93.6,"Discount":0.15},{"Order_ID":"ORD-01031","Order_Date":"2023-03-17","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 31","Sales":1547.03,"Profit":118.29,"Discount":0.0},{"Order_ID":"ORD-01032","Order_Date":"2023-04-22","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 32","Sales":730.31,"Profit":92.7,"Discount":0.0},{"Order_ID":"ORD-01033","Order_Date":"2024-11-07","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 33","Sales":266.48,"Profit":46.0,"Discount":0.0},{"Order_ID":"ORD-01034","Order_Date":"2023-07-02","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 34","Sales":96.84,"Profit":24.63,"Discount":0.15},{"Order_ID":"ORD-01035","Order_Date":"2023-12-27","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 35","Sales":495.07,"Profit":33.42,"Discount":0.0},{"Order_ID":"ORD-01036","Order_Date":"2023-10-26","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 36","Sales":2525.77,"Profit":345.67,"Discount":0.0},{"Order_ID":"ORD-01037","Order_Date":"2023-05-29","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 37","Sales":1288.04,"Profit":191.12,"Discount":0.1},{"Order_ID":"ORD-01038","Order_Date":"2024-01-19","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 38","Sales":476.47,"Profit":70.76,"Discount":0.05},{"Order_ID":"ORD-01039","Order_Date":"2023-01-26","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 39","Sales":31.09,"Profit":7.91,"Discount":0.1},{"Order_ID":"ORD-01040","Order_Date":"2023-02-25","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 40","Sales":479.17,"Profit":43.97,"Discount":0.05},{"Order_ID":"ORD-01041","Order_Date":"2024-01-07","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 41","Sales":66.94,"Profit":12.25,"Discount":0.05},{"Order_ID":"ORD-01042","Order_Date":"2023-12-03","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 42","Sales":941.83,"Profit":85.99,"Discount":0.0},{"Order_ID":"ORD-01043","Order_Date":"2023-05-21","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 43","Sales":153.12,"Profit":38.86,"Discount":0.0},{"Order_ID":"ORD-01044","Order_Date":"2023-05-10","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 44","Sales":421.66,"Profit":27.54,"Discount":0.0},{"Order_ID":"ORD-01045","Order_Date":"2023-12-23","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 45","Sales":240.76,"Profit":18.96,"Discount":0.0},{"Order_ID":"ORD-01046","Order_Date":"2024-08-24","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 46","Sales":38.06,"Profit":7.76,"Discount":0.0},{"Order_ID":"ORD-01047","Order_Date":"2024-12-01","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 47","Sales":41.41,"Profit":10.0,"Discount":0.05},{"Order_ID":"ORD-01048","Order_Date":"2024-03-27","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 48","Sales":1767.61,"Profit":224.21,"Discount":0.1},{"Order_ID":"ORD-01049","Order_Date":"2024-07-09","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 49","Sales":1664.18,"Profit":294.7,"Discount":0.0},{"Order_ID":"ORD-01050","Order_Date":"2023-06-26","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 50","Sales":2006.05,"Profit":180.75,"Discount":0.15},{"Order_ID":"ORD-01051","Order_Date":"2024-01-31","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 51","Sales":358.71,"Profit":32.05,"Discount":0.1},{"Order_ID":"ORD-01052","Order_Date":"2024-06-21","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 52","Sales":162.11,"Profit":26.4,"Discount":0.0},{"Order_ID":"ORD-01053","Order_Date":"2023-11-02","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 53","Sales":138.89,"Profit":17.43,"Discount":0.15},{"Order_ID":"ORD-01054","Order_Date":"2023-01-31","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 54","Sales":954.18,"Profit":64.26,"Discount":0.15},{"Order_ID":"ORD-01055","Order_Date":"2023-01-26","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 55","Sales":244.15,"Profit":18.48,"Discount":0.0},{"Order_ID":"ORD-01056","Order_Date":"2024-09-12","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 56","Sales":464.34,"Profit":67.55,"Discount":0.1},{"Order_ID":"ORD-01057","Order_Date":"2024-12-08","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 57","Sales":76.77,"Profit":10.06,"Discount":0.1},{"Order_ID":"ORD-01058","Order_Date":"2023-04-23","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 58","Sales":23.18,"Profit":4.85,"Discount":0.0},{"Order_ID":"ORD-01059","Order_Date":"2023-03-03","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 59","Sales":202.22,"Profit":15.23,"Discount":0.0},{"Order_ID":"ORD-01060","Order_Date":"2023-04-28","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 60","Sales":21.46,"Profit":5.01,"Discount":0.0},{"Order_ID":"ORD-01061","Order_Date":"2024-05-14","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 61","Sales":1449.93,"Profit":123.38,"Discount":0.05},{"Order_ID":"ORD-01062","Order_Date":"2024-09-18","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 62","Sales":255.45,"Profit":31.64,"Discount":0.15},{"Order_ID":"ORD-01063","Order_Date":"2024-08-02","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 63","Sales":1229.23,"Profit":100.51,"Discount":0.0},{"Order_ID":"ORD-01064","Order_Date":"2024-04-15","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 64","Sales":1367.24,"Profit":111.93,"Discount":0.0},{"Order_ID":"ORD-01065","Order_Date":"2023-06-21","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 65","Sales":24.08,"Profit":6.15,"Discount":0.0},{"Order_ID":"ORD-01066","Order_Date":"2023-08-08","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 66","Sales":676.56,"Profit":113.2,"Discount":0.05},{"Order_ID":"ORD-01067","Order_Date":"2024-10-13","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 67","Sales":624.6,"Profit":40.52,"Discount":0.0},{"Order_ID":"ORD-01068","Order_Date":"2023-11-05","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 68","Sales":16.44,"Profit":3.43,"Discount":0.15},{"Order_ID":"ORD-01069","Order_Date":"2024-01-21","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 69","Sales":3120.91,"Profit":438.74,"Discount":0.15},{"Order_ID":"ORD-01070","Order_Date":"2024-10-04","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 70","Sales":13.63,"Profit":3.37,"Discount":0.0},{"Order_ID":"ORD-01071","Order_Date":"2024-08-19","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 71","Sales":1649.53,"Profit":255.57,"Discount":0.0},{"Order_ID":"ORD-01072","Order_Date":"2023-08-21","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 72","Sales":185.22,"Profit":24.66,"Discount":0.15},{"Order_ID":"ORD-01073","Order_Date":"2023-06-02","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 73","Sales":38.92,"Profit":6.97,"Discount":0.0},{"Order_ID":"ORD-01074","Order_Date":"2023-06-14","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 74","Sales":730.06,"Profit":60.46,"Discount":0.0},{"Order_ID":"ORD-01075","Order_Date":"2024-07-05","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 75","Sales":411.0,"Profit":70.77,"Discount":0.15},{"Order_ID":"ORD-01076","Order_Date":"2023-09-03","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 76","Sales":52.8,"Profit":10.21,"Discount":0.0},{"Order_ID":"ORD-01077","Order_Date":"2023-07-21","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 77","Sales":589.33,"Profit":50.2,"Discount":0.05},{"Order_ID":"ORD-01078","Order_Date":"2023-11-02","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 78","Sales":1915.67,"Profit":169.39,"Discount":0.15},{"Order_ID":"ORD-01079","Order_Date":"2023-08-11","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 79","Sales":196.76,"Profit":14.09,"Discount":0.0},{"Order_ID":"ORD-01080","Order_Date":"2024-08-09","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 80","Sales":39.6,"Profit":9.62,"Discount":0.0},{"Order_ID":"ORD-01081","Order_Date":"2024-03-20","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 81","Sales":20.1,"Profit":4.27,"Discount":0.15},{"Order_ID":"ORD-01082","Order_Date":"2023-05-20","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 82","Sales":179.05,"Profit":39.26,"Discount":0.0},{"Order_ID":"ORD-01083","Order_Date":"2023-06-28","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 83","Sales":1248.14,"Profit":109.89,"Discount":0.0},{"Order_ID":"ORD-01084","Order_Date":"2023-10-09","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 84","Sales":80.77,"Profit":15.16,"Discount":0.1},{"Order_ID":"ORD-01085","Order_Date":"2023-01-06","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 85","Sales":2601.24,"Profit":388.91,"Discount":0.0},{"Order_ID":"ORD-01086","Order_Date":"2023-12-11","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 86","Sales":28.41,"Profit":5.33,"Discount":0.1},{"Order_ID":"ORD-01087","Order_Date":"2023-07-24","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 87","Sales":160.74,"Profit":40.53,"Discount":0.05},{"Order_ID":"ORD-01088","Order_Date":"2024-06-06","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 88","Sales":1624.91,"Profit":108.91,"Discount":0.15},{"Order_ID":"ORD-01089","Order_Date":"2024-06-23","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 89","Sales":301.94,"Profit":27.07,"Discount":0.0},{"Order_ID":"ORD-01090","Order_Date":"2024-12-30","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 90","Sales":31.44,"Profit":6.12,"Discount":0.0},{"Order_ID":"ORD-01091","Order_Date":"2024-06-15","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 91","Sales":773.44,"Profit":117.09,"Discount":0.0},{"Order_ID":"ORD-01092","Order_Date":"2023-03-12","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 92","Sales":2975.62,"Profit":417.12,"Discount":0.0},{"Order_ID":"ORD-01093","Order_Date":"2023-02-19","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 93","Sales":1282.69,"Profit":218.55,"Discount":0.0},{"Order_ID":"ORD-01094","Order_Date":"2024-12-21","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 94","Sales":22.86,"Profit":5.65,"Discount":0.1},{"Order_ID":"ORD-01095","Order_Date":"2024-02-14","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 95","Sales":19.43,"Profit":3.69,"Discount":0.0},{"Order_ID":"ORD-01096","Order_Date":"2024-07-23","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 96","Sales":1353.85,"Profit":86.95,"Discount":0.05},{"Order_ID":"ORD-01097","Order_Date":"2023-03-14","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 97","Sales":723.27,"Profit":57.4,"Discount":0.0},{"Order_ID":"ORD-01098","Order_Date":"2024-02-11","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 98","Sales":501.81,"Profit":82.19,"Discount":0.0},{"Order_ID":"ORD-01099","Order_Date":"2024-12-11","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 99","Sales":64.42,"Profit":13.8,"Discount":0.1},{"Order_ID":"ORD-01100","Order_Date":"2023-05-11","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 100","Sales":1390.84,"Profit":108.76,"Discount":0.0},{"Order_ID":"ORD-01101","Order_Date":"2023-04-21","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 101","Sales":399.67,"Profit":68.43,"Discount":0.0},{"Order_ID":"ORD-01102","Order_Date":"2023-09-28","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 102","Sales":572.21,"Profit":36.78,"Discount":0.0},{"Order_ID":"ORD-01103","Order_Date":"2023-01-31","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 103","Sales":53.93,"Profit":11.13,"Discount":0.1},{"Order_ID":"ORD-01104","Order_Date":"2023-12-28","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 104","Sales":61.21,"Profit":11.91,"Discount":0.0},{"Order_ID":"ORD-01105","Order_Date":"2023-02-02","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 105","Sales":515.84,"Profit":74.82,"Discount":0.0},{"Order_ID":"ORD-01106","Order_Date":"2023-05-21","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 106","Sales":36.17,"Profit":8.75,"Discount":0.0},{"Order_ID":"ORD-01107","Order_Date":"2023-06-06","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 107","Sales":578.35,"Profit":51.07,"Discount":0.0},{"Order_ID":"ORD-01108","Order_Date":"2023-09-04","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 108","Sales":636.04,"Profit":86.71,"Discount":0.0},{"Order_ID":"ORD-01109","Order_Date":"2023-03-28","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 109","Sales":414.75,"Profit":53.38,"Discount":0.15},{"Order_ID":"ORD-01110","Order_Date":"2023-12-25","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 110","Sales":325.58,"Profit":55.7,"Discount":0.05},{"Order_ID":"ORD-01111","Order_Date":"2023-07-22","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 111","Sales":23.96,"Profit":5.89,"Discount":0.05},{"Order_ID":"ORD-01112","Order_Date":"2023-04-14","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 112","Sales":16.72,"Profit":2.98,"Discount":0.0},{"Order_ID":"ORD-01113","Order_Date":"2024-08-02","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 113","Sales":71.76,"Profit":13.15,"Discount":0.0},{"Order_ID":"ORD-01114","Order_Date":"2024-03-13","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 114","Sales":1308.78,"Profit":120.21,"Discount":0.1},{"Order_ID":"ORD-01115","Order_Date":"2023-07-21","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 115","Sales":39.88,"Profit":9.79,"Discount":0.0},{"Order_ID":"ORD-01116","Order_Date":"2024-11-17","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 116","Sales":2475.26,"Profit":317.02,"Discount":0.0},{"Order_ID":"ORD-01117","Order_Date":"2023-04-26","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 117","Sales":1223.24,"Profit":90.36,"Discount":0.0},{"Order_ID":"ORD-01118","Order_Date":"2024-10-05","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 118","Sales":1208.64,"Profit":100.74,"Discount":0.0},{"Order_ID":"ORD-01119","Order_Date":"2023-03-18","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 119","Sales":479.26,"Profit":75.09,"Discount":0.1},{"Order_ID":"ORD-01120","Order_Date":"2023-04-21","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 120","Sales":769.31,"Profit":73.54,"Discount":0.1},{"Order_ID":"ORD-01121","Order_Date":"2024-12-18","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 121","Sales":113.29,"Profit":20.74,"Discount":0.0},{"Order_ID":"ORD-01122","Order_Date":"2024-03-30","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 122","Sales":55.41,"Profit":13.4,"Discount":0.05},{"Order_ID":"ORD-01123","Order_Date":"2023-07-01","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 123","Sales":1878.26,"Profit":161.24,"Discount":0.05},{"Order_ID":"ORD-01124","Order_Date":"2023-03-06","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 124","Sales":32.09,"Profit":7.14,"Discount":0.0},{"Order_ID":"ORD-01125","Order_Date":"2024-01-02","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 125","Sales":403.27,"Profit":34.62,"Discount":0.0},{"Order_ID":"ORD-01126","Order_Date":"2024-12-12","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 126","Sales":1152.82,"Profit":88.48,"Discount":0.0},{"Order_ID":"ORD-01127","Order_Date":"2023-09-09","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 127","Sales":18.06,"Profit":3.91,"Discount":0.1},{"Order_ID":"ORD-01128","Order_Date":"2024-08-23","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 128","Sales":2059.0,"Profit":266.58,"Discount":0.15},{"Order_ID":"ORD-01129","Order_Date":"2023-11-09","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 129","Sales":64.26,"Profit":12.2,"Discount":0.1},{"Order_ID":"ORD-01130","Order_Date":"2023-12-28","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 130","Sales":2148.29,"Profit":285.12,"Discount":0.0},{"Order_ID":"ORD-01131","Order_Date":"2023-09-16","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 131","Sales":198.16,"Profit":27.36,"Discount":0.0},{"Order_ID":"ORD-01132","Order_Date":"2023-01-16","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 132","Sales":49.03,"Profit":11.48,"Discount":0.0},{"Order_ID":"ORD-01133","Order_Date":"2024-11-04","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 133","Sales":686.63,"Profit":63.44,"Discount":0.0},{"Order_ID":"ORD-01134","Order_Date":"2024-05-08","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 134","Sales":105.77,"Profit":16.77,"Discount":0.0},{"Order_ID":"ORD-01135","Order_Date":"2024-01-23","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 135","Sales":2926.33,"Profit":495.34,"Discount":0.0},{"Order_ID":"ORD-01136","Order_Date":"2023-01-24","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 136","Sales":2988.21,"Profit":523.98,"Discount":0.0},{"Order_ID":"ORD-01137","Order_Date":"2024-01-14","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 137","Sales":410.4,"Profit":70.07,"Discount":0.1},{"Order_ID":"ORD-01138","Order_Date":"2023-06-12","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 138","Sales":12.76,"Profit":2.96,"Discount":0.0},{"Order_ID":"ORD-01139","Order_Date":"2024-09-10","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 139","Sales":542.33,"Profit":37.88,"Discount":0.15},{"Order_ID":"ORD-01140","Order_Date":"2023-08-14","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 140","Sales":1463.12,"Profit":140.33,"Discount":0.15},{"Order_ID":"ORD-01141","Order_Date":"2023-06-09","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 141","Sales":2119.68,"Profit":325.71,"Discount":0.1},{"Order_ID":"ORD-01142","Order_Date":"2023-01-20","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 142","Sales":469.68,"Profit":44.48,"Discount":0.05},{"Order_ID":"ORD-01143","Order_Date":"2023-08-12","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 143","Sales":874.23,"Profit":59.9,"Discount":0.1},{"Order_ID":"ORD-01144","Order_Date":"2024-05-24","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 144","Sales":1300.41,"Profit":119.88,"Discount":0.15},{"Order_ID":"ORD-01145","Order_Date":"2023-05-09","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 145","Sales":36.4,"Profit":9.48,"Discount":0.1},{"Order_ID":"ORD-01146","Order_Date":"2023-12-03","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 146","Sales":1529.22,"Profit":190.61,"Discount":0.0},{"Order_ID":"ORD-01147","Order_Date":"2024-03-09","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 147","Sales":60.5,"Profit":11.14,"Discount":0.15},{"Order_ID":"ORD-01148","Order_Date":"2024-07-10","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 148","Sales":46.57,"Profit":10.96,"Discount":0.1},{"Order_ID":"ORD-01149","Order_Date":"2024-08-20","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 149","Sales":1977.82,"Profit":339.17,"Discount":0.0},{"Order_ID":"ORD-01150","Order_Date":"2023-09-02","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 150","Sales":29.65,"Profit":6.61,"Discount":0.1},{"Order_ID":"ORD-01151","Order_Date":"2023-10-23","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 151","Sales":711.94,"Profit":60.65,"Discount":0.15},{"Order_ID":"ORD-01152","Order_Date":"2024-04-20","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 152","Sales":232.77,"Profit":21.44,"Discount":0.1},{"Order_ID":"ORD-01153","Order_Date":"2023-02-27","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 153","Sales":607.7,"Profit":96.47,"Discount":0.05},{"Order_ID":"ORD-01154","Order_Date":"2024-07-30","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 154","Sales":273.67,"Profit":19.66,"Discount":0.0},{"Order_ID":"ORD-01155","Order_Date":"2024-11-02","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 155","Sales":730.67,"Profit":64.68,"Discount":0.0},{"Order_ID":"ORD-01156","Order_Date":"2024-03-14","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 156","Sales":92.13,"Profit":16.22,"Discount":0.0},{"Order_ID":"ORD-01157","Order_Date":"2023-05-27","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 157","Sales":1896.31,"Profit":158.83,"Discount":0.05},{"Order_ID":"ORD-01158","Order_Date":"2023-01-13","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 158","Sales":1689.32,"Profit":289.67,"Discount":0.15},{"Order_ID":"ORD-01159","Order_Date":"2023-06-17","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 159","Sales":445.61,"Profit":38.93,"Discount":0.1},{"Order_ID":"ORD-01160","Order_Date":"2023-07-18","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 160","Sales":38.5,"Profit":9.38,"Discount":0.1},{"Order_ID":"ORD-01161","Order_Date":"2024-04-09","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 161","Sales":1104.88,"Profit":139.03,"Discount":0.05},{"Order_ID":"ORD-01162","Order_Date":"2024-02-13","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 162","Sales":1630.17,"Profit":213.63,"Discount":0.15},{"Order_ID":"ORD-01163","Order_Date":"2023-07-31","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 163","Sales":246.53,"Profit":34.52,"Discount":0.15},{"Order_ID":"ORD-01164","Order_Date":"2024-04-15","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 164","Sales":157.5,"Profit":38.43,"Discount":0.0},{"Order_ID":"ORD-01165","Order_Date":"2024-12-22","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 165","Sales":30.91,"Profit":5.46,"Discount":0.05},{"Order_ID":"ORD-01166","Order_Date":"2024-01-26","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 166","Sales":80.23,"Profit":19.64,"Discount":0.0},{"Order_ID":"ORD-01167","Order_Date":"2023-07-14","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 167","Sales":19.65,"Profit":4.2,"Discount":0.05},{"Order_ID":"ORD-01168","Order_Date":"2023-05-22","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 168","Sales":1767.42,"Profit":272.48,"Discount":0.15},{"Order_ID":"ORD-01169","Order_Date":"2023-12-16","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 169","Sales":119.91,"Profit":29.64,"Discount":0.0},{"Order_ID":"ORD-01170","Order_Date":"2023-05-20","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 170","Sales":18.59,"Profit":3.38,"Discount":0.1},{"Order_ID":"ORD-01171","Order_Date":"2024-08-27","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 171","Sales":92.31,"Profit":20.58,"Discount":0.0},{"Order_ID":"ORD-01172","Order_Date":"2023-07-26","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 172","Sales":46.58,"Profit":12.0,"Discount":0.1},{"Order_ID":"ORD-01173","Order_Date":"2024-08-24","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 173","Sales":1875.7,"Profit":155.37,"Discount":0.05},{"Order_ID":"ORD-01174","Order_Date":"2023-12-03","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 174","Sales":1571.16,"Profit":143.7,"Discount":0.0},{"Order_ID":"ORD-01175","Order_Date":"2023-03-26","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 175","Sales":463.53,"Profit":68.14,"Discount":0.15},{"Order_ID":"ORD-01176","Order_Date":"2024-09-12","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 176","Sales":34.9,"Profit":6.71,"Discount":0.0},{"Order_ID":"ORD-01177","Order_Date":"2024-05-07","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 177","Sales":92.7,"Profit":19.78,"Discount":0.1},{"Order_ID":"ORD-01178","Order_Date":"2024-11-09","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 178","Sales":2920.95,"Profit":413.75,"Discount":0.1},{"Order_ID":"ORD-01179","Order_Date":"2023-06-04","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 179","Sales":1131.15,"Profit":87.39,"Discount":0.0},{"Order_ID":"ORD-01180","Order_Date":"2024-07-18","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 180","Sales":484.13,"Profit":36.81,"Discount":0.05},{"Order_ID":"ORD-01181","Order_Date":"2023-05-30","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 181","Sales":570.7,"Profit":86.34,"Discount":0.05},{"Order_ID":"ORD-01182","Order_Date":"2024-07-09","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 182","Sales":214.83,"Profit":34.35,"Discount":0.0},{"Order_ID":"ORD-01183","Order_Date":"2023-02-15","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 183","Sales":3013.32,"Profit":453.23,"Discount":0.15},{"Order_ID":"ORD-01184","Order_Date":"2023-02-12","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 184","Sales":15.12,"Profit":3.6,"Discount":0.05},{"Order_ID":"ORD-01185","Order_Date":"2024-12-19","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 185","Sales":449.72,"Profit":42.07,"Discount":0.1},{"Order_ID":"ORD-01186","Order_Date":"2023-08-29","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 186","Sales":12.38,"Profit":2.76,"Discount":0.0},{"Order_ID":"ORD-01187","Order_Date":"2023-01-11","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 187","Sales":871.21,"Profit":57.14,"Discount":0.05},{"Order_ID":"ORD-01188","Order_Date":"2024-12-02","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 188","Sales":50.9,"Profit":10.91,"Discount":0.0},{"Order_ID":"ORD-01189","Order_Date":"2023-05-18","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 189","Sales":148.4,"Profit":33.65,"Discount":0.0},{"Order_ID":"ORD-01190","Order_Date":"2023-12-22","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 190","Sales":413.23,"Profit":31.16,"Discount":0.0},{"Order_ID":"ORD-01191","Order_Date":"2024-11-23","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 191","Sales":431.97,"Profit":40.47,"Discount":0.0},{"Order_ID":"ORD-01192","Order_Date":"2024-12-29","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 192","Sales":672.38,"Profit":111.17,"Discount":0.1},{"Order_ID":"ORD-01193","Order_Date":"2023-05-23","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 193","Sales":1020.01,"Profit":70.95,"Discount":0.15},{"Order_ID":"ORD-01194","Order_Date":"2024-12-25","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 194","Sales":436.68,"Profit":32.57,"Discount":0.05},{"Order_ID":"ORD-01195","Order_Date":"2024-11-11","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 195","Sales":645.08,"Profit":88.15,"Discount":0.0},{"Order_ID":"ORD-01196","Order_Date":"2024-08-02","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 196","Sales":279.91,"Profit":26.13,"Discount":0.0},{"Order_ID":"ORD-01197","Order_Date":"2024-10-21","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 197","Sales":3049.49,"Profit":508.39,"Discount":0.0},{"Order_ID":"ORD-01198","Order_Date":"2024-03-30","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 198","Sales":9.8,"Profit":2.5,"Discount":0.15},{"Order_ID":"ORD-01199","Order_Date":"2024-01-12","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 199","Sales":24.72,"Profit":5.78,"Discount":0.0},{"Order_ID":"ORD-01200","Order_Date":"2023-05-09","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 200","Sales":49.26,"Profit":8.84,"Discount":0.05},{"Order_ID":"ORD-01201","Order_Date":"2023-09-14","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 201","Sales":32.29,"Profit":7.96,"Discount":0.0},{"Order_ID":"ORD-01202","Order_Date":"2023-07-10","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 202","Sales":889.44,"Profit":57.64,"Discount":0.0},{"Order_ID":"ORD-01203","Order_Date":"2023-09-02","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 203","Sales":9.18,"Profit":2.03,"Discount":0.1},{"Order_ID":"ORD-01204","Order_Date":"2024-02-02","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 204","Sales":103.59,"Profit":15.79,"Discount":0.0},{"Order_ID":"ORD-01205","Order_Date":"2023-06-09","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 205","Sales":50.73,"Profit":12.64,"Discount":0.05},{"Order_ID":"ORD-01206","Order_Date":"2023-03-23","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 206","Sales":19.5,"Profit":4.35,"Discount":0.0},{"Order_ID":"ORD-01207","Order_Date":"2023-07-31","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 207","Sales":51.85,"Profit":11.83,"Discount":0.0},{"Order_ID":"ORD-01208","Order_Date":"2023-06-06","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 208","Sales":350.3,"Profit":42.57,"Discount":0.0},{"Order_ID":"ORD-01209","Order_Date":"2024-02-22","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 209","Sales":53.15,"Profit":11.19,"Discount":0.0},{"Order_ID":"ORD-01210","Order_Date":"2023-04-02","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 210","Sales":1852.78,"Profit":282.4,"Discount":0.0},{"Order_ID":"ORD-01211","Order_Date":"2023-06-22","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 211","Sales":1460.42,"Profit":124.22,"Discount":0.05},{"Order_ID":"ORD-01212","Order_Date":"2024-07-01","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 212","Sales":227.6,"Profit":17.01,"Discount":0.05},{"Order_ID":"ORD-01213","Order_Date":"2024-08-01","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 213","Sales":1252.66,"Profit":191.92,"Discount":0.15},{"Order_ID":"ORD-01214","Order_Date":"2023-06-13","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 214","Sales":150.57,"Profit":32.2,"Discount":0.15},{"Order_ID":"ORD-01215","Order_Date":"2024-04-01","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 215","Sales":426.25,"Profit":29.4,"Discount":0.15},{"Order_ID":"ORD-01216","Order_Date":"2024-08-11","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 216","Sales":148.08,"Profit":30.36,"Discount":0.0},{"Order_ID":"ORD-01217","Order_Date":"2024-12-12","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 217","Sales":1919.57,"Profit":317.07,"Discount":0.05},{"Order_ID":"ORD-01218","Order_Date":"2024-02-10","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 218","Sales":54.47,"Profit":11.46,"Discount":0.0},{"Order_ID":"ORD-01219","Order_Date":"2023-02-28","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 219","Sales":1277.41,"Profit":219.09,"Discount":0.0},{"Order_ID":"ORD-01220","Order_Date":"2023-05-27","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 220","Sales":2273.11,"Profit":169.84,"Discount":0.0},{"Order_ID":"ORD-01221","Order_Date":"2023-05-29","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 221","Sales":2262.57,"Profit":167.11,"Discount":0.0},{"Order_ID":"ORD-01222","Order_Date":"2023-05-27","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 222","Sales":176.65,"Profit":31.9,"Discount":0.0},{"Order_ID":"ORD-01223","Order_Date":"2023-02-12","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 223","Sales":1522.29,"Profit":225.37,"Discount":0.1},{"Order_ID":"ORD-01224","Order_Date":"2023-07-07","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 224","Sales":102.29,"Profit":12.86,"Discount":0.05},{"Order_ID":"ORD-01225","Order_Date":"2024-01-29","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 225","Sales":1152.22,"Profit":87.31,"Discount":0.05},{"Order_ID":"ORD-01226","Order_Date":"2024-02-13","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 226","Sales":1024.04,"Profit":80.43,"Discount":0.15},{"Order_ID":"ORD-01227","Order_Date":"2023-09-16","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 227","Sales":411.68,"Profit":51.4,"Discount":0.0},{"Order_ID":"ORD-01228","Order_Date":"2023-04-22","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 228","Sales":164.37,"Profit":20.27,"Discount":0.0},{"Order_ID":"ORD-01229","Order_Date":"2023-08-29","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 229","Sales":78.26,"Profit":14.54,"Discount":0.0},{"Order_ID":"ORD-01230","Order_Date":"2023-01-07","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 230","Sales":58.22,"Profit":14.75,"Discount":0.1},{"Order_ID":"ORD-01231","Order_Date":"2023-06-06","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 231","Sales":471.96,"Profit":34.75,"Discount":0.0},{"Order_ID":"ORD-01232","Order_Date":"2023-04-25","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 232","Sales":10.94,"Profit":2.62,"Discount":0.0},{"Order_ID":"ORD-01233","Order_Date":"2024-01-07","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 233","Sales":594.32,"Profit":84.93,"Discount":0.0},{"Order_ID":"ORD-01234","Order_Date":"2024-01-14","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 234","Sales":2741.42,"Profit":463.21,"Discount":0.0},{"Order_ID":"ORD-01235","Order_Date":"2023-03-19","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 235","Sales":22.25,"Profit":5.39,"Discount":0.0},{"Order_ID":"ORD-01236","Order_Date":"2023-07-26","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 236","Sales":838.3,"Profit":71.17,"Discount":0.05},{"Order_ID":"ORD-01237","Order_Date":"2023-07-18","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 237","Sales":2311.82,"Profit":165.82,"Discount":0.0},{"Order_ID":"ORD-01238","Order_Date":"2023-06-04","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 238","Sales":1901.74,"Profit":173.74,"Discount":0.05},{"Order_ID":"ORD-01239","Order_Date":"2024-04-29","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 239","Sales":590.22,"Profit":87.35,"Discount":0.0},{"Order_ID":"ORD-01240","Order_Date":"2024-05-26","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 240","Sales":22.23,"Profit":4.9,"Discount":0.0},{"Order_ID":"ORD-01241","Order_Date":"2024-04-14","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 241","Sales":1260.85,"Profit":201.79,"Discount":0.0},{"Order_ID":"ORD-01242","Order_Date":"2023-10-11","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 242","Sales":400.6,"Profit":34.05,"Discount":0.1},{"Order_ID":"ORD-01243","Order_Date":"2024-05-25","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 243","Sales":46.52,"Profit":8.61,"Discount":0.1},{"Order_ID":"ORD-01244","Order_Date":"2023-06-16","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 244","Sales":1315.27,"Profit":230.26,"Discount":0.0},{"Order_ID":"ORD-01245","Order_Date":"2023-10-16","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 245","Sales":52.43,"Profit":9.99,"Discount":0.1},{"Order_ID":"ORD-01246","Order_Date":"2023-08-17","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 246","Sales":52.15,"Profit":13.48,"Discount":0.1},{"Order_ID":"ORD-01247","Order_Date":"2024-04-02","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 247","Sales":107.37,"Profit":13.39,"Discount":0.0},{"Order_ID":"ORD-01248","Order_Date":"2024-03-04","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 248","Sales":726.4,"Profit":69.31,"Discount":0.0},{"Order_ID":"ORD-01249","Order_Date":"2023-02-05","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 249","Sales":2752.01,"Profit":494.86,"Discount":0.1},{"Order_ID":"ORD-01250","Order_Date":"2023-10-19","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 250","Sales":1060.51,"Profit":74.65,"Discount":0.15},{"Order_ID":"ORD-01251","Order_Date":"2024-09-10","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 251","Sales":1323.81,"Profit":222.74,"Discount":0.1},{"Order_ID":"ORD-01252","Order_Date":"2023-04-02","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 252","Sales":931.89,"Profit":162.69,"Discount":0.1},{"Order_ID":"ORD-01253","Order_Date":"2023-05-02","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 253","Sales":1549.1,"Profit":134.0,"Discount":0.05},{"Order_ID":"ORD-01254","Order_Date":"2023-12-25","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 254","Sales":76.12,"Profit":11.02,"Discount":0.1},{"Order_ID":"ORD-01255","Order_Date":"2023-12-05","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 255","Sales":32.98,"Profit":6.76,"Discount":0.05},{"Order_ID":"ORD-01256","Order_Date":"2023-11-06","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 256","Sales":1792.77,"Profit":276.09,"Discount":0.05},{"Order_ID":"ORD-01257","Order_Date":"2024-01-09","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 257","Sales":2706.58,"Profit":379.84,"Discount":0.0},{"Order_ID":"ORD-01258","Order_Date":"2024-11-04","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 258","Sales":161.92,"Profit":35.25,"Discount":0.1},{"Order_ID":"ORD-01259","Order_Date":"2023-05-01","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 259","Sales":2031.29,"Profit":355.57,"Discount":0.0},{"Order_ID":"ORD-01260","Order_Date":"2023-12-18","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 260","Sales":263.75,"Profit":23.5,"Discount":0.05},{"Order_ID":"ORD-01261","Order_Date":"2024-09-14","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 261","Sales":290.07,"Profit":50.77,"Discount":0.1},{"Order_ID":"ORD-01262","Order_Date":"2024-02-28","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 262","Sales":541.67,"Profit":87.7,"Discount":0.0},{"Order_ID":"ORD-01263","Order_Date":"2024-05-05","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 263","Sales":50.65,"Profit":9.23,"Discount":0.1},{"Order_ID":"ORD-01264","Order_Date":"2023-09-30","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 264","Sales":33.94,"Profit":8.09,"Discount":0.0},{"Order_ID":"ORD-01265","Order_Date":"2024-12-21","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 265","Sales":78.57,"Profit":16.71,"Discount":0.0},{"Order_ID":"ORD-01266","Order_Date":"2024-01-21","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 266","Sales":99.57,"Profit":25.38,"Discount":0.0},{"Order_ID":"ORD-01267","Order_Date":"2024-11-13","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 267","Sales":12.21,"Profit":2.98,"Discount":0.0},{"Order_ID":"ORD-01268","Order_Date":"2024-12-27","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 268","Sales":1184.14,"Profit":110.65,"Discount":0.15},{"Order_ID":"ORD-01269","Order_Date":"2023-05-31","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 269","Sales":516.31,"Profit":92.58,"Discount":0.0},{"Order_ID":"ORD-01270","Order_Date":"2023-07-02","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 270","Sales":259.32,"Profit":42.94,"Discount":0.0},{"Order_ID":"ORD-01271","Order_Date":"2024-02-13","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 271","Sales":1484.16,"Profit":142.21,"Discount":0.15},{"Order_ID":"ORD-01272","Order_Date":"2023-01-11","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 272","Sales":524.1,"Profit":83.91,"Discount":0.0},{"Order_ID":"ORD-01273","Order_Date":"2024-01-30","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 273","Sales":54.98,"Profit":12.03,"Discount":0.0},{"Order_ID":"ORD-01274","Order_Date":"2023-08-18","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 274","Sales":65.44,"Profit":15.9,"Discount":0.0},{"Order_ID":"ORD-01275","Order_Date":"2023-09-13","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 275","Sales":241.35,"Profit":31.28,"Discount":0.1},{"Order_ID":"ORD-01276","Order_Date":"2023-07-19","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 276","Sales":34.28,"Profit":6.65,"Discount":0.15},{"Order_ID":"ORD-01277","Order_Date":"2024-12-21","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 277","Sales":55.61,"Profit":9.89,"Discount":0.05},{"Order_ID":"ORD-01278","Order_Date":"2023-11-16","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 278","Sales":415.77,"Profit":50.26,"Discount":0.0},{"Order_ID":"ORD-01279","Order_Date":"2023-09-18","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 279","Sales":20.94,"Profit":4.88,"Discount":0.0},{"Order_ID":"ORD-01280","Order_Date":"2024-12-13","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 280","Sales":1201.58,"Profit":106.39,"Discount":0.0},{"Order_ID":"ORD-01281","Order_Date":"2023-03-21","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 281","Sales":476.28,"Profit":31.12,"Discount":0.0},{"Order_ID":"ORD-01282","Order_Date":"2023-11-07","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 282","Sales":2433.41,"Profit":364.04,"Discount":0.15},{"Order_ID":"ORD-01283","Order_Date":"2024-08-09","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 283","Sales":1311.65,"Profit":180.39,"Discount":0.0},{"Order_ID":"ORD-01284","Order_Date":"2024-03-16","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 284","Sales":1900.0,"Profit":257.48,"Discount":0.15},{"Order_ID":"ORD-01285","Order_Date":"2023-09-13","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 285","Sales":1778.97,"Profit":222.54,"Discount":0.0},{"Order_ID":"ORD-01286","Order_Date":"2024-01-25","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 286","Sales":1885.95,"Profit":147.55,"Discount":0.0},{"Order_ID":"ORD-01287","Order_Date":"2024-10-25","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 287","Sales":2703.21,"Profit":465.39,"Discount":0.05},{"Order_ID":"ORD-01288","Order_Date":"2024-04-08","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 288","Sales":46.33,"Profit":9.99,"Discount":0.1},{"Order_ID":"ORD-01289","Order_Date":"2023-03-13","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 289","Sales":1416.42,"Profit":107.85,"Discount":0.0},{"Order_ID":"ORD-01290","Order_Date":"2023-05-10","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 290","Sales":65.1,"Profit":16.0,"Discount":0.15},{"Order_ID":"ORD-01291","Order_Date":"2023-03-10","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 291","Sales":1604.8,"Profit":279.56,"Discount":0.0},{"Order_ID":"ORD-01292","Order_Date":"2023-10-01","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 292","Sales":1475.96,"Profit":229.48,"Discount":0.0},{"Order_ID":"ORD-01293","Order_Date":"2023-01-21","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 293","Sales":2642.04,"Profit":345.12,"Discount":0.1},{"Order_ID":"ORD-01294","Order_Date":"2024-08-09","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 294","Sales":404.0,"Profit":61.06,"Discount":0.05},{"Order_ID":"ORD-01295","Order_Date":"2023-11-27","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 295","Sales":207.68,"Profit":16.92,"Discount":0.15},{"Order_ID":"ORD-01296","Order_Date":"2023-04-29","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 296","Sales":1913.44,"Profit":330.92,"Discount":0.15},{"Order_ID":"ORD-01297","Order_Date":"2023-06-02","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 297","Sales":2337.6,"Profit":157.92,"Discount":0.0},{"Order_ID":"ORD-01298","Order_Date":"2023-08-16","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 298","Sales":190.91,"Profit":30.44,"Discount":0.1},{"Order_ID":"ORD-01299","Order_Date":"2023-08-22","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 299","Sales":824.7,"Profit":72.68,"Discount":0.1},{"Order_ID":"ORD-01300","Order_Date":"2024-07-04","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 300","Sales":59.57,"Profit":14.7,"Discount":0.0},{"Order_ID":"ORD-01301","Order_Date":"2023-03-30","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 301","Sales":553.3,"Profit":84.22,"Discount":0.15},{"Order_ID":"ORD-01302","Order_Date":"2024-03-13","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 302","Sales":1172.73,"Profit":112.57,"Discount":0.0},{"Order_ID":"ORD-01303","Order_Date":"2023-08-21","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 303","Sales":380.14,"Profit":27.83,"Discount":0.1},{"Order_ID":"ORD-01304","Order_Date":"2024-12-19","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 304","Sales":1148.86,"Profit":77.21,"Discount":0.05},{"Order_ID":"ORD-01305","Order_Date":"2024-03-14","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 305","Sales":290.03,"Profit":20.0,"Discount":0.0},{"Order_ID":"ORD-01306","Order_Date":"2024-04-14","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 306","Sales":983.45,"Profit":89.85,"Discount":0.0},{"Order_ID":"ORD-01307","Order_Date":"2024-06-28","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 307","Sales":526.73,"Profit":34.89,"Discount":0.15},{"Order_ID":"ORD-01308","Order_Date":"2023-07-18","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 308","Sales":1942.55,"Profit":153.66,"Discount":0.0},{"Order_ID":"ORD-01309","Order_Date":"2024-12-04","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 309","Sales":56.79,"Profit":14.06,"Discount":0.1},{"Order_ID":"ORD-01310","Order_Date":"2023-07-25","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 310","Sales":34.46,"Profit":7.96,"Discount":0.1},{"Order_ID":"ORD-01311","Order_Date":"2023-07-22","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 311","Sales":1345.48,"Profit":182.41,"Discount":0.0},{"Order_ID":"ORD-01312","Order_Date":"2024-05-14","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 312","Sales":37.16,"Profit":9.5,"Discount":0.0},{"Order_ID":"ORD-01313","Order_Date":"2023-11-03","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 313","Sales":64.28,"Profit":12.38,"Discount":0.05},{"Order_ID":"ORD-01314","Order_Date":"2023-07-12","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 314","Sales":1123.49,"Profit":79.41,"Discount":0.0},{"Order_ID":"ORD-01315","Order_Date":"2024-03-04","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 315","Sales":571.82,"Profit":48.66,"Discount":0.0},{"Order_ID":"ORD-01316","Order_Date":"2023-12-10","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 316","Sales":52.57,"Profit":10.53,"Discount":0.0},{"Order_ID":"ORD-01317","Order_Date":"2023-11-07","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 317","Sales":71.23,"Profit":14.84,"Discount":0.1},{"Order_ID":"ORD-01318","Order_Date":"2024-07-08","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 318","Sales":64.05,"Profit":12.81,"Discount":0.1},{"Order_ID":"ORD-01319","Order_Date":"2023-12-04","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 319","Sales":423.86,"Profit":30.49,"Discount":0.0},{"Order_ID":"ORD-01320","Order_Date":"2024-03-24","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 320","Sales":47.34,"Profit":8.41,"Discount":0.0},{"Order_ID":"ORD-01321","Order_Date":"2023-07-01","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 321","Sales":97.76,"Profit":22.09,"Discount":0.0},{"Order_ID":"ORD-01322","Order_Date":"2023-07-01","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 322","Sales":3609.57,"Profit":551.08,"Discount":0.0},{"Order_ID":"ORD-01323","Order_Date":"2024-05-29","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 323","Sales":924.72,"Profit":88.69,"Discount":0.0},{"Order_ID":"ORD-01324","Order_Date":"2024-09-03","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 324","Sales":17.51,"Profit":3.58,"Discount":0.15},{"Order_ID":"ORD-01325","Order_Date":"2023-12-17","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 325","Sales":450.18,"Profit":74.16,"Discount":0.0},{"Order_ID":"ORD-01326","Order_Date":"2023-09-10","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 326","Sales":350.03,"Profit":46.82,"Discount":0.1},{"Order_ID":"ORD-01327","Order_Date":"2024-05-31","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 327","Sales":489.19,"Profit":83.77,"Discount":0.05},{"Order_ID":"ORD-01328","Order_Date":"2024-02-03","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 328","Sales":508.04,"Profit":78.71,"Discount":0.0},{"Order_ID":"ORD-01329","Order_Date":"2023-07-13","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 329","Sales":332.09,"Profit":55.8,"Discount":0.0},{"Order_ID":"ORD-01330","Order_Date":"2024-11-05","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 330","Sales":232.55,"Profit":15.49,"Discount":0.0},{"Order_ID":"ORD-01331","Order_Date":"2024-03-05","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 331","Sales":15.47,"Profit":3.84,"Discount":0.1},{"Order_ID":"ORD-01332","Order_Date":"2023-11-02","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 332","Sales":127.96,"Profit":32.87,"Discount":0.15},{"Order_ID":"ORD-01333","Order_Date":"2023-07-23","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 333","Sales":499.93,"Profit":47.52,"Discount":0.15},{"Order_ID":"ORD-01334","Order_Date":"2023-11-25","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 334","Sales":668.87,"Profit":57.19,"Discount":0.15},{"Order_ID":"ORD-01335","Order_Date":"2023-05-08","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 335","Sales":1918.38,"Profit":230.48,"Discount":0.15},{"Order_ID":"ORD-01336","Order_Date":"2024-12-18","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 336","Sales":423.36,"Profit":67.04,"Discount":0.0},{"Order_ID":"ORD-01337","Order_Date":"2023-08-19","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 337","Sales":2986.38,"Profit":381.31,"Discount":0.0},{"Order_ID":"ORD-01338","Order_Date":"2023-05-13","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 338","Sales":1483.54,"Profit":142.12,"Discount":0.0},{"Order_ID":"ORD-01339","Order_Date":"2024-10-06","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 339","Sales":56.95,"Profit":10.19,"Discount":0.05},{"Order_ID":"ORD-01340","Order_Date":"2023-04-28","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 340","Sales":1492.37,"Profit":220.37,"Discount":0.15},{"Order_ID":"ORD-01341","Order_Date":"2024-08-13","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 341","Sales":657.88,"Profit":104.16,"Discount":0.15},{"Order_ID":"ORD-01342","Order_Date":"2024-08-07","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 342","Sales":263.2,"Profit":21.68,"Discount":0.15},{"Order_ID":"ORD-01343","Order_Date":"2024-03-09","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 343","Sales":1098.29,"Profit":93.1,"Discount":0.1},{"Order_ID":"ORD-01344","Order_Date":"2024-11-14","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 344","Sales":78.95,"Profit":17.27,"Discount":0.0},{"Order_ID":"ORD-01345","Order_Date":"2023-03-07","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 345","Sales":780.17,"Profit":60.43,"Discount":0.0},{"Order_ID":"ORD-01346","Order_Date":"2023-04-13","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 346","Sales":1515.76,"Profit":101.89,"Discount":0.0},{"Order_ID":"ORD-01347","Order_Date":"2023-03-18","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 347","Sales":44.46,"Profit":10.08,"Discount":0.1},{"Order_ID":"ORD-01348","Order_Date":"2023-11-12","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 348","Sales":1223.3,"Profit":80.53,"Discount":0.1},{"Order_ID":"ORD-01349","Order_Date":"2023-11-27","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 349","Sales":1026.37,"Profit":85.55,"Discount":0.0},{"Order_ID":"ORD-01350","Order_Date":"2023-11-03","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 350","Sales":473.63,"Profit":69.06,"Discount":0.0},{"Order_ID":"ORD-01351","Order_Date":"2023-02-06","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 351","Sales":85.62,"Profit":12.37,"Discount":0.15},{"Order_ID":"ORD-01352","Order_Date":"2024-01-14","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 352","Sales":14.3,"Profit":3.18,"Discount":0.15},{"Order_ID":"ORD-01353","Order_Date":"2024-04-25","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 353","Sales":52.08,"Profit":11.31,"Discount":0.05},{"Order_ID":"ORD-01354","Order_Date":"2023-09-19","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 354","Sales":157.85,"Profit":38.38,"Discount":0.0},{"Order_ID":"ORD-01355","Order_Date":"2023-09-16","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 355","Sales":480.61,"Profit":81.3,"Discount":0.0},{"Order_ID":"ORD-01356","Order_Date":"2023-09-15","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 356","Sales":609.06,"Profit":87.85,"Discount":0.15},{"Order_ID":"ORD-01357","Order_Date":"2024-12-10","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 357","Sales":89.25,"Profit":20.68,"Discount":0.0},{"Order_ID":"ORD-01358","Order_Date":"2023-05-30","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 358","Sales":302.13,"Profit":25.51,"Discount":0.0},{"Order_ID":"ORD-01359","Order_Date":"2024-03-27","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 359","Sales":2908.33,"Profit":492.83,"Discount":0.05},{"Order_ID":"ORD-01360","Order_Date":"2023-11-12","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 360","Sales":47.55,"Profit":9.28,"Discount":0.05},{"Order_ID":"ORD-01361","Order_Date":"2023-06-25","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 361","Sales":17.41,"Profit":4.17,"Discount":0.15},{"Order_ID":"ORD-01362","Order_Date":"2024-01-03","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 362","Sales":737.43,"Profit":62.94,"Discount":0.0},{"Order_ID":"ORD-01363","Order_Date":"2023-01-04","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 363","Sales":3059.55,"Profit":389.21,"Discount":0.1},{"Order_ID":"ORD-01364","Order_Date":"2023-08-09","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 364","Sales":801.18,"Profit":68.65,"Discount":0.1},{"Order_ID":"ORD-01365","Order_Date":"2024-08-09","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 365","Sales":1438.83,"Profit":123.35,"Discount":0.05},{"Order_ID":"ORD-01366","Order_Date":"2023-03-23","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 366","Sales":2205.41,"Profit":310.06,"Discount":0.15},{"Order_ID":"ORD-01367","Order_Date":"2023-09-27","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 367","Sales":331.9,"Profit":21.28,"Discount":0.15},{"Order_ID":"ORD-01368","Order_Date":"2023-09-23","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 368","Sales":40.62,"Profit":9.45,"Discount":0.0},{"Order_ID":"ORD-01369","Order_Date":"2024-05-05","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 369","Sales":1897.1,"Profit":246.65,"Discount":0.1},{"Order_ID":"ORD-01370","Order_Date":"2023-03-26","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 370","Sales":2804.83,"Profit":438.18,"Discount":0.1},{"Order_ID":"ORD-01371","Order_Date":"2024-10-24","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 371","Sales":92.88,"Profit":16.9,"Discount":0.0},{"Order_ID":"ORD-01372","Order_Date":"2023-04-19","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 372","Sales":33.5,"Profit":6.67,"Discount":0.0},{"Order_ID":"ORD-01373","Order_Date":"2023-02-14","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 373","Sales":2053.56,"Profit":299.18,"Discount":0.1},{"Order_ID":"ORD-01374","Order_Date":"2023-07-13","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 374","Sales":641.71,"Profit":41.2,"Discount":0.1},{"Order_ID":"ORD-01375","Order_Date":"2023-05-11","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 375","Sales":90.28,"Profit":15.94,"Discount":0.1},{"Order_ID":"ORD-01376","Order_Date":"2023-09-02","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 376","Sales":1777.01,"Profit":242.85,"Discount":0.0},{"Order_ID":"ORD-01377","Order_Date":"2024-11-24","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 377","Sales":532.89,"Profit":37.03,"Discount":0.15},{"Order_ID":"ORD-01378","Order_Date":"2023-04-17","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 378","Sales":2320.61,"Profit":305.5,"Discount":0.0},{"Order_ID":"ORD-01379","Order_Date":"2024-12-27","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 379","Sales":60.52,"Profit":13.85,"Discount":0.1},{"Order_ID":"ORD-01380","Order_Date":"2024-06-17","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 380","Sales":122.05,"Profit":24.29,"Discount":0.15},{"Order_ID":"ORD-01381","Order_Date":"2024-12-22","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 381","Sales":59.0,"Profit":11.0,"Discount":0.05},{"Order_ID":"ORD-01382","Order_Date":"2024-12-02","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 382","Sales":31.39,"Profit":7.01,"Discount":0.0},{"Order_ID":"ORD-01383","Order_Date":"2023-06-06","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 383","Sales":1560.27,"Profit":217.58,"Discount":0.15},{"Order_ID":"ORD-01384","Order_Date":"2024-01-07","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 384","Sales":16.29,"Profit":3.43,"Discount":0.0},{"Order_ID":"ORD-01385","Order_Date":"2023-12-27","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 385","Sales":59.89,"Profit":14.64,"Discount":0.0},{"Order_ID":"ORD-01386","Order_Date":"2023-12-01","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 386","Sales":3041.05,"Profit":507.89,"Discount":0.0},{"Order_ID":"ORD-01387","Order_Date":"2023-08-13","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 387","Sales":37.23,"Profit":9.46,"Discount":0.0},{"Order_ID":"ORD-01388","Order_Date":"2024-04-20","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 388","Sales":50.37,"Profit":11.57,"Discount":0.0},{"Order_ID":"ORD-01389","Order_Date":"2023-02-05","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 389","Sales":384.01,"Profit":27.16,"Discount":0.0},{"Order_ID":"ORD-01390","Order_Date":"2023-04-17","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 390","Sales":475.4,"Profit":72.01,"Discount":0.0},{"Order_ID":"ORD-01391","Order_Date":"2024-05-01","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 391","Sales":27.71,"Profit":5.74,"Discount":0.1},{"Order_ID":"ORD-01392","Order_Date":"2024-05-24","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 392","Sales":770.44,"Profit":63.9,"Discount":0.0},{"Order_ID":"ORD-01393","Order_Date":"2024-07-28","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 393","Sales":413.11,"Profit":72.2,"Discount":0.15},{"Order_ID":"ORD-01394","Order_Date":"2024-12-18","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 394","Sales":23.75,"Profit":6.16,"Discount":0.05},{"Order_ID":"ORD-01395","Order_Date":"2023-09-21","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 395","Sales":54.74,"Profit":12.44,"Discount":0.1},{"Order_ID":"ORD-01396","Order_Date":"2023-07-13","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 396","Sales":2210.65,"Profit":395.39,"Discount":0.1},{"Order_ID":"ORD-01397","Order_Date":"2023-01-31","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 397","Sales":56.58,"Profit":10.91,"Discount":0.05},{"Order_ID":"ORD-01398","Order_Date":"2024-06-01","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 398","Sales":345.83,"Profit":46.33,"Discount":0.1},{"Order_ID":"ORD-01399","Order_Date":"2023-02-03","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 399","Sales":983.99,"Profit":70.84,"Discount":0.1},{"Order_ID":"ORD-01400","Order_Date":"2023-04-28","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 400","Sales":18.67,"Profit":3.76,"Discount":0.0},{"Order_ID":"ORD-01401","Order_Date":"2023-04-04","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 401","Sales":975.03,"Profit":87.27,"Discount":0.0},{"Order_ID":"ORD-01402","Order_Date":"2023-08-19","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 402","Sales":221.64,"Profit":14.98,"Discount":0.0},{"Order_ID":"ORD-01403","Order_Date":"2023-09-07","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 403","Sales":73.44,"Profit":15.9,"Discount":0.05},{"Order_ID":"ORD-01404","Order_Date":"2023-09-23","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 404","Sales":254.6,"Profit":22.89,"Discount":0.05},{"Order_ID":"ORD-01405","Order_Date":"2024-06-15","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 405","Sales":651.12,"Profit":91.38,"Discount":0.1},{"Order_ID":"ORD-01406","Order_Date":"2024-02-20","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 406","Sales":2228.9,"Profit":142.98,"Discount":0.05},{"Order_ID":"ORD-01407","Order_Date":"2024-08-13","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 407","Sales":20.69,"Profit":4.87,"Discount":0.05},{"Order_ID":"ORD-01408","Order_Date":"2023-10-01","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 408","Sales":176.01,"Profit":30.91,"Discount":0.15},{"Order_ID":"ORD-01409","Order_Date":"2024-03-03","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 409","Sales":505.91,"Profit":42.3,"Discount":0.0},{"Order_ID":"ORD-01410","Order_Date":"2024-05-07","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 410","Sales":264.39,"Profit":39.8,"Discount":0.05},{"Order_ID":"ORD-01411","Order_Date":"2024-03-01","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 411","Sales":52.22,"Profit":11.47,"Discount":0.15},{"Order_ID":"ORD-01412","Order_Date":"2024-07-19","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 412","Sales":826.78,"Profit":55.26,"Discount":0.0},{"Order_ID":"ORD-01413","Order_Date":"2024-12-11","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 413","Sales":1556.37,"Profit":134.4,"Discount":0.0},{"Order_ID":"ORD-01414","Order_Date":"2023-05-11","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 414","Sales":20.65,"Profit":4.58,"Discount":0.0},{"Order_ID":"ORD-01415","Order_Date":"2024-03-19","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 415","Sales":32.96,"Profit":8.12,"Discount":0.15},{"Order_ID":"ORD-01416","Order_Date":"2024-04-07","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 416","Sales":1081.18,"Profit":96.71,"Discount":0.0},{"Order_ID":"ORD-01417","Order_Date":"2024-05-21","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 417","Sales":71.81,"Profit":14.52,"Discount":0.0},{"Order_ID":"ORD-01418","Order_Date":"2024-06-19","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 418","Sales":418.15,"Profit":29.59,"Discount":0.0},{"Order_ID":"ORD-01419","Order_Date":"2024-11-13","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 419","Sales":1104.91,"Profit":81.14,"Discount":0.1},{"Order_ID":"ORD-01420","Order_Date":"2024-08-03","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 420","Sales":2198.87,"Profit":190.73,"Discount":0.0},{"Order_ID":"ORD-01421","Order_Date":"2023-02-27","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 421","Sales":3152.78,"Profit":402.71,"Discount":0.0},{"Order_ID":"ORD-01422","Order_Date":"2024-11-20","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 422","Sales":248.96,"Profit":23.77,"Discount":0.0},{"Order_ID":"ORD-01423","Order_Date":"2023-05-14","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 423","Sales":3258.46,"Profit":532.91,"Discount":0.1},{"Order_ID":"ORD-01424","Order_Date":"2023-11-09","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 424","Sales":405.41,"Profit":67.47,"Discount":0.0},{"Order_ID":"ORD-01425","Order_Date":"2024-11-03","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 425","Sales":29.31,"Profit":6.4,"Discount":0.15},{"Order_ID":"ORD-01426","Order_Date":"2024-06-12","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 426","Sales":2886.96,"Profit":438.32,"Discount":0.1},{"Order_ID":"ORD-01427","Order_Date":"2023-09-17","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 427","Sales":434.78,"Profit":40.0,"Discount":0.0},{"Order_ID":"ORD-01428","Order_Date":"2023-01-08","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 428","Sales":2543.01,"Profit":237.23,"Discount":0.0},{"Order_ID":"ORD-01429","Order_Date":"2023-07-09","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 429","Sales":66.13,"Profit":16.46,"Discount":0.0},{"Order_ID":"ORD-01430","Order_Date":"2024-12-21","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 430","Sales":585.67,"Profit":80.06,"Discount":0.0},{"Order_ID":"ORD-01431","Order_Date":"2024-03-13","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 431","Sales":147.66,"Profit":27.11,"Discount":0.1},{"Order_ID":"ORD-01432","Order_Date":"2023-12-12","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 432","Sales":128.22,"Profit":25.02,"Discount":0.15},{"Order_ID":"ORD-01433","Order_Date":"2024-09-09","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 433","Sales":38.67,"Profit":8.23,"Discount":0.0},{"Order_ID":"ORD-01434","Order_Date":"2024-08-05","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 434","Sales":386.18,"Profit":26.59,"Discount":0.0},{"Order_ID":"ORD-01435","Order_Date":"2023-11-15","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 435","Sales":32.46,"Profit":7.35,"Discount":0.15},{"Order_ID":"ORD-01436","Order_Date":"2024-04-20","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 436","Sales":146.54,"Profit":22.68,"Discount":0.1},{"Order_ID":"ORD-01437","Order_Date":"2024-08-06","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 437","Sales":617.35,"Profit":42.09,"Discount":0.15},{"Order_ID":"ORD-01438","Order_Date":"2023-12-02","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 438","Sales":256.07,"Profit":35.56,"Discount":0.0},{"Order_ID":"ORD-01439","Order_Date":"2024-01-15","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 439","Sales":1545.3,"Profit":146.78,"Discount":0.1},{"Order_ID":"ORD-01440","Order_Date":"2024-02-29","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 440","Sales":252.85,"Profit":32.11,"Discount":0.0},{"Order_ID":"ORD-01441","Order_Date":"2024-12-02","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 441","Sales":469.83,"Profit":79.13,"Discount":0.0},{"Order_ID":"ORD-01442","Order_Date":"2023-09-26","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 442","Sales":49.87,"Profit":12.46,"Discount":0.0},{"Order_ID":"ORD-01443","Order_Date":"2023-12-23","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 443","Sales":2048.67,"Profit":179.46,"Discount":0.0},{"Order_ID":"ORD-01444","Order_Date":"2023-07-18","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 444","Sales":376.48,"Profit":24.23,"Discount":0.05},{"Order_ID":"ORD-01445","Order_Date":"2024-01-04","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 445","Sales":276.01,"Profit":44.2,"Discount":0.0},{"Order_ID":"ORD-01446","Order_Date":"2023-12-20","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 446","Sales":1659.33,"Profit":216.64,"Discount":0.1},{"Order_ID":"ORD-01447","Order_Date":"2023-03-15","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 447","Sales":579.54,"Profit":78.47,"Discount":0.1},{"Order_ID":"ORD-01448","Order_Date":"2023-01-06","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 448","Sales":284.56,"Profit":23.2,"Discount":0.1},{"Order_ID":"ORD-01449","Order_Date":"2023-11-05","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 449","Sales":21.31,"Profit":3.95,"Discount":0.15},{"Order_ID":"ORD-01450","Order_Date":"2024-04-04","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 450","Sales":69.76,"Profit":17.25,"Discount":0.0},{"Order_ID":"ORD-01451","Order_Date":"2023-03-07","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 451","Sales":1103.01,"Profit":80.66,"Discount":0.0},{"Order_ID":"ORD-01452","Order_Date":"2024-09-18","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 452","Sales":535.49,"Profit":95.08,"Discount":0.0},{"Order_ID":"ORD-01453","Order_Date":"2024-12-16","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 453","Sales":2173.96,"Profit":385.79,"Discount":0.0},{"Order_ID":"ORD-01454","Order_Date":"2023-11-05","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 454","Sales":2334.48,"Profit":357.99,"Discount":0.15},{"Order_ID":"ORD-01455","Order_Date":"2024-04-23","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 455","Sales":1137.06,"Profit":192.04,"Discount":0.05},{"Order_ID":"ORD-01456","Order_Date":"2024-10-03","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 456","Sales":2197.66,"Profit":379.6,"Discount":0.05},{"Order_ID":"ORD-01457","Order_Date":"2024-06-06","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 457","Sales":68.79,"Profit":14.66,"Discount":0.0},{"Order_ID":"ORD-01458","Order_Date":"2023-03-20","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 458","Sales":444.84,"Profit":41.26,"Discount":0.0},{"Order_ID":"ORD-01459","Order_Date":"2023-01-25","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 459","Sales":13.66,"Profit":3.07,"Discount":0.0},{"Order_ID":"ORD-01460","Order_Date":"2024-04-27","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 460","Sales":1174.91,"Profit":181.77,"Discount":0.15},{"Order_ID":"ORD-01461","Order_Date":"2024-10-09","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 461","Sales":483.92,"Profit":82.37,"Discount":0.05},{"Order_ID":"ORD-01462","Order_Date":"2024-05-10","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 462","Sales":18.94,"Profit":4.33,"Discount":0.1},{"Order_ID":"ORD-01463","Order_Date":"2023-06-04","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 463","Sales":571.19,"Profit":37.89,"Discount":0.0},{"Order_ID":"ORD-01464","Order_Date":"2023-04-11","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 464","Sales":322.75,"Profit":51.2,"Discount":0.1},{"Order_ID":"ORD-01465","Order_Date":"2023-09-04","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 465","Sales":53.13,"Profit":9.89,"Discount":0.05},{"Order_ID":"ORD-01466","Order_Date":"2023-01-21","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 466","Sales":1601.89,"Profit":115.31,"Discount":0.0},{"Order_ID":"ORD-01467","Order_Date":"2024-08-25","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 467","Sales":38.06,"Profit":7.18,"Discount":0.0},{"Order_ID":"ORD-01468","Order_Date":"2024-02-07","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 468","Sales":39.66,"Profit":10.03,"Discount":0.0},{"Order_ID":"ORD-01469","Order_Date":"2023-05-31","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 469","Sales":3382.06,"Profit":599.41,"Discount":0.0},{"Order_ID":"ORD-01470","Order_Date":"2024-10-29","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 470","Sales":43.09,"Profit":7.63,"Discount":0.0},{"Order_ID":"ORD-01471","Order_Date":"2023-01-14","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 471","Sales":301.33,"Profit":50.75,"Discount":0.1},{"Order_ID":"ORD-01472","Order_Date":"2024-05-01","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 472","Sales":372.86,"Profit":49.3,"Discount":0.0},{"Order_ID":"ORD-01473","Order_Date":"2023-04-07","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 473","Sales":28.71,"Profit":6.9,"Discount":0.1},{"Order_ID":"ORD-01474","Order_Date":"2024-10-24","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 474","Sales":32.8,"Profit":6.74,"Discount":0.0},{"Order_ID":"ORD-01475","Order_Date":"2024-01-26","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 475","Sales":2863.94,"Profit":344.42,"Discount":0.0},{"Order_ID":"ORD-01476","Order_Date":"2024-08-28","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 476","Sales":72.11,"Profit":14.82,"Discount":0.1},{"Order_ID":"ORD-01477","Order_Date":"2023-06-05","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 477","Sales":118.23,"Profit":27.9,"Discount":0.0},{"Order_ID":"ORD-01478","Order_Date":"2024-11-08","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 478","Sales":758.72,"Profit":93.66,"Discount":0.0},{"Order_ID":"ORD-01479","Order_Date":"2023-01-24","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 479","Sales":1293.6,"Profit":194.2,"Discount":0.15},{"Order_ID":"ORD-01480","Order_Date":"2023-02-19","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 480","Sales":86.5,"Profit":22.57,"Discount":0.05},{"Order_ID":"ORD-01481","Order_Date":"2023-02-16","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 481","Sales":1562.17,"Profit":116.04,"Discount":0.0},{"Order_ID":"ORD-01482","Order_Date":"2024-02-17","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 482","Sales":58.57,"Profit":10.52,"Discount":0.0},{"Order_ID":"ORD-01483","Order_Date":"2023-11-15","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 483","Sales":9.89,"Profit":2.34,"Discount":0.15},{"Order_ID":"ORD-01484","Order_Date":"2023-02-14","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 484","Sales":400.46,"Profit":36.61,"Discount":0.0},{"Order_ID":"ORD-01485","Order_Date":"2024-01-28","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 485","Sales":35.97,"Profit":6.42,"Discount":0.0},{"Order_ID":"ORD-01486","Order_Date":"2024-10-16","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 486","Sales":768.97,"Profit":73.24,"Discount":0.0},{"Order_ID":"ORD-01487","Order_Date":"2024-07-06","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 487","Sales":627.13,"Profit":48.75,"Discount":0.0},{"Order_ID":"ORD-01488","Order_Date":"2024-05-07","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 488","Sales":327.22,"Profit":29.42,"Discount":0.15},{"Order_ID":"ORD-01489","Order_Date":"2024-09-16","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 489","Sales":2220.68,"Profit":361.81,"Discount":0.05},{"Order_ID":"ORD-01490","Order_Date":"2024-08-21","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 490","Sales":40.6,"Profit":9.52,"Discount":0.0},{"Order_ID":"ORD-01491","Order_Date":"2024-08-03","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 491","Sales":1276.35,"Profit":92.19,"Discount":0.0},{"Order_ID":"ORD-01492","Order_Date":"2023-11-12","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 492","Sales":118.98,"Profit":23.43,"Discount":0.1},{"Order_ID":"ORD-01493","Order_Date":"2024-06-23","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 493","Sales":329.53,"Profit":49.72,"Discount":0.15},{"Order_ID":"ORD-01494","Order_Date":"2023-09-12","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 494","Sales":1602.01,"Profit":131.04,"Discount":0.05},{"Order_ID":"ORD-01495","Order_Date":"2024-10-25","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 495","Sales":1183.14,"Profit":203.61,"Discount":0.15},{"Order_ID":"ORD-01496","Order_Date":"2024-02-14","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 496","Sales":905.75,"Profit":80.26,"Discount":0.0},{"Order_ID":"ORD-01497","Order_Date":"2023-06-07","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 497","Sales":93.13,"Profit":11.47,"Discount":0.05},{"Order_ID":"ORD-01498","Order_Date":"2024-09-08","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 498","Sales":2320.23,"Profit":395.02,"Discount":0.0},{"Order_ID":"ORD-01499","Order_Date":"2024-02-08","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 499","Sales":131.17,"Profit":34.49,"Discount":0.0},{"Order_ID":"ORD-01500","Order_Date":"2024-10-05","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 500","Sales":219.14,"Profit":39.02,"Discount":0.1},{"Order_ID":"ORD-01501","Order_Date":"2024-05-15","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 501","Sales":40.59,"Profit":7.15,"Discount":0.0},{"Order_ID":"ORD-01502","Order_Date":"2024-03-04","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 502","Sales":33.67,"Profit":6.34,"Discount":0.05},{"Order_ID":"ORD-01503","Order_Date":"2023-02-22","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 503","Sales":1152.63,"Profit":154.71,"Discount":0.05},{"Order_ID":"ORD-01504","Order_Date":"2024-10-31","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 504","Sales":40.61,"Profit":9.52,"Discount":0.0},{"Order_ID":"ORD-01505","Order_Date":"2024-02-25","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 505","Sales":850.76,"Profit":62.13,"Discount":0.1},{"Order_ID":"ORD-01506","Order_Date":"2024-07-05","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 506","Sales":195.05,"Profit":18.61,"Discount":0.0},{"Order_ID":"ORD-01507","Order_Date":"2024-04-24","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 507","Sales":920.33,"Profit":159.04,"Discount":0.15},{"Order_ID":"ORD-01508","Order_Date":"2024-08-09","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 508","Sales":190.97,"Profit":28.34,"Discount":0.0},{"Order_ID":"ORD-01509","Order_Date":"2023-01-12","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 509","Sales":610.73,"Profit":56.21,"Discount":0.15},{"Order_ID":"ORD-01510","Order_Date":"2024-07-17","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 510","Sales":1271.46,"Profit":84.8,"Discount":0.0},{"Order_ID":"ORD-01511","Order_Date":"2023-05-22","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 511","Sales":10.62,"Profit":2.71,"Discount":0.1},{"Order_ID":"ORD-01512","Order_Date":"2023-06-18","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 512","Sales":1161.75,"Profit":102.66,"Discount":0.0},{"Order_ID":"ORD-01513","Order_Date":"2024-05-28","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 513","Sales":1132.44,"Profit":99.69,"Discount":0.1},{"Order_ID":"ORD-01514","Order_Date":"2024-10-26","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 514","Sales":1188.83,"Profit":91.67,"Discount":0.1},{"Order_ID":"ORD-01515","Order_Date":"2023-01-01","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 515","Sales":196.75,"Profit":38.39,"Discount":0.0},{"Order_ID":"ORD-01516","Order_Date":"2023-08-17","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 516","Sales":849.84,"Profit":61.8,"Discount":0.1},{"Order_ID":"ORD-01517","Order_Date":"2023-03-22","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 517","Sales":95.06,"Profit":22.52,"Discount":0.15},{"Order_ID":"ORD-01518","Order_Date":"2023-05-10","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 518","Sales":73.54,"Profit":14.68,"Discount":0.05},{"Order_ID":"ORD-01519","Order_Date":"2024-05-06","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 519","Sales":402.83,"Profit":38.59,"Discount":0.0},{"Order_ID":"ORD-01520","Order_Date":"2023-04-02","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 520","Sales":2125.37,"Profit":146.28,"Discount":0.0},{"Order_ID":"ORD-01521","Order_Date":"2023-06-21","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 521","Sales":2107.95,"Profit":299.76,"Discount":0.15},{"Order_ID":"ORD-01522","Order_Date":"2023-07-10","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 522","Sales":1310.52,"Profit":186.19,"Discount":0.1},{"Order_ID":"ORD-01523","Order_Date":"2023-10-03","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 523","Sales":1456.5,"Profit":219.56,"Discount":0.0},{"Order_ID":"ORD-01524","Order_Date":"2023-03-25","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 524","Sales":94.37,"Profit":22.92,"Discount":0.0},{"Order_ID":"ORD-01525","Order_Date":"2023-01-16","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 525","Sales":113.04,"Profit":21.72,"Discount":0.0},{"Order_ID":"ORD-01526","Order_Date":"2024-04-13","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 526","Sales":3513.71,"Profit":451.79,"Discount":0.05},{"Order_ID":"ORD-01527","Order_Date":"2024-01-30","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 527","Sales":409.38,"Profit":35.2,"Discount":0.1},{"Order_ID":"ORD-01528","Order_Date":"2024-01-01","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 528","Sales":102.25,"Profit":20.73,"Discount":0.1},{"Order_ID":"ORD-01529","Order_Date":"2023-03-12","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 529","Sales":223.83,"Profit":33.88,"Discount":0.15},{"Order_ID":"ORD-01530","Order_Date":"2023-11-11","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 530","Sales":587.31,"Profit":81.17,"Discount":0.0},{"Order_ID":"ORD-01531","Order_Date":"2023-12-10","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 531","Sales":30.98,"Profit":7.67,"Discount":0.15},{"Order_ID":"ORD-01532","Order_Date":"2024-03-01","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 532","Sales":378.32,"Profit":35.55,"Discount":0.0},{"Order_ID":"ORD-01533","Order_Date":"2023-10-24","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 533","Sales":1053.0,"Profit":79.47,"Discount":0.05},{"Order_ID":"ORD-01534","Order_Date":"2024-03-30","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 534","Sales":20.84,"Profit":3.68,"Discount":0.0},{"Order_ID":"ORD-01535","Order_Date":"2023-11-14","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 535","Sales":460.88,"Profit":65.8,"Discount":0.15},{"Order_ID":"ORD-01536","Order_Date":"2024-04-05","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 536","Sales":2827.31,"Profit":425.8,"Discount":0.05},{"Order_ID":"ORD-01537","Order_Date":"2024-02-14","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 537","Sales":619.59,"Profit":78.53,"Discount":0.0},{"Order_ID":"ORD-01538","Order_Date":"2024-05-27","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 538","Sales":1546.03,"Profit":139.69,"Discount":0.0},{"Order_ID":"ORD-01539","Order_Date":"2023-04-01","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 539","Sales":1011.19,"Profit":85.83,"Discount":0.0},{"Order_ID":"ORD-01540","Order_Date":"2024-05-20","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 540","Sales":3023.44,"Profit":530.0,"Discount":0.0},{"Order_ID":"ORD-01541","Order_Date":"2024-02-05","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 541","Sales":1010.58,"Profit":166.76,"Discount":0.05},{"Order_ID":"ORD-01542","Order_Date":"2024-03-23","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 542","Sales":107.7,"Profit":24.79,"Discount":0.0},{"Order_ID":"ORD-01543","Order_Date":"2023-02-13","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 543","Sales":178.81,"Profit":42.59,"Discount":0.0},{"Order_ID":"ORD-01544","Order_Date":"2023-03-01","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 544","Sales":872.93,"Profit":114.99,"Discount":0.15},{"Order_ID":"ORD-01545","Order_Date":"2023-09-30","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 545","Sales":2544.66,"Profit":318.19,"Discount":0.1},{"Order_ID":"ORD-01546","Order_Date":"2023-07-24","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 546","Sales":331.81,"Profit":52.2,"Discount":0.0},{"Order_ID":"ORD-01547","Order_Date":"2024-11-20","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 547","Sales":1008.55,"Profit":77.56,"Discount":0.0},{"Order_ID":"ORD-01548","Order_Date":"2023-12-21","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 548","Sales":113.13,"Profit":23.96,"Discount":0.0},{"Order_ID":"ORD-01549","Order_Date":"2023-05-03","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 549","Sales":1030.8,"Profit":140.4,"Discount":0.1},{"Order_ID":"ORD-01550","Order_Date":"2023-10-29","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 550","Sales":56.61,"Profit":13.27,"Discount":0.05},{"Order_ID":"ORD-01551","Order_Date":"2024-08-17","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 551","Sales":55.6,"Profit":13.97,"Discount":0.1},{"Order_ID":"ORD-01552","Order_Date":"2024-03-04","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 552","Sales":1932.71,"Profit":252.64,"Discount":0.1},{"Order_ID":"ORD-01553","Order_Date":"2023-02-27","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 553","Sales":268.15,"Profit":33.87,"Discount":0.1},{"Order_ID":"ORD-01554","Order_Date":"2024-01-23","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 554","Sales":2954.13,"Profit":437.67,"Discount":0.05},{"Order_ID":"ORD-01555","Order_Date":"2024-11-21","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 555","Sales":1464.53,"Profit":213.42,"Discount":0.0},{"Order_ID":"ORD-01556","Order_Date":"2023-08-21","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 556","Sales":2585.53,"Profit":461.8,"Discount":0.1},{"Order_ID":"ORD-01557","Order_Date":"2024-02-04","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 557","Sales":872.84,"Profit":77.16,"Discount":0.0},{"Order_ID":"ORD-01558","Order_Date":"2024-04-26","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 558","Sales":2366.55,"Profit":305.49,"Discount":0.15},{"Order_ID":"ORD-01559","Order_Date":"2023-05-23","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 559","Sales":78.2,"Profit":18.61,"Discount":0.15},{"Order_ID":"ORD-01560","Order_Date":"2023-04-09","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 560","Sales":609.73,"Profit":109.02,"Discount":0.05},{"Order_ID":"ORD-01561","Order_Date":"2024-02-14","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 561","Sales":1748.93,"Profit":277.18,"Discount":0.0},{"Order_ID":"ORD-01562","Order_Date":"2024-06-19","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 562","Sales":10.78,"Profit":2.56,"Discount":0.05},{"Order_ID":"ORD-01563","Order_Date":"2023-03-31","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 563","Sales":1024.99,"Profit":156.58,"Discount":0.15},{"Order_ID":"ORD-01564","Order_Date":"2024-08-13","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 564","Sales":13.21,"Profit":2.49,"Discount":0.0},{"Order_ID":"ORD-01565","Order_Date":"2023-06-20","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 565","Sales":3399.38,"Profit":519.73,"Discount":0.1},{"Order_ID":"ORD-01566","Order_Date":"2024-02-10","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 566","Sales":89.34,"Profit":15.64,"Discount":0.0},{"Order_ID":"ORD-01567","Order_Date":"2023-04-18","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 567","Sales":872.75,"Profit":68.31,"Discount":0.0},{"Order_ID":"ORD-01568","Order_Date":"2024-04-10","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 568","Sales":33.63,"Profit":6.63,"Discount":0.0},{"Order_ID":"ORD-01569","Order_Date":"2024-12-02","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 569","Sales":1943.94,"Profit":333.53,"Discount":0.0},{"Order_ID":"ORD-01570","Order_Date":"2024-12-17","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 570","Sales":1046.34,"Profit":70.13,"Discount":0.0},{"Order_ID":"ORD-01571","Order_Date":"2023-09-18","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 571","Sales":2447.42,"Profit":386.46,"Discount":0.05},{"Order_ID":"ORD-01572","Order_Date":"2024-11-20","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 572","Sales":1006.72,"Profit":174.24,"Discount":0.15},{"Order_ID":"ORD-01573","Order_Date":"2024-06-26","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 573","Sales":975.31,"Profit":66.3,"Discount":0.0},{"Order_ID":"ORD-01574","Order_Date":"2023-03-04","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 574","Sales":2637.52,"Profit":320.61,"Discount":0.05},{"Order_ID":"ORD-01575","Order_Date":"2024-06-09","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 575","Sales":967.21,"Profit":77.12,"Discount":0.0},{"Order_ID":"ORD-01576","Order_Date":"2024-08-14","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 576","Sales":1794.44,"Profit":144.77,"Discount":0.0},{"Order_ID":"ORD-01577","Order_Date":"2023-03-30","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 577","Sales":404.79,"Profit":35.9,"Discount":0.0},{"Order_ID":"ORD-01578","Order_Date":"2023-11-01","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 578","Sales":590.98,"Profit":92.12,"Discount":0.0},{"Order_ID":"ORD-01579","Order_Date":"2023-11-19","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 579","Sales":2727.41,"Profit":379.42,"Discount":0.05},{"Order_ID":"ORD-01580","Order_Date":"2023-05-07","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 580","Sales":1123.78,"Profit":178.97,"Discount":0.05},{"Order_ID":"ORD-01581","Order_Date":"2023-02-19","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 581","Sales":1229.15,"Profit":81.2,"Discount":0.15},{"Order_ID":"ORD-01582","Order_Date":"2023-04-29","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 582","Sales":413.92,"Profit":37.72,"Discount":0.0},{"Order_ID":"ORD-01583","Order_Date":"2023-02-25","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 583","Sales":992.88,"Profit":70.61,"Discount":0.05},{"Order_ID":"ORD-01584","Order_Date":"2023-11-19","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 584","Sales":40.76,"Profit":8.58,"Discount":0.0},{"Order_ID":"ORD-01585","Order_Date":"2024-01-27","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 585","Sales":1229.8,"Profit":154.51,"Discount":0.0},{"Order_ID":"ORD-01586","Order_Date":"2024-06-15","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 586","Sales":85.12,"Profit":15.19,"Discount":0.15},{"Order_ID":"ORD-01587","Order_Date":"2023-10-11","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 587","Sales":256.4,"Profit":32.92,"Discount":0.0},{"Order_ID":"ORD-01588","Order_Date":"2023-02-25","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 588","Sales":73.94,"Profit":14.77,"Discount":0.0},{"Order_ID":"ORD-01589","Order_Date":"2024-07-24","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 589","Sales":769.99,"Profit":73.35,"Discount":0.1},{"Order_ID":"ORD-01590","Order_Date":"2023-12-18","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 590","Sales":1871.47,"Profit":179.06,"Discount":0.15},{"Order_ID":"ORD-01591","Order_Date":"2024-02-03","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 591","Sales":745.49,"Profit":60.6,"Discount":0.0},{"Order_ID":"ORD-01592","Order_Date":"2024-01-11","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 592","Sales":94.67,"Profit":11.97,"Discount":0.0},{"Order_ID":"ORD-01593","Order_Date":"2024-08-24","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 593","Sales":474.05,"Profit":74.37,"Discount":0.0},{"Order_ID":"ORD-01594","Order_Date":"2023-01-05","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 594","Sales":73.52,"Profit":9.14,"Discount":0.1},{"Order_ID":"ORD-01595","Order_Date":"2023-08-25","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 595","Sales":231.4,"Profit":34.01,"Discount":0.1},{"Order_ID":"ORD-01596","Order_Date":"2023-08-31","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 596","Sales":110.75,"Profit":24.0,"Discount":0.0},{"Order_ID":"ORD-01597","Order_Date":"2023-05-06","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 597","Sales":2322.87,"Profit":414.73,"Discount":0.0},{"Order_ID":"ORD-01598","Order_Date":"2023-04-07","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 598","Sales":788.24,"Profit":72.77,"Discount":0.1},{"Order_ID":"ORD-01599","Order_Date":"2023-09-15","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 599","Sales":1098.89,"Profit":73.17,"Discount":0.15},{"Order_ID":"ORD-01600","Order_Date":"2024-12-20","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 600","Sales":11.56,"Profit":2.53,"Discount":0.1},{"Order_ID":"ORD-01601","Order_Date":"2023-03-18","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 601","Sales":48.02,"Profit":11.17,"Discount":0.1},{"Order_ID":"ORD-01602","Order_Date":"2024-07-24","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 602","Sales":182.6,"Profit":32.32,"Discount":0.15},{"Order_ID":"ORD-01603","Order_Date":"2023-08-25","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 603","Sales":775.96,"Profit":139.14,"Discount":0.0},{"Order_ID":"ORD-01604","Order_Date":"2024-05-18","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 604","Sales":40.12,"Profit":8.77,"Discount":0.0},{"Order_ID":"ORD-01605","Order_Date":"2023-08-01","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 605","Sales":167.21,"Profit":25.38,"Discount":0.0},{"Order_ID":"ORD-01606","Order_Date":"2023-11-24","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 606","Sales":147.85,"Profit":31.43,"Discount":0.05},{"Order_ID":"ORD-01607","Order_Date":"2023-09-25","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 607","Sales":1224.44,"Profit":115.07,"Discount":0.1},{"Order_ID":"ORD-01608","Order_Date":"2023-10-03","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 608","Sales":621.59,"Profit":43.42,"Discount":0.0},{"Order_ID":"ORD-01609","Order_Date":"2024-01-07","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 609","Sales":1126.62,"Profit":143.33,"Discount":0.0},{"Order_ID":"ORD-01610","Order_Date":"2023-12-24","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 610","Sales":1543.05,"Profit":243.46,"Discount":0.0},{"Order_ID":"ORD-01611","Order_Date":"2024-03-21","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 611","Sales":965.48,"Profit":64.05,"Discount":0.0},{"Order_ID":"ORD-01612","Order_Date":"2023-02-22","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 612","Sales":20.71,"Profit":4.48,"Discount":0.0},{"Order_ID":"ORD-01613","Order_Date":"2023-02-26","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 613","Sales":725.45,"Profit":49.75,"Discount":0.15},{"Order_ID":"ORD-01614","Order_Date":"2023-06-05","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 614","Sales":1929.46,"Profit":302.45,"Discount":0.0},{"Order_ID":"ORD-01615","Order_Date":"2023-09-11","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 615","Sales":30.16,"Profit":6.18,"Discount":0.1},{"Order_ID":"ORD-01616","Order_Date":"2024-02-09","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 616","Sales":45.6,"Profit":8.03,"Discount":0.15},{"Order_ID":"ORD-01617","Order_Date":"2023-08-22","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 617","Sales":178.42,"Profit":25.49,"Discount":0.15},{"Order_ID":"ORD-01618","Order_Date":"2023-06-05","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 618","Sales":415.64,"Profit":62.42,"Discount":0.0},{"Order_ID":"ORD-01619","Order_Date":"2024-10-02","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 619","Sales":129.95,"Profit":31.61,"Discount":0.0},{"Order_ID":"ORD-01620","Order_Date":"2024-02-28","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 620","Sales":16.81,"Profit":3.56,"Discount":0.0},{"Order_ID":"ORD-01621","Order_Date":"2024-07-20","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 621","Sales":962.88,"Profit":69.67,"Discount":0.05},{"Order_ID":"ORD-01622","Order_Date":"2024-03-16","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 622","Sales":1237.31,"Profit":110.97,"Discount":0.0},{"Order_ID":"ORD-01623","Order_Date":"2024-01-29","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 623","Sales":122.01,"Profit":31.25,"Discount":0.1},{"Order_ID":"ORD-01624","Order_Date":"2023-08-15","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 624","Sales":253.51,"Profit":37.62,"Discount":0.0},{"Order_ID":"ORD-01625","Order_Date":"2023-05-06","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 625","Sales":113.92,"Profit":28.58,"Discount":0.0},{"Order_ID":"ORD-01626","Order_Date":"2023-05-18","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 626","Sales":27.57,"Profit":4.88,"Discount":0.15},{"Order_ID":"ORD-01627","Order_Date":"2024-12-21","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 627","Sales":821.5,"Profit":63.19,"Discount":0.1},{"Order_ID":"ORD-01628","Order_Date":"2023-07-01","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 628","Sales":383.64,"Profit":60.21,"Discount":0.1},{"Order_ID":"ORD-01629","Order_Date":"2023-04-10","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 629","Sales":145.02,"Profit":30.86,"Discount":0.1},{"Order_ID":"ORD-01630","Order_Date":"2024-03-18","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 630","Sales":903.23,"Profit":80.08,"Discount":0.0},{"Order_ID":"ORD-01631","Order_Date":"2024-09-03","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 631","Sales":1331.94,"Profit":125.19,"Discount":0.0},{"Order_ID":"ORD-01632","Order_Date":"2023-02-22","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 632","Sales":3434.9,"Profit":617.27,"Discount":0.1},{"Order_ID":"ORD-01633","Order_Date":"2023-09-22","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 633","Sales":1258.48,"Profit":88.98,"Discount":0.0},{"Order_ID":"ORD-01634","Order_Date":"2024-01-13","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 634","Sales":1326.28,"Profit":104.93,"Discount":0.05},{"Order_ID":"ORD-01635","Order_Date":"2023-11-17","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 635","Sales":658.68,"Profit":58.68,"Discount":0.0},{"Order_ID":"ORD-01636","Order_Date":"2023-12-31","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 636","Sales":225.27,"Profit":18.55,"Discount":0.0},{"Order_ID":"ORD-01637","Order_Date":"2023-02-22","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 637","Sales":17.21,"Profit":4.03,"Discount":0.0},{"Order_ID":"ORD-01638","Order_Date":"2023-05-25","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 638","Sales":38.18,"Profit":9.72,"Discount":0.0},{"Order_ID":"ORD-01639","Order_Date":"2024-02-17","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 639","Sales":47.41,"Profit":10.14,"Discount":0.05},{"Order_ID":"ORD-01640","Order_Date":"2024-02-26","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 640","Sales":51.24,"Profit":11.24,"Discount":0.15},{"Order_ID":"ORD-01641","Order_Date":"2024-04-11","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 641","Sales":53.31,"Profit":13.58,"Discount":0.0},{"Order_ID":"ORD-01642","Order_Date":"2023-10-23","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 642","Sales":1953.98,"Profit":278.22,"Discount":0.05},{"Order_ID":"ORD-01643","Order_Date":"2024-02-16","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 643","Sales":1338.2,"Profit":236.17,"Discount":0.05},{"Order_ID":"ORD-01644","Order_Date":"2023-07-18","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 644","Sales":618.18,"Profit":58.52,"Discount":0.15},{"Order_ID":"ORD-01645","Order_Date":"2023-10-08","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 645","Sales":20.26,"Profit":3.62,"Discount":0.1},{"Order_ID":"ORD-01646","Order_Date":"2024-11-29","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 646","Sales":2773.06,"Profit":366.55,"Discount":0.1},{"Order_ID":"ORD-01647","Order_Date":"2024-09-26","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 647","Sales":469.37,"Profit":34.31,"Discount":0.0},{"Order_ID":"ORD-01648","Order_Date":"2023-08-13","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 648","Sales":2874.86,"Profit":496.17,"Discount":0.05},{"Order_ID":"ORD-01649","Order_Date":"2024-07-04","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 649","Sales":12.06,"Profit":2.88,"Discount":0.05},{"Order_ID":"ORD-01650","Order_Date":"2023-10-07","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 650","Sales":540.82,"Profit":46.89,"Discount":0.0},{"Order_ID":"ORD-01651","Order_Date":"2024-04-25","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 651","Sales":2305.95,"Profit":203.15,"Discount":0.1},{"Order_ID":"ORD-01652","Order_Date":"2024-07-26","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 652","Sales":68.76,"Profit":14.87,"Discount":0.0},{"Order_ID":"ORD-01653","Order_Date":"2023-03-15","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 653","Sales":2580.66,"Profit":386.59,"Discount":0.0},{"Order_ID":"ORD-01654","Order_Date":"2023-08-26","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 654","Sales":32.92,"Profit":7.86,"Discount":0.0},{"Order_ID":"ORD-01655","Order_Date":"2023-12-23","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 655","Sales":462.22,"Profit":61.52,"Discount":0.0},{"Order_ID":"ORD-01656","Order_Date":"2023-12-27","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 656","Sales":61.83,"Profit":16.2,"Discount":0.05},{"Order_ID":"ORD-01657","Order_Date":"2023-11-03","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 657","Sales":582.96,"Profit":104.26,"Discount":0.0},{"Order_ID":"ORD-01658","Order_Date":"2024-08-06","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 658","Sales":749.88,"Profit":67.56,"Discount":0.0},{"Order_ID":"ORD-01659","Order_Date":"2023-05-04","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 659","Sales":131.01,"Profit":23.25,"Discount":0.15},{"Order_ID":"ORD-01660","Order_Date":"2024-10-17","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 660","Sales":2357.79,"Profit":158.85,"Discount":0.0},{"Order_ID":"ORD-01661","Order_Date":"2023-04-01","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 661","Sales":54.5,"Profit":13.15,"Discount":0.05},{"Order_ID":"ORD-01662","Order_Date":"2024-10-27","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 662","Sales":36.52,"Profit":9.1,"Discount":0.05},{"Order_ID":"ORD-01663","Order_Date":"2023-12-17","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 663","Sales":386.09,"Profit":26.36,"Discount":0.1},{"Order_ID":"ORD-01664","Order_Date":"2023-03-15","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 664","Sales":2276.59,"Profit":354.38,"Discount":0.0},{"Order_ID":"ORD-01665","Order_Date":"2023-09-12","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 665","Sales":901.31,"Profit":68.74,"Discount":0.1},{"Order_ID":"ORD-01666","Order_Date":"2023-02-18","Region":"West","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 666","Sales":1031.3,"Profit":81.32,"Discount":0.0},{"Order_ID":"ORD-01667","Order_Date":"2024-04-23","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 667","Sales":728.94,"Profit":67.29,"Discount":0.05},{"Order_ID":"ORD-01668","Order_Date":"2024-09-07","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 668","Sales":277.38,"Profit":40.16,"Discount":0.1},{"Order_ID":"ORD-01669","Order_Date":"2024-10-21","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 669","Sales":656.74,"Profit":79.38,"Discount":0.1},{"Order_ID":"ORD-01670","Order_Date":"2023-06-01","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 670","Sales":159.51,"Profit":34.35,"Discount":0.05},{"Order_ID":"ORD-01671","Order_Date":"2023-12-22","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 671","Sales":1071.41,"Profit":83.1,"Discount":0.0},{"Order_ID":"ORD-01672","Order_Date":"2023-03-06","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 672","Sales":1874.27,"Profit":239.53,"Discount":0.1},{"Order_ID":"ORD-01673","Order_Date":"2023-02-07","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 673","Sales":22.96,"Profit":4.46,"Discount":0.05},{"Order_ID":"ORD-01674","Order_Date":"2023-02-13","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 674","Sales":1176.63,"Profit":98.35,"Discount":0.0},{"Order_ID":"ORD-01675","Order_Date":"2023-10-10","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 675","Sales":271.53,"Profit":21.87,"Discount":0.0},{"Order_ID":"ORD-01676","Order_Date":"2023-10-04","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 676","Sales":70.64,"Profit":15.97,"Discount":0.1},{"Order_ID":"ORD-01677","Order_Date":"2024-12-21","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 677","Sales":144.36,"Profit":29.91,"Discount":0.0},{"Order_ID":"ORD-01678","Order_Date":"2024-12-21","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 678","Sales":41.79,"Profit":8.67,"Discount":0.0},{"Order_ID":"ORD-01679","Order_Date":"2024-03-03","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 679","Sales":1227.81,"Profit":93.12,"Discount":0.15},{"Order_ID":"ORD-01680","Order_Date":"2024-06-06","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 680","Sales":103.05,"Profit":22.74,"Discount":0.0},{"Order_ID":"ORD-01681","Order_Date":"2024-05-24","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 681","Sales":310.85,"Profit":55.92,"Discount":0.05},{"Order_ID":"ORD-01682","Order_Date":"2024-08-04","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 682","Sales":31.92,"Profit":6.57,"Discount":0.15},{"Order_ID":"ORD-01683","Order_Date":"2023-01-28","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 683","Sales":1713.81,"Profit":134.04,"Discount":0.0},{"Order_ID":"ORD-01684","Order_Date":"2024-09-02","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 684","Sales":78.36,"Profit":9.78,"Discount":0.1},{"Order_ID":"ORD-01685","Order_Date":"2024-10-20","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 685","Sales":64.05,"Profit":15.88,"Discount":0.0},{"Order_ID":"ORD-01686","Order_Date":"2024-09-03","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 686","Sales":1775.18,"Profit":225.83,"Discount":0.15},{"Order_ID":"ORD-01687","Order_Date":"2024-09-13","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 687","Sales":15.04,"Profit":3.95,"Discount":0.05},{"Order_ID":"ORD-01688","Order_Date":"2023-09-11","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 688","Sales":556.68,"Profit":47.99,"Discount":0.0},{"Order_ID":"ORD-01689","Order_Date":"2024-02-29","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 689","Sales":74.01,"Profit":13.92,"Discount":0.05},{"Order_ID":"ORD-01690","Order_Date":"2023-10-29","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 690","Sales":2575.08,"Profit":443.06,"Discount":0.0},{"Order_ID":"ORD-01691","Order_Date":"2024-12-14","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 691","Sales":1250.87,"Profit":220.73,"Discount":0.15},{"Order_ID":"ORD-01692","Order_Date":"2023-05-12","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 692","Sales":39.62,"Profit":10.35,"Discount":0.15},{"Order_ID":"ORD-01693","Order_Date":"2024-12-04","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 693","Sales":506.16,"Profit":72.41,"Discount":0.0},{"Order_ID":"ORD-01694","Order_Date":"2024-12-27","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 694","Sales":424.76,"Profit":52.42,"Discount":0.1},{"Order_ID":"ORD-01695","Order_Date":"2024-11-14","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 695","Sales":88.47,"Profit":22.07,"Discount":0.0},{"Order_ID":"ORD-01696","Order_Date":"2023-11-02","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 696","Sales":35.69,"Profit":9.02,"Discount":0.0},{"Order_ID":"ORD-01697","Order_Date":"2024-03-29","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 697","Sales":1296.68,"Profit":102.03,"Discount":0.0},{"Order_ID":"ORD-01698","Order_Date":"2023-03-28","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 698","Sales":1888.55,"Profit":157.34,"Discount":0.0},{"Order_ID":"ORD-01699","Order_Date":"2024-12-29","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 699","Sales":110.96,"Profit":26.73,"Discount":0.0},{"Order_ID":"ORD-01700","Order_Date":"2024-06-16","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 700","Sales":187.05,"Profit":16.51,"Discount":0.15},{"Order_ID":"ORD-01701","Order_Date":"2024-11-29","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 701","Sales":23.09,"Profit":4.19,"Discount":0.0},{"Order_ID":"ORD-01702","Order_Date":"2024-10-24","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 702","Sales":3364.77,"Profit":438.12,"Discount":0.1},{"Order_ID":"ORD-01703","Order_Date":"2024-01-13","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 703","Sales":1423.61,"Profit":251.53,"Discount":0.0},{"Order_ID":"ORD-01704","Order_Date":"2024-05-15","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 704","Sales":209.07,"Profit":17.16,"Discount":0.15},{"Order_ID":"ORD-01705","Order_Date":"2024-03-14","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 705","Sales":607.55,"Profit":58.02,"Discount":0.0},{"Order_ID":"ORD-01706","Order_Date":"2023-11-11","Region":"East","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 706","Sales":198.8,"Profit":13.08,"Discount":0.0},{"Order_ID":"ORD-01707","Order_Date":"2023-01-27","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 707","Sales":2000.66,"Profit":307.57,"Discount":0.1},{"Order_ID":"ORD-01708","Order_Date":"2023-09-29","Region":"North","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 708","Sales":534.73,"Profit":66.12,"Discount":0.0},{"Order_ID":"ORD-01709","Order_Date":"2023-02-19","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 709","Sales":2025.76,"Profit":155.56,"Discount":0.15},{"Order_ID":"ORD-01710","Order_Date":"2024-11-13","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 710","Sales":414.95,"Profit":58.35,"Discount":0.0},{"Order_ID":"ORD-01711","Order_Date":"2023-01-23","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 711","Sales":27.13,"Profit":6.44,"Discount":0.1},{"Order_ID":"ORD-01712","Order_Date":"2024-01-24","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 712","Sales":30.34,"Profit":6.06,"Discount":0.15},{"Order_ID":"ORD-01713","Order_Date":"2023-05-27","Region":"South","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 713","Sales":1837.89,"Profit":151.95,"Discount":0.0},{"Order_ID":"ORD-01714","Order_Date":"2023-07-19","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 714","Sales":1127.39,"Profit":103.53,"Discount":0.15},{"Order_ID":"ORD-01715","Order_Date":"2023-03-19","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Chairs 715","Sales":525.93,"Profit":44.85,"Discount":0.15},{"Order_ID":"ORD-01716","Order_Date":"2023-07-20","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 716","Sales":2349.23,"Profit":417.11,"Discount":0.05},{"Order_ID":"ORD-01717","Order_Date":"2024-01-25","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 717","Sales":2826.97,"Profit":360.34,"Discount":0.0},{"Order_ID":"ORD-01718","Order_Date":"2024-08-07","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 718","Sales":52.11,"Profit":12.03,"Discount":0.15},{"Order_ID":"ORD-01719","Order_Date":"2023-05-19","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 719","Sales":1287.52,"Profit":99.78,"Discount":0.1},{"Order_ID":"ORD-01720","Order_Date":"2024-01-07","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 720","Sales":426.53,"Profit":53.01,"Discount":0.1},{"Order_ID":"ORD-01721","Order_Date":"2023-01-13","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 721","Sales":341.85,"Profit":49.36,"Discount":0.05},{"Order_ID":"ORD-01722","Order_Date":"2024-05-16","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Chairs 722","Sales":220.41,"Profit":15.07,"Discount":0.0},{"Order_ID":"ORD-01723","Order_Date":"2023-09-15","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 723","Sales":1375.49,"Profit":229.81,"Discount":0.0},{"Order_ID":"ORD-01724","Order_Date":"2024-07-18","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 724","Sales":2949.52,"Profit":528.03,"Discount":0.0},{"Order_ID":"ORD-01725","Order_Date":"2023-06-19","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 725","Sales":701.84,"Profit":123.78,"Discount":0.05},{"Order_ID":"ORD-01726","Order_Date":"2024-06-03","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 726","Sales":2019.53,"Profit":187.71,"Discount":0.1},{"Order_ID":"ORD-01727","Order_Date":"2023-06-26","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 727","Sales":27.4,"Profit":5.0,"Discount":0.1},{"Order_ID":"ORD-01728","Order_Date":"2023-12-04","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 728","Sales":3345.67,"Profit":492.44,"Discount":0.1},{"Order_ID":"ORD-01729","Order_Date":"2023-01-06","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 729","Sales":3537.55,"Profit":429.9,"Discount":0.0},{"Order_ID":"ORD-01730","Order_Date":"2024-02-10","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 730","Sales":1204.96,"Profit":94.9,"Discount":0.1},{"Order_ID":"ORD-01731","Order_Date":"2023-03-11","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 731","Sales":1622.61,"Profit":289.3,"Discount":0.0},{"Order_ID":"ORD-01732","Order_Date":"2023-02-24","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 732","Sales":2356.4,"Profit":315.89,"Discount":0.1},{"Order_ID":"ORD-01733","Order_Date":"2023-03-25","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 733","Sales":471.0,"Profit":42.51,"Discount":0.1},{"Order_ID":"ORD-01734","Order_Date":"2024-07-01","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 734","Sales":59.31,"Profit":14.08,"Discount":0.1},{"Order_ID":"ORD-01735","Order_Date":"2024-12-12","Region":"North","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Bookcases 735","Sales":1037.94,"Profit":67.33,"Discount":0.0},{"Order_ID":"ORD-01736","Order_Date":"2023-07-23","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 736","Sales":30.81,"Profit":5.78,"Discount":0.0},{"Order_ID":"ORD-01737","Order_Date":"2024-11-15","Region":"South","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Bookcases 737","Sales":535.49,"Profit":50.91,"Discount":0.1},{"Order_ID":"ORD-01738","Order_Date":"2024-09-07","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 738","Sales":291.54,"Profit":47.72,"Discount":0.1},{"Order_ID":"ORD-01739","Order_Date":"2024-10-31","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 739","Sales":57.39,"Profit":14.61,"Discount":0.0},{"Order_ID":"ORD-01740","Order_Date":"2024-01-20","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Machines 740","Sales":1237.51,"Profit":221.4,"Discount":0.15},{"Order_ID":"ORD-01741","Order_Date":"2024-08-15","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 741","Sales":28.56,"Profit":6.16,"Discount":0.1},{"Order_ID":"ORD-01742","Order_Date":"2024-07-25","Region":"South","Category":"Technology","Segment":"Home Office","Product_Name":"Product Phones 742","Sales":709.12,"Profit":124.01,"Discount":0.0},{"Order_ID":"ORD-01743","Order_Date":"2024-12-29","Region":"West","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 743","Sales":12.55,"Profit":2.68,"Discount":0.0},{"Order_ID":"ORD-01744","Order_Date":"2024-10-14","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 744","Sales":108.23,"Profit":19.84,"Discount":0.0},{"Order_ID":"ORD-01745","Order_Date":"2024-09-06","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 745","Sales":174.38,"Profit":43.62,"Discount":0.0},{"Order_ID":"ORD-01746","Order_Date":"2024-09-02","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 746","Sales":58.81,"Profit":10.9,"Discount":0.0},{"Order_ID":"ORD-01747","Order_Date":"2024-02-20","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 747","Sales":725.86,"Profit":124.01,"Discount":0.0},{"Order_ID":"ORD-01748","Order_Date":"2024-11-01","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 748","Sales":2690.01,"Profit":376.32,"Discount":0.05},{"Order_ID":"ORD-01749","Order_Date":"2024-09-23","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 749","Sales":92.34,"Profit":21.55,"Discount":0.05},{"Order_ID":"ORD-01750","Order_Date":"2024-03-25","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 750","Sales":79.64,"Profit":20.09,"Discount":0.05},{"Order_ID":"ORD-01751","Order_Date":"2023-01-16","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 751","Sales":1131.11,"Profit":81.09,"Discount":0.0},{"Order_ID":"ORD-01752","Order_Date":"2024-10-25","Region":"North","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 752","Sales":34.26,"Profit":6.22,"Discount":0.0},{"Order_ID":"ORD-01753","Order_Date":"2023-05-31","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 753","Sales":34.71,"Profit":7.28,"Discount":0.0},{"Order_ID":"ORD-01754","Order_Date":"2023-07-24","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 754","Sales":733.66,"Profit":105.21,"Discount":0.0},{"Order_ID":"ORD-01755","Order_Date":"2024-08-09","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 755","Sales":141.13,"Profit":29.58,"Discount":0.0},{"Order_ID":"ORD-01756","Order_Date":"2024-06-09","Region":"North","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 756","Sales":78.63,"Profit":19.39,"Discount":0.05},{"Order_ID":"ORD-01757","Order_Date":"2024-06-10","Region":"South","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 757","Sales":78.74,"Profit":17.73,"Discount":0.0},{"Order_ID":"ORD-01758","Order_Date":"2023-06-24","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 758","Sales":23.07,"Profit":5.96,"Discount":0.0},{"Order_ID":"ORD-01759","Order_Date":"2023-03-04","Region":"West","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 759","Sales":565.45,"Profit":39.95,"Discount":0.0},{"Order_ID":"ORD-01760","Order_Date":"2024-03-20","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 760","Sales":62.99,"Profit":13.02,"Discount":0.1},{"Order_ID":"ORD-01761","Order_Date":"2024-05-27","Region":"South","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 761","Sales":467.74,"Profit":34.85,"Discount":0.0},{"Order_ID":"ORD-01762","Order_Date":"2024-09-07","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 762","Sales":76.26,"Profit":11.33,"Discount":0.15},{"Order_ID":"ORD-01763","Order_Date":"2023-02-23","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 763","Sales":1134.4,"Profit":193.83,"Discount":0.05},{"Order_ID":"ORD-01764","Order_Date":"2024-08-12","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 764","Sales":164.99,"Profit":24.39,"Discount":0.0},{"Order_ID":"ORD-01765","Order_Date":"2023-04-04","Region":"South","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 765","Sales":2756.26,"Profit":391.24,"Discount":0.0},{"Order_ID":"ORD-01766","Order_Date":"2024-08-24","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 766","Sales":17.53,"Profit":3.94,"Discount":0.0},{"Order_ID":"ORD-01767","Order_Date":"2024-06-15","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 767","Sales":45.25,"Profit":9.46,"Discount":0.15},{"Order_ID":"ORD-01768","Order_Date":"2023-02-14","Region":"North","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 768","Sales":87.31,"Profit":11.63,"Discount":0.05},{"Order_ID":"ORD-01769","Order_Date":"2024-02-17","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 769","Sales":115.6,"Profit":28.55,"Discount":0.0},{"Order_ID":"ORD-01770","Order_Date":"2024-02-04","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 770","Sales":31.34,"Profit":6.15,"Discount":0.1},{"Order_ID":"ORD-01771","Order_Date":"2023-07-11","Region":"South","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 771","Sales":34.25,"Profit":7.55,"Discount":0.05},{"Order_ID":"ORD-01772","Order_Date":"2023-02-09","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Storage 772","Sales":120.7,"Profit":23.99,"Discount":0.1},{"Order_ID":"ORD-01773","Order_Date":"2023-08-09","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Paper 773","Sales":23.12,"Profit":5.18,"Discount":0.05},{"Order_ID":"ORD-01774","Order_Date":"2023-04-02","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Storage 774","Sales":159.34,"Profit":35.53,"Discount":0.0},{"Order_ID":"ORD-01775","Order_Date":"2024-12-15","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 775","Sales":503.96,"Profit":72.95,"Discount":0.15},{"Order_ID":"ORD-01776","Order_Date":"2024-03-03","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Binders 776","Sales":57.54,"Profit":10.41,"Discount":0.0},{"Order_ID":"ORD-01777","Order_Date":"2023-09-10","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Phones 777","Sales":1984.54,"Profit":320.92,"Discount":0.05},{"Order_ID":"ORD-01778","Order_Date":"2024-05-18","Region":"North","Category":"Technology","Segment":"Consumer","Product_Name":"Product Accessories 778","Sales":187.55,"Profit":32.28,"Discount":0.1},{"Order_ID":"ORD-01779","Order_Date":"2023-06-16","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 779","Sales":1283.3,"Profit":106.27,"Discount":0.1},{"Order_ID":"ORD-01780","Order_Date":"2024-02-10","Region":"West","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Binders 780","Sales":44.17,"Profit":8.27,"Discount":0.05},{"Order_ID":"ORD-01781","Order_Date":"2023-04-16","Region":"East","Category":"Technology","Segment":"Corporate","Product_Name":"Product Accessories 781","Sales":179.93,"Profit":30.54,"Discount":0.1},{"Order_ID":"ORD-01782","Order_Date":"2024-11-26","Region":"North","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 782","Sales":2302.9,"Profit":189.71,"Discount":0.1},{"Order_ID":"ORD-01783","Order_Date":"2024-08-30","Region":"West","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 783","Sales":1084.8,"Profit":185.57,"Discount":0.1},{"Order_ID":"ORD-01784","Order_Date":"2024-03-13","Region":"West","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 784","Sales":12.76,"Profit":2.48,"Discount":0.05},{"Order_ID":"ORD-01785","Order_Date":"2024-10-26","Region":"South","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 785","Sales":47.95,"Profit":11.17,"Discount":0.1},{"Order_ID":"ORD-01786","Order_Date":"2023-07-19","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Chairs 786","Sales":578.48,"Profit":43.97,"Discount":0.15},{"Order_ID":"ORD-01787","Order_Date":"2024-12-05","Region":"West","Category":"Furniture","Segment":"Consumer","Product_Name":"Product Tables 787","Sales":1980.48,"Profit":129.56,"Discount":0.1},{"Order_ID":"ORD-01788","Order_Date":"2023-07-14","Region":"East","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 788","Sales":12.05,"Profit":3.14,"Discount":0.05},{"Order_ID":"ORD-01789","Order_Date":"2023-10-23","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Paper 789","Sales":51.59,"Profit":11.69,"Discount":0.0},{"Order_ID":"ORD-01790","Order_Date":"2024-05-22","Region":"East","Category":"Office Supplies","Segment":"Consumer","Product_Name":"Product Storage 790","Sales":148.69,"Profit":28.81,"Discount":0.0},{"Order_ID":"ORD-01791","Order_Date":"2023-10-23","Region":"North","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Tables 791","Sales":908.19,"Profit":76.88,"Discount":0.0},{"Order_ID":"ORD-01792","Order_Date":"2023-05-04","Region":"East","Category":"Furniture","Segment":"Corporate","Product_Name":"Product Bookcases 792","Sales":784.48,"Profit":68.88,"Discount":0.0},{"Order_ID":"ORD-01793","Order_Date":"2024-09-05","Region":"East","Category":"Office Supplies","Segment":"Home Office","Product_Name":"Product Binders 793","Sales":16.24,"Profit":4.18,"Discount":0.1},{"Order_ID":"ORD-01794","Order_Date":"2023-04-06","Region":"North","Category":"Office Supplies","Segment":"Corporate","Product_Name":"Product Paper 794","Sales":46.07,"Profit":8.86,"Discount":0.05},{"Order_ID":"ORD-01795","Order_Date":"2024-03-05","Region":"South","Category":"Technology","Segment":"Corporate","Product_Name":"Product Machines 795","Sales":462.35,"Profit":65.74,"Discount":0.0},{"Order_ID":"ORD-01796","Order_Date":"2023-01-21","Region":"East","Category":"Furniture","Segment":"Home Office","Product_Name":"Product Tables 796","Sales":933.74,"Profit":87.46,"Discount":0.0},{"Order_ID":"ORD-01797","Order_Date":"2023-06-18","Region":"West","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 797","Sales":704.06,"Profit":92.61,"Discount":0.0},{"Order_ID":"ORD-01798","Order_Date":"2023-06-02","Region":"East","Category":"Technology","Segment":"Home Office","Product_Name":"Product Machines 798","Sales":488.54,"Profit":59.7,"Discount":0.1},{"Order_ID":"ORD-01799","Order_Date":"2023-03-10","Region":"East","Category":"Technology","Segment":"Consumer","Product_Name":"Product Phones 799","Sales":1917.84,"Profit":253.78,"Discount":0.05},{"Order_ID":"ORD-01800","Order_Date":"2023-08-19","Region":"West","Category":"Technology","Segment":"Home Office","Product_Name":"Product Accessories 800","Sales":150.49,"Profit":21.56,"Discount":0.15}];
+
+    document.getElementById("status").textContent = `${rawData.length} rows · 2023–2024 · standalone`;
+
+    fillFilters(rawData);
+
+    refresh();
+
+  </script>
+
+</body>
+
+</html>
+
+
